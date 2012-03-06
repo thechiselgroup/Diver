@@ -1,0 +1,27 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Server Plug-in
+Bundle-SymbolicName: ca.uvic.chisel.hsqldb.server
+Bundle-Version: 0.2.3
+Bundle-Activator: ca.uvic.chisel.hsqldb.server.DBPlugin
+Require-Bundle: org.eclipse.core.runtime
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-ClassPath: .,
+ lib/hsqldb.jar
+Export-Package: .,
+ ca.uvic.chisel.hsqldb.server;version="1.8.1",
+ org.hsqldb;version="1.8.1",
+ org.hsqldb.index;version="1.8.1",
+ org.hsqldb.jdbc;version="1.8.1",
+ org.hsqldb.lib;version="1.8.1",
+ org.hsqldb.lib.java;version="1.8.1",
+ org.hsqldb.persist;version="1.8.1",
+ org.hsqldb.resources;version="1.8.1",
+ org.hsqldb.rowio;version="1.8.1",
+ org.hsqldb.scriptio;version="1.8.1",
+ org.hsqldb.store;version="1.8.1",
+ org.hsqldb.types;version="1.8.1",
+ org.hsqldb.util;version="1.8.1"
+Eclipse-BuddyPolicy: dependent, global, registered
+Eclipse-RegisterBuddy: ca.uvic.chisel.hsqldb.server

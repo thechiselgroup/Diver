@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.ui.editors">
+      <editor
+            class="ca.uvic.chisel.diver.sequencediagrams.sc.java.editors.ASTSequenceEditor"
+            icon="icons/sample.gif"
+            id="org.eclipse.zest.custom.sequence.examples.staticanalysis.java.ASTSequenceEditor"
+            name="ASTSequenceEditor">
+      </editor>
+   </extension>
+   <extension
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            adaptable="true"
+            id="JavaSequenceEditor.methodOpen"
+            objectClass="org.eclipse.jdt.core.IMethod">
+         <action
+               class="ca.uvic.chisel.diver.sequencediagrams.sc.java.actions.OpenEditorAction"
+               icon="icons/sample.gif"
+               id="JavaASTSequenceEditor.action1"
+               label="Static Sequence Diagram"
+               menubarPath="reveal/additions">
+         </action>
+      </objectContribution>
+   </extension>
+
+</plugin>

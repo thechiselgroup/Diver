@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+     <extension
+         point="org.eclipse.debug.ui.launchConfigurationTabGroups">
+      <launchConfigurationTabGroup
+            class="ca.uvic.chisel.javasketch.junit.launch.ui.JUnitTraceConfigurationTabGroup"
+            description="Configure a Java JUnit Launch for Tracing"
+            id="ca.uvic.chisel.javasketch.junitconfigurationTabGroup"
+            type="ca.uvic.chisel.javasketch.junitTraceConfiguration">
+      </launchConfigurationTabGroup>
+   </extension>
+
+   <extension
+         point="org.eclipse.debug.core.launchConfigurationTypes">
+      <launchConfigurationType
+            delegateDescription="Launches a unit test to be traced for post-run operation"
+            delegateName="Java JUnit Application Trace"
+            id="ca.uvic.chisel.javasketch.junitTraceConfiguration"
+            name="Java JUnit Application Trace"
+            public="true"
+            sourceLocatorId="org.eclipse.jdt.launching.sourceLocator.JavaSourceLookupDirector"
+            sourcePathComputerId="org.eclipse.jdt.launching.sourceLookup.javaSourcePathComputer">
+      </launchConfigurationType>
+   </extension>
+   <extension
+         point="org.eclipse.debug.core.launchDelegates">
+      <launchDelegate
+            delegate="ca.uvic.chisel.javasketch.junit.launch.JUnitTraceLaunchConfigurationDelegate"
+            id="ca.uvic.chisel.javasketch.junitTraceDelegate"
+            modes="run, debug"
+            name="Java JUnit Trace"
+            sourceLocatorId="org.eclipse.jdt.launching.sourceLocator.JavaSourceLookupDirector"
+            sourcePathComputerId="org.eclipse.jdt.launching.sourceLookup.javaSourcePathComputer"
+            type="ca.uvic.chisel.javasketch.junitTraceConfiguration">
+         <modeCombination
+               modes="run"
+               perspective="ca.uvic.chisel.javasketch.perspective">
+         </modeCombination>
+         <modeCombination
+               modes="debug"
+               perspective="ca.uvic.chisel.javasketch.perspective">
+         </modeCombination>
+      </launchDelegate>
+   </extension>
+   <extension
+         point="org.eclipse.debug.ui.launchConfigurationTypeImages">
+      <launchConfigurationTypeImage
+            configTypeID="ca.uvic.chisel.javasketch.junitTraceConfiguration"
+            icon="images/etool16/junit.gif"
+            id="ca.uvic.chisel.javasketch.junitTraceConfigurationImage">
+      </launchConfigurationTypeImage>
+   </extension>
+
+</plugin>

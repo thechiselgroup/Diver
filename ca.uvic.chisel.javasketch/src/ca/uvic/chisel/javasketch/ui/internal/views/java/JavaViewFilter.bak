@@ -1,0 +1,474 @@
+/*******************************************************************************
+ * Copyright (c) 2009 the CHISEL group and contributors.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *     Del Myers - initial API and implementation
+ *******************************************************************************/
+package ca.uvic.chisel.javasketch.ui.internal.views.java;
+
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.TreeSet;
+
+import org.eclipse.core.resources.IResource;
+import org.eclipse.core.runtime.CoreException;
+import org.eclipse.debug.core.ILaunchConfiguration;
+import org.eclipse.jdt.core.IClassFile;
+import org.eclipse.jdt.core.ICompilationUnit;
+import org.eclipse.jdt.core.IJarEntryResource;
+import org.eclipse.jdt.core.IJavaElement;
+import org.eclipse.jdt.core.IJavaProject;
+import org.eclipse.jdt.core.IMethod;
+import org.eclipse.jdt.core.IPackageFragment;
+import org.eclipse.jdt.core.IPackageFragmentRoot;
+import org.eclipse.jdt.core.IParent;
+import org.eclipse.jdt.core.IType;
+import org.eclipse.jdt.core.JavaModelException;
+import org.eclipse.jdt.core.Signature;
+import org.eclipse.jface.viewers.ISelection;
+import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.jface.viewers.Viewer;
+import org.eclipse.jface.viewers.ViewerFilter;
+import org.eclipse.ui.IViewPart;
+import org.eclipse.ui.PlatformUI;
+
+import ca.uvic.chisel.hsqldb.server.IDataPortal;
+import ca.uvic.chisel.javasketch.IProgramSketch;
+import ca.uvic.chisel.javasketch.SketchPlugin;
+import ca.uvic.chisel.javasketch.data.model.IThread;
+import ca.uvic.chisel.javasketch.data.model.imple.internal.ThreadImpl;
+import ca.uvic.chisel.javasketch.internal.DBProgramSketch;
+import ca.uvic.chisel.javasketch.internal.JavaSearchUtils;
+import ca.uvic.chisel.javasketch.ui.internal.views.TraceNavigator;
+import ca.uvic.chisel.javasketch.utils.LaunchConfigurationUtilities;
+
+public class JavaViewFilter extends ViewerFilter {
+
+	/*
+	 * 
+	 *
+	private static final String CLASS_THREAD_STATEMENT = "SELECT COUNT(*) FROM Activation WHERE type_name=? AND thread_id=?";
+	/**
+	 * 
+	 */
+	private static final String METHOD_THREAD_STATEMENT = "SELECT COUNT(*) FROM Activation WHERE type_name=? AND method_name=? AND method_signature=? AND thread_id=?";
+	private static final String PACKAGE_STATEMENT = "SELECT method_name, method_signature, type_name FROM Method WHERE type_name LIKE ?";
+	private static final String CLASS_STATEMENT = "SELECT method_name, method_signature, type_name FROM Method WHERE type_name = ?";
+	private static final String METHOD_STATEMENT = "SELECT method_signature FROM Method WHERE type_name=? AND method_name=?";
+	
+	private DBProgramSketch cachedSketch;
+
+	public JavaViewFilter() {
+		
+	}
+	
+	
+	@Override
+	public boolean select(Viewer viewer, Object parentElement, Object element) {
+		cachedSketch = (DBProgramSketch) SketchPlugin.getDefault().getActiveSketch();
+		
+		if (cachedSketch == null) {
+			return true;
+		}
+		if (!cachedSketch.isConnected()) {
+			return true;
+		}
+		if (element instanceof IJavaElement) {
+			return elementCovered((IJavaElement)element);
+		} else if (element instanceof IResource) {
+			return false;
+		} else if (element instanceof IJarEntryResource) {
+			return false;
+		}
+		return true;
+	}
+
+	
+	/**
+	 * @param element
+	 * @return
+	 */
+	private boolean elementCovered(IJavaElement element) {
+		try {
+			if (element instanceof IPackageFragment) {
+				return packageCovered((IPackageFragment)element);
+			} if (element instanceof IType) {
+				return typeCovered((IType) element);
+			} else if (element instanceof IMethod) {
+				return methodCovered((IMethod)element);
+			} else if (element instanceof IJavaProject) {
+				try {
+					String traceType = cachedSketch.getTracedLaunchConfiguration().getType().getIdentifier();
+					if (LaunchConfigurationUtilities.JAVA_LAUNCH_TYPE.equals(traceType)) {
+						IJavaProject[] tracedProjects = cachedSketch.getFilterSettings().getJavaProjects();
+						for (IJavaProject tracedProject : tracedProjects) {
+							if (tracedProject.equals(((IJavaProject)element).getJavaProject())) {
+								return true;
+							}
+						}
+						return false;
+					} else if (LaunchConfigurationUtilities.ECLIPSE_LAUNCH_TYPE.equals(traceType)) {
+						IJavaProject jp = (IJavaProject) element;
+						IJavaProject[] jps = cachedSketch.getFilterSettings().getJavaProjects();
+						for (IJavaProject referenced : jps) {
+							if (jp.equals(referenced)) {
+								return true;
+							}
+						}
+						return false;
+					}
+				} catch (CoreException e) {
+				}
+				return false;
+			} else if (element instanceof IClassFile) {
+				IClassFile cf = (IClassFile) element;
+				return typeCovered(cf.getType());
+			} else if (element instanceof ICompilationUnit) {
+				ICompilationUnit cu = (ICompilationUnit) element;
+				return typeCovered(cu.findPrimaryType());
+			} else if (element instanceof IPackageFragmentRoot) {
+				return true;
+			} 
+		} catch (JavaModelException e) {
+			return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return true;
+		}
+		return false;
+	}
+
+	/**
+	 * @param element
+	 * @return
+	 * @throws SQLException 
+	 */
+	private boolean packageCovered(IPackageFragment element) throws SQLException {
+		String query = element.getElementName();
+		if (query.length() > 0) {
+			query = query + ".";
+		}
+		query = query + "%";
+		return checkFilters(query, PACKAGE_STATEMENT);
+	}
+
+	/**
+	 * @param element
+	 * @return
+	 * @throws JavaModelException 
+	 * @throws SQLException 
+	 */
+	private boolean methodCovered(IMethod element) throws JavaModelException, SQLException {
+		IType type = element.getDeclaringType();
+		if (type.isInterface()) {
+			//interface types can't be covered.
+			return false;
+		}
+		String qualifiedTypeName = element.getDeclaringType().getFullyQualifiedName();
+		IDataPortal portal;
+		try {
+			portal = cachedSketch.getPortal();
+		} catch (CoreException e) {
+			return true;
+		}
+		PreparedStatement methodStatement = portal.prepareStatement(METHOD_STATEMENT);
+		methodStatement.setString(1, qualifiedTypeName);
+		methodStatement.setString(2, element.getElementName());
+		ResultSet results = methodStatement.executeQuery();
+		while (results.next()) {
+			String signature = results.getString(1);
+			String[] parameterTypes = Signature.getParameterTypes(signature);
+			IMethod matchMethod = element.getDeclaringType().getMethod(element.getElementName(), parameterTypes);
+			if (matchMethod.isSimilar(element)) {
+				return checkMethodSelection(qualifiedTypeName, element.getElementName(), signature);
+			}
+		}
+		//check to see if the method contains anonymous types
+		LinkedList<IJavaElement> children = new LinkedList<IJavaElement>();
+		children.add(element);
+		while (children.size() > 0) {
+			IJavaElement child = children.removeFirst();
+			if (child instanceof IType) {
+				if (typeCovered((IType)child)) {
+					return true;
+				}
+			}
+			if (child instanceof IParent) {
+				children.addAll(Arrays.asList(((IParent)child).getChildren()));
+			}
+		}
+		return false;
+	}
+
+
+	/**
+	 * @param matchMethod
+	 * @return
+	 */
+	private boolean checkMethodSelection(String typeName, String methodName, String methodSignature) {
+		//first, check to see if the method is filtered out.
+		if (!checkNavigatorFilter(typeName, methodName, methodSignature)) {
+			return false;
+		}
+		return isMethodInThread(typeName, methodName, methodSignature);
+
+	}
+
+
+	/**
+	 * @param typeName
+	 * @param methodName
+	 * @param methodSignature
+	 */
+	private boolean isMethodInThread(String typeName, String methodName,
+			String methodSignature) {
+		IDataPortal portal;
+		try {
+			portal = cachedSketch.getPortal();
+		} catch (CoreException e) {
+			return true;
+		}
+		PreparedStatement checkMethodThreadStatement;
+		try {
+			checkMethodThreadStatement = portal.prepareStatement(METHOD_THREAD_STATEMENT);
+		} catch (SQLException e1) {
+			return true;
+		}
+		//get the selection in the sketch navigator
+		ISelection selection = getTraceNavigatorSelection();
+		if (selection instanceof IStructuredSelection) {
+			IStructuredSelection ss = (IStructuredSelection) selection;
+			//get the selected threads
+			Iterator<?> it = ss.iterator();
+			//if none of the selected elements is in the active sketch, disregard
+			int matchedSketchCount = 0;
+			while (it.hasNext()) {
+				Object o = it.next();
+				if (o instanceof IThread) {
+					IThread thread = (IThread) o;
+					IProgramSketch sketch = SketchPlugin.getDefault().getSketch(thread);
+					if (cachedSketch.equals(sketch)) {
+						matchedSketchCount++;
+						//check the count
+						try {
+							checkMethodThreadStatement.setString(1, typeName);
+							checkMethodThreadStatement.setString(2, methodName);
+							checkMethodThreadStatement.setString(3, methodSignature);
+							checkMethodThreadStatement.setLong(4, ((ThreadImpl)thread).getModelID());
+							ResultSet results = checkMethodThreadStatement.executeQuery();
+							if (results.next()) {
+								if (results.getInt(1) > 0) {
+									return true;
+								}
+							}
+						} catch (SQLException e) {
+							e.printStackTrace();
+						}
+						
+					}
+				}
+			}
+			if (matchedSketchCount == 0) {
+				return true;
+			} else {
+				return false;
+			}
+		}
+		return false;
+	}
+
+	/**
+	 * @param typeName
+	 * @param methodName
+	 * @param methodSignature
+	 * @return
+	 */
+	private boolean checkNavigatorFilter(String typeName, String methodName,
+			String methodSignature) {
+		ILaunchConfiguration lc = cachedSketch.getTracedLaunchConfiguration();
+		TraceNavigator navigator = getTraceNavigator();
+		if (navigator == null) return true;
+		for (IProgramSketch sketch : SketchPlugin.getDefault().getStoredSketches(lc.getName())) {
+			if (navigator.isSketchFiltered(sketch)) {
+				try {
+					PreparedStatement filterStatement = 
+						sketch.getPortal().prepareStatement("SELECT method_signature FROM Method WHERE type_name=? AND method_name=? AND method_signature=?");
+					filterStatement.setString(1, typeName);
+					filterStatement.setString(2, methodName);
+					filterStatement.setString(3, methodSignature);
+					ResultSet results = filterStatement.executeQuery();
+					if (results.next()) {
+						return false;
+					}
+				} catch (SQLException e) {
+					//skip it
+				} catch (CoreException e) {
+					//skip it
+				}
+			}
+		}
+
+		return true;
+	}
+
+	/**
+	 * @return
+	 */
+	private ISelection getTraceNavigatorSelection() {
+		TraceNavigator navigator = getTraceNavigator();
+		if (navigator != null) {
+			return navigator.getTreeViewer().getSelection();
+		}
+		
+		return null;
+	}
+	
+	private TraceNavigator getTraceNavigator() {
+		try {
+			IViewPart view = PlatformUI.
+				getWorkbench().
+				getActiveWorkbenchWindow().
+				getActivePage().findView(TraceNavigator.VIEW_ID);
+			if (view instanceof TraceNavigator) {
+				return (TraceNavigator) view;
+			}
+		} catch (Exception e) {}
+		return null;
+	}
+
+	/**
+	 * @param element
+	 * @return
+	 * @throws JavaModelException 
+	 * @throws SQLException 
+	 */
+	private boolean typeCovered(IType type) throws JavaModelException, SQLException {
+		if (type.isInterface()) {
+			//interface types can't be covered.
+			return false;
+		}
+		String query = JavaSearchUtils.getFullyQualifiedName(type, true);
+		
+		return checkFilters(query, CLASS_STATEMENT);
+		
+	}
+	
+	private boolean checkFilters(String query, String statement) {
+		TraceNavigator navigator = getTraceNavigator();
+		String name = cachedSketch.getTracedLaunchConfiguration().getName();
+		TreeSet<String> filter = new TreeSet<String>();
+		for (IProgramSketch sketch : SketchPlugin.getDefault().getStoredSketches(name)) {
+
+			try {
+				if (navigator.isSketchFiltered(sketch)) {
+					PreparedStatement filterStatement = sketch.getPortal().prepareStatement(statement);
+					filterStatement.setString(1, query);
+					ResultSet results = filterStatement.executeQuery();
+					while (results.next()) {
+						String methodName = results.getString(1);
+						String methodSignature = results.getString(2);
+						String typeName = results.getString(3);
+						String key = typeName + "/" + methodName + "/" + methodSignature;
+						filter.add(key);
+					}
+				}
+			} catch (CoreException e) {
+			} catch (SQLException e) {}
+
+		}
+		try {
+			TreeSet<String> result = new TreeSet<String>();
+			PreparedStatement filterStatement = cachedSketch.getPortal().prepareStatement(statement);
+			filterStatement.setString(1, query);
+			ResultSet results = filterStatement.executeQuery();
+			while (results.next()) {
+				String methodName = results.getString(1);
+				String methodSignature = results.getString(2);
+				String typeName = results.getString(3);
+				String key = typeName + "/" + methodName + "/" + methodSignature;
+				if (!filter.contains(key)) {
+					result.add(key);
+				}
+			}
+			Iterator<String> i = result.iterator();
+			while (i.hasNext()) {
+				String s = i.next();
+				String[] segments = s.split("\\/");
+				if (!isMethodInThread(segments[0], segments[1], segments[2])) {
+					i.remove();
+				}
+			}
+			return result.size() > 0;
+		} catch (CoreException e) {
+		} catch (SQLException e) {}
+		return true;
+	}
+
+	
+
+	/*
+	 * @return
+	 *
+	private boolean checkClassSelection(String typeName) {
+		ISelection selection = getTraceNavigatorSelection();
+		if (selection instanceof IStructuredSelection) {
+			IStructuredSelection ss = (IStructuredSelection) selection;
+			//get the selected threads
+			Iterator<?> it = ss.iterator();
+			//if none of the selected elements is in the active sketch, disregard
+			int matchedSketchCount = 0;
+			IDataPortal portal;
+			try {
+				portal = cachedSketch.getPortal();
+			} catch (CoreException e) {
+				return true;
+			}
+			
+			PreparedStatement checkClassThreadStatement;
+			try {
+				checkClassThreadStatement = portal.prepareStatement(CLASS_THREAD_STATEMENT);
+			} catch (SQLException e) {
+				return true;
+			}
+			while (it.hasNext()) {
+				Object o = it.next();
+				if (o instanceof IThread) {
+					IThread thread = (IThread) o;
+					IProgramSketch sketch = SketchPlugin.getDefault().getSketch(thread);
+					if (cachedSketch.equals(sketch)) {
+						matchedSketchCount++;
+						//check the count
+						try {
+							checkClassThreadStatement.setString(1, typeName);
+							checkClassThreadStatement.setLong(2, ((ThreadImpl)thread).getModelID());
+							ResultSet results = checkClassThreadStatement.executeQuery();
+							if (results.next()) {
+								if (results.getInt(1) > 0) {
+									return true;
+								}
+							}
+						} catch (SQLException e) {
+							e.printStackTrace();
+						}
+						
+					}
+				}
+			}
+			if (matchedSketchCount == 0) {
+				return true;
+			} else {
+				return false;
+			}
+		}
+		return true;
+	}
+*/
+}

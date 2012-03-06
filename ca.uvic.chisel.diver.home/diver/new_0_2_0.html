@@ -1,0 +1,115 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<link rel="StyleSheet" href="styles/diver.css" type="text/css" media="screen"/>
+<script type="text/javascript" src="js/load.js"></script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-17962512-2']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<title>Diver: Dynamic Interactive Views for Reverse Engineering</title>
+</head>
+<body onload="loadMenu('New To Diver')">
+<div class="frame">
+<div id="menu"></div>
+<h2>What's New in Diver 0.2.0</h2>
+
+<p><a href="new_0_1_0.html">Previous Version</a></p>
+
+<table cellpadding="10">
+	<tr valign=top>
+		<td><b>Faster Tracing</b></td>
+		<td><p>The tracer has been optimized. Tests indicate that it is between
+		2 and 4 times faster than version 0.1.0</p>
+		</td>
+	</tr>
+	<tr valign=top>
+		<td><b>Capture Screenshots</b></td>
+		<td><p>You can now save screenshots of your sequence diagram. Select
+		the "camera" <img src="images/new/0.2.0/screenshot.png"/> icon,
+		and you will be able to save an image of the main pane of the sequence
+		diagram as a PNG, JPG, or BMP.</p>
+		<img src="images/new/0.2.0/screenshot-action.png"/></td>
+	</tr>
+	<tr valign=top>
+		<td><b>Exporting Traces</b></td>
+		<td><p>Diver is now able to export a complete trace to be shared with your
+		collegues.</p>
+		<img src="images/new/0.2.0/export2.png"/>
+		</td>
+	</tr>
+	<tr valign=top>
+		<td><b>Importing Traces</b></td>
+		<td><p>If you can export, you have to be able to import. Use the import
+		trace wizard to open a Diver Trace (dvt) file. The file will be imported
+		and analyzed just as if you ran the trace yourself.</p>
+		<img src="images/new/0.2.0/import2.png"/>
+		</td>
+	</tr>
+	<tr valign=top>
+		<td><b>Filtering Empty Threads</b></td>
+		<td><p>Diver keeps a record for all threads in your traces, even if no events
+		occur in them. In previous versions, this could cause a lot of clutter
+		in the Program Traces view. Now, you can filter empty threads and
+		get rid of the clutter.</p>
+		<img src="images/new/0.2.0/emptythread.png"/>
+		</td>
+	</tr>
+	<tr valign=top>
+		<td><b>Marking Code Executed in Jar Files</b></td>
+		<td><p>In previous versions, it wasn't possible to view executed
+		lines of code in .class files contained in Jars because of limitations
+		in Eclipse's Resource framework. So, I used Diver to figure out how the
+		JDT sets breakpoints in Jar files, and I was able to use what I found
+		to add markers to Jar files for use within Diver.</p>
+		<img src="images/new/0.2.0/mark-in-class.png"/>
+		</td>
+	</tr>
+	
+	<tr valign=top>
+		<td><b>Toggle Combied Fragments and Loops</b></td>
+		<td><p>If, for some reason (and I don't know what that would be :-) ),
+		you don't like seeing your sequence diagram decorated with source
+		code information, you can shut of combined fragments and loop compaction.
+		</p>
+		<img src="images/new/0.2.0/toggle-combined-fragment.png"/>
+		</td>
+	</tr>
+	
+	<tr valign=top>
+		<td><b>Exceptions</b></td>
+		<td><p>If a method returns due to an exception, it is now indicated in
+		the sequence diagram.
+		</p>
+		<img src="images/new/0.2.0/exceptions.png"/>
+		</td>
+	</tr>
+	
+	<tr valign=top>
+		<td><b>Diver Research</b></td>
+		<td><p>Diver is a research project at the University of Victoria. Diver
+		now makes it easier for you to help us with our research by logging
+		information about how you use it. You can automatically upload these
+		logs to our server, or you can shut off logging using the Workbench
+		Logger preference page
+		</p>
+		<img src="images/new/0.2.0/logging.png"/>
+		</td>
+	</tr>
+
+</table>
+
+<div id="footer"></div> 
+</div>
+</body>
+</html>

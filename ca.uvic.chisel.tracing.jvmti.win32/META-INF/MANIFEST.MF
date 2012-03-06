@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Win32 Tracing
+Bundle-SymbolicName: ca.uvic.chisel.tracing.jvmti.win32
+Bundle-Version: 0.4.0.qualifier
+Fragment-Host: ca.uvic.chisel.javasketch;bundle-version="0.4.0"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-NativeCode: sketch_win32.dll; osname=winxp; processor=x86,
+ sketch_win32.dll; osname=Windows Vista; processor=x86,
+ sketch_win32.dll; osname=Windows 7; processor=x86,
+ sketch_win32.dll; osname=winxp; processor=x86_64,
+ sketch_win32.dll; osname=Windows Vista; processor=x86_64,
+ sketch_win32.dll; osname=Windows 7; processor=x86_64
+Eclipse-PlatformFilter: (osgi.os=win32)

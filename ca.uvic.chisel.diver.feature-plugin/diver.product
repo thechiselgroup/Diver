@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?pde version="3.5"?>
+
+<product name="Diver" uid="ca.uvic.chisel.diver.product" id="ca.uvic.chisel.feature.product" application="org.eclipse.ui.ide.workbench" version="0.0.3" useFeatures="true" includeLaunchers="false">
+
+   <aboutInfo>
+      <image path="/ca.uvic.chisel.feature/images/logo32.png"/>
+   </aboutInfo>
+
+   <configIni use="default">
+   </configIni>
+
+   <launcherArgs>
+      <vmArgsMac>-XstartOnFirstThread -Dorg.eclipse.swt.internal.carbon.smallFonts</vmArgsMac>
+   </launcherArgs>
+
+   <windowImages i16="/ca.uvic.chisel.feature/images/logo16.png" i32="/ca.uvic.chisel.feature/images/logo32.png" i64="/ca.uvic.chisel.feature/images/logo64.png"/>
+
+
+   <launcher>
+      <solaris/>
+      <win useIco="false">
+         <bmp/>
+      </win>
+   </launcher>
+
+
+   <vm>
+   </vm>
+
+   <plugins>
+   </plugins>
+
+   <features>
+      <feature id="ca.uvic.chisel.diver.feature" version="0.0.2.qualifier"/>
+      <feature id="ca.uvic.chisel.hsqldb.feature" version="0.0.2.qualifier"/>
+      <feature id="ca.uvic.chisel.widgets.feature" version="0.0.1.qualifier"/>
+   </features>
+
+
+</product>

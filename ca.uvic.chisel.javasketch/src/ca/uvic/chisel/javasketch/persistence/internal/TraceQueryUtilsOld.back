@@ -1,0 +1,402 @@
+/*******************************************************************************
+ * Copyright (c) 2008 the CHISEL group and contributors. All rights reserved.
+ * This program and the accompanying materials are made available under the
+ * terms of the Eclipse Public License v1.0 which accompanies this distribution,
+ * and is available at http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors: the CHISEL group - initial API and implementation
+ *******************************************************************************/
+package ca.uvic.chisel.javasketch.persistence.internal;
+
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.LinkedList;
+import java.util.List;
+
+import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.Status;
+
+import ca.uvic.chisel.javasketch.IProgramSketch;
+import ca.uvic.chisel.javasketch.SketchPlugin;
+import ca.uvic.chisel.programsketch.model.trace.Decoratable;
+import ca.uvic.chisel.programsketch.model.trace.Instance;
+import ca.uvic.chisel.programsketch.model.trace.Trace;
+import ca.uvic.chisel.programsketch.model.trace.TraceClass;
+import ca.uvic.chisel.programsketch.model.trace.TraceClassMethod;
+import ca.uvic.chisel.programsketch.model.trace.TraceFactory;
+
+/**
+ * Some utilities for querying and creating objects within a CDO model.
+ * 
+ * @author Del Myers
+ * 
+ */
+public class TraceQueryUtilsOld {
+
+	public static final char TYPE_VOID = 'V';
+	public static final char TYPE_BOOLEAN = 'Z';
+	public static final char TYPE_BYTE = 'B';
+	public static final char TYPE_CHAR = 'C';
+	public static final char TYPE_SHORT = 'S';
+	public static final char TYPE_INT = 'I';
+	public static final char TYPE_LONG = 'J';
+	public static final char TYPE_FLOAT = 'F';
+	public static final char TYPE_DOUBLE = 'D';
+	public static final char TYPE_OBJECT = 'L';
+
+	private IProgramSketch sketch;
+	private Connection connection;
+	private PreparedStatement classStatement;
+	private PreparedStatement methodStatement;
+
+//	private final Instance DEFAULT_INSTANCE;
+//	private final TraceClassMethod DEFAULT_METHOD;
+//	private final TraceClass DEFAULT_CLASS;
+	private PreparedStatement instanceStatement;
+
+	public TraceQueryUtilsOld(IProgramSketch sketch)
+			throws CoreException {
+		this.sketch = sketch;
+		IDBStore store = (IDBStore) sketch.getPortal().getRepository()
+			.getStore();
+		this.connection = store.getDBConnectionProvider().getConnection();
+//		CDOResource resource = transaction.getResource("/trace");
+//		Trace trace = (Trace) resource.getContents().get(0);
+//		DEFAULT_CLASS = TraceFactory.eINSTANCE.createTraceClass();
+//		DEFAULT_CLASS.setName("null");
+//		DEFAULT_CLASS.setTrace(trace);
+//		DEFAULT_INSTANCE = TraceFactory.eINSTANCE.createInstance();
+//		DEFAULT_INSTANCE.setIdentifier("null");
+//		DEFAULT_INSTANCE.setClass(DEFAULT_CLASS);
+//		DEFAULT_METHOD = TraceFactory.eINSTANCE.createTraceClassMethod();
+//		DEFAULT_METHOD.setDeclaringClass(DEFAULT_CLASS);
+//		DEFAULT_METHOD.setReturn(DEFAULT_CLASS);
+//		DEFAULT_METHOD.setName("null");
+//		transaction.commit();
+		try {
+			prepareQueries();
+		} catch (SQLException e) {
+			throw new CoreException(new Status(Status.ERROR,
+				SketchPlugin.PLUGIN_ID, "Error preparing queries", e));
+		}
+	}
+
+	/**
+	 * @throws SQLException
+	 * 
+	 */
+	private void prepareQueries() throws SQLException {
+		this.classStatement = connection
+			.prepareStatement("SELECT cdo_id FROM TraceClass WHERE name=?");
+		this.methodStatement = connection.prepareStatement("SELECT m.cdo_id "
+				+ "FROM TraceClass c, TraceClassMethod m "
+				+ "WHERE c.name=? AND m.name=? AND m.signature=?");
+		this.instanceStatement = connection.prepareStatement("SELECT i.cdo_id "
+				+ "FROM TraceClass c, Instance i "
+				+ "WHERE c.name=? AND i.identifier=?");
+	}
+
+	public TraceClass getOrCreateClass(Trace trace, String qualifiedName)
+			throws IOException {
+		// if (true) return null;
+		// this is slow!!! Need CDO 2 to do some querying
+		// for (TraceClass traceClass : trace.getClasses()) {
+		// if (traceClass.getName().equals(qualifiedName)) {
+		// return traceClass;
+		// }
+		// }
+		TraceClass traceClass = null;
+		try {
+			traceClass = selectTraceClass(trace, qualifiedName);
+		} catch (SQLException e1) {
+		}
+		if (traceClass != null) {
+			return traceClass;
+		}
+
+		traceClass = TraceFactory.eINSTANCE.createTraceClass();
+		traceClass.setName(qualifiedName);
+		traceClass.setTrace(trace);
+		traceClass.cdoResource().save(null);
+
+		return traceClass;
+	}
+
+	/**
+	 * @param trace
+	 * @param qualifiedName
+	 * @return
+	 * @throws SQLException
+	 */
+	private TraceClass selectTraceClass(Trace trace, String qualifiedName)
+			throws SQLException {
+		classStatement.setString(1, qualifiedName);
+		// long time = System.currentTimeMillis();
+		ResultSet set = classStatement.executeQuery();
+		// System.err.println("Statement time: " +
+		// (System.currentTimeMillis()-time));
+		long id = 0;
+		while (set.next()) {
+			id = set.getLong(1);
+			break;
+		}
+		// long id = set.getLong(1);
+		set.close();
+		if (id == 0) {
+			set.close();
+			return null;
+		}
+		CDOObject result = trace.cdoView().getObject(CDOIDUtil.createLong(id),
+			true);
+		if (result instanceof TraceClass) {
+			return (TraceClass) result;
+		}
+		return null;
+	}
+
+	public TraceClassMethod getOrCreateMethod(TraceClass traceClass,
+			String name, String signature) throws IOException {
+		TraceClassMethod method = null;
+		try {
+			method = selectMethod(traceClass, name, signature);
+		} catch (SQLException e1) {
+		}
+		if (method != null) {
+			return method;
+		}
+		// for (TraceClassMethod method : traceClass.getMethods()) {
+		// if (method.getName().equals(name)) {
+		// if (method.getReturn().equals(ret)) {
+		// if (method.getParameters().size() == parameters.length) {
+		// EList<TraceClass> otherParams = method.getParameters();
+		// boolean match = true;
+		// for (int i = 0; i < parameters.length; i++) {
+		// if (!otherParams.get(i).equals(parameters[i])) {
+		// match = false;
+		// break;
+		// }
+		// }
+		// if (match) {
+		// return method;
+		// }
+		// }
+		// }
+		// }
+		// }
+		method = TraceFactory.eINSTANCE.createTraceClassMethod();
+
+		List<TraceClass> parameters = new LinkedList<TraceClass>();
+		method.setName(name);
+		method.setDeclaringClass(traceClass);
+		TraceClass ret = parseSignature(signature, parameters, traceClass
+			.getTrace());
+		method.setReturn(ret);
+		method.setSignature(signature);
+		for (TraceClass param : parameters) {
+			method.getParameters().add(param);
+		}
+		// make sure that it is available for future queries
+		method.cdoResource().save(null);
+
+		return method;
+	}
+
+	/**
+	 * @param traceClass
+	 * @param name
+	 * @param signature
+	 * @return
+	 * @throws SQLException
+	 */
+	private TraceClassMethod selectMethod(TraceClass traceClass, String name,
+			String signature) throws SQLException {
+		methodStatement.setString(1, traceClass.getName());
+		methodStatement.setString(2, name);
+		methodStatement.setString(3, signature);
+		ResultSet results = methodStatement.executeQuery();
+		long cdo_id = 0;
+		while (results.next()) {
+			cdo_id = results.getLong(1);
+			break;
+		}
+		if (cdo_id > 0) {
+			CDOObject obj = traceClass.cdoView().getObject(
+				CDOIDUtil.createLong(cdo_id));
+			if (obj instanceof TraceClassMethod) {
+				return (TraceClassMethod) obj;
+			}
+		}
+		return null;
+	}
+
+	public Instance getOrCreateInstance(TraceClass traceClass, String id)
+			throws IOException {
+		Instance i = null;
+		try {
+			i = selectInstance(traceClass, id);
+		} catch (SQLException e) {
+		}
+		if (i != null) {
+			return i;
+		}
+		// for (Instance i : traceClass.getInstances()) {
+		// if (i.getIdentifier().equals(id)) {
+		// return i;
+		// }
+		// }
+		i = TraceFactory.eINSTANCE.createInstance();
+		i.setIdentifier(id);
+		i.setClass(traceClass);
+		traceClass.cdoResource().save(null);
+		return i;
+	}
+
+	/**
+	 * @param traceClass
+	 * @param id
+	 * @return
+	 * @throws SQLException
+	 */
+	private Instance selectInstance(TraceClass traceClass, String id)
+			throws SQLException {
+		instanceStatement.setString(1, traceClass.getName());
+		instanceStatement.setString(2, id);
+
+		ResultSet results = instanceStatement.executeQuery();
+		long cdo_id = 0;
+		while (results.next()) {
+			cdo_id = results.getLong(1);
+			break;
+		}
+		if (cdo_id > 0) {
+			CDOObject obj = traceClass.cdoView().getObject(
+				CDOIDUtil.createLong(cdo_id));
+			if (obj instanceof Instance) {
+				return (Instance) obj;
+			}
+		}
+		return null;
+	}
+
+	public String getStoredAttribute(String attribute, Decoratable decoratable) {
+		List<String> decorations = decoratable.getDecorations();
+		for (int index = 0; index < decorations.size(); index += 2) {
+			String key = decorations.get(index);
+			if (key.equals(attribute)) {
+				return decorations.get(index + 1);
+			}
+		}
+		return null;
+	}
+
+	public TraceClass getReturnType(String sig, Trace trace) throws IOException {
+		int lastPara = sig.lastIndexOf(')');
+		if (lastPara >= 0 && lastPara < sig.length()) {
+			String type = sig.substring(lastPara + 1);
+			return getOrCreateClass(trace, type);
+		}
+		return null;
+	}
+
+	/**
+	 * @param value
+	 * @param parameterList
+	 * @return
+	 * @throws IOException
+	 */
+	public TraceClass parseSignature(String sig,
+			List<TraceClass> parameterList, Trace trace) throws IOException {
+		String currentName = "";
+		boolean inParams = false;
+		boolean readingClassName = false;
+		for (int i = 0; i < sig.length(); i++) {
+			char c = sig.charAt(i);
+			switch (c) {
+			case '(':
+				inParams = true;
+				break;
+			case ')':
+				inParams = false;
+				break;
+			case '[':
+				// do nothing, it indicates an array, and will
+				// be added to the qualified name.
+				// a '[' will kill the SQL statement
+				currentName += '{';
+				break;
+			case TYPE_BOOLEAN:
+			case TYPE_BYTE:
+			case TYPE_CHAR:
+			case TYPE_DOUBLE:
+			case TYPE_FLOAT:
+			case TYPE_INT:
+			case TYPE_LONG:
+			case TYPE_SHORT:
+			case TYPE_VOID:
+				if (readingClassName) {
+					currentName += c;
+				} else {
+					currentName += c;
+					// get the new class
+					if (inParams) {
+						parameterList.add(getOrCreateClass(trace, currentName));
+						currentName = "";
+					} else {
+						// return the return value
+						return getOrCreateClass(trace, currentName);
+					}
+				}
+				break;
+			case TYPE_OBJECT:
+				currentName += c;
+				readingClassName = true;
+				break;
+			case ';':
+				currentName += c;
+				if (inParams) {
+					parameterList.add(getOrCreateClass(trace, currentName));
+					currentName = "";
+				} else {
+					return getOrCreateClass(trace, currentName);
+				}
+				readingClassName = false;
+				break;
+			default:
+				if (readingClassName) {
+					currentName += c;
+				}
+			}
+		}
+		throw new IOException("Bad method signature: " + sig);
+	}
+
+	public static void setStoredAttribute(String attribute, String value,
+			Decoratable decoratable) {
+		List<String> decorations = decoratable.getDecorations();
+		for (int index = 0; index < decorations.size(); index += 2) {
+			String key = decorations.get(index);
+			if (key.equals(attribute)) {
+				decorations.set(index + 1, value);
+				return;
+			}
+		}
+		decorations.add(attribute);
+		decorations.add(value);
+	}
+
+	/**
+	 * 
+	 */
+	public void close() {
+		try {
+			if (!connection.isClosed()) {
+				connection.close();
+			}
+		} catch (SQLException e) {
+		}
+	}
+
+}

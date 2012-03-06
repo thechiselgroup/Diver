@@ -1,0 +1,19 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: JavaSequenceEditor Plug-in
+Bundle-SymbolicName: ca.uvic.chisel.diver.sequencediagram.sc;singleton:=true
+Bundle-Version: 0.4.0.qualifier
+Bundle-Activator: ca.uvic.chisel.diver.sequencediagrams.sc.java.StaticSequenceEditorPlugin
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.jface.text,
+ org.eclipse.ui.editors,
+ org.eclipse.jdt.core,
+ org.eclipse.jdt.ui,
+ org.eclipse.ui.ide,
+ org.eclipse.core.resources,
+ org.eclipse.ui.views,
+ org.eclipse.ui.forms,
+ org.eclipse.zest.custom.sequence,
+ ca.uvic.chisel.javasketch;bundle-version="0.4.0"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6

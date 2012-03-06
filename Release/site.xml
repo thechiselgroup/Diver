@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <feature url="features/ca.uvic.chisel.diver.feature_0.2.0.201005181350.jar" id="ca.uvic.chisel.diver.feature" version="0.2.0.201005181350" os="linux,win32" arch="x86,x86_64">
+      <category name="ca.uvic.chisel.diver.core.category"/>
+   </feature>
+   <feature url="features/ca.uvic.chisel.diver.feature.container_0.2.0.201005181350.jar" id="ca.uvic.chisel.diver.feature.container" version="0.2.0.201005181350">
+      <category name="ca.uvic.chisel.diver.all"/>
+   </feature>
+   <feature url="features/ca.uvic.chisel.diver.logging.feature_0.2.0.201005181350.jar" id="ca.uvic.chisel.diver.logging.feature" version="0.2.0.201005181350">
+      <category name="ca.uvic.chisel.diver.enablement"/>
+   </feature>
+   <feature url="features/ca.uvic.chisel.hsqldb.feature_0.2.0.201005181350.jar" id="ca.uvic.chisel.hsqldb.feature" version="0.2.0.201005181350">
+      <category name="ca.uvic.chisel.diver.enablement"/>
+   </feature>
+   <feature url="features/ca.uvic.chisel.widgets.feature_0.2.0.201005181350.jar" id="ca.uvic.chisel.widgets.feature" version="0.2.0.201005181350">
+      <category name="ca.uvic.chisel.diver.enablement"/>
+   </feature>
+   <feature url="features/ca.uvic.chisel.diver.feature_0.2.1.qualifier.jar" id="ca.uvic.chisel.diver.feature" version="0.2.1.qualifier" os="linux,win32" arch="x86,x86_64">
+      <category name="ca.uvic.chisel.diver.core.category"/>
+   </feature>
+   <feature url="features/ca.uvic.chisel.hsqldb.feature_0.2.1.qualifier.jar" id="ca.uvic.chisel.hsqldb.feature" version="0.2.1.qualifier">
+      <category name="ca.uvic.chisel.diver.enablement"/>
+   </feature>
+   <feature url="features/ca.uvic.chisel.diver.logging.feature_0.2.1.qualifier.jar" id="ca.uvic.chisel.diver.logging.feature" version="0.2.1.qualifier">
+      <category name="ca.uvic.chisel.diver.enablement"/>
+   </feature>
+   <feature url="features/ca.uvic.chisel.widgets.feature_0.2.1.qualifier.jar" id="ca.uvic.chisel.widgets.feature" version="0.2.1.qualifier">
+      <category name="ca.uvic.chisel.diver.enablement"/>
+   </feature>
+   <feature url="features/ca.uvic.chisel.diver.feature.container_0.2.1.qualifier.jar" id="ca.uvic.chisel.diver.feature.container" version="0.2.1.qualifier">
+      <category name="ca.uvic.chisel.diver.all"/>
+   </feature>
+   <feature url="features/ca.uvic.chisel.diver.feature_0.3.0.qualifier.jar" id="ca.uvic.chisel.diver.feature" version="0.3.0.qualifier" os="linux,win32" arch="x86,x86_64">
+      <category name="ca.uvic.chisel.diver.core.category"/>
+   </feature>
+   <feature url="features/ca.uvic.chisel.hsqldb.feature_0.2.2.qualifier.jar" id="ca.uvic.chisel.hsqldb.feature" version="0.2.2.qualifier">
+      <category name="ca.uvic.chisel.diver.enablement"/>
+   </feature>
+   <feature url="features/ca.uvic.chisel.diver.logging.feature_0.3.0.qualifier.jar" id="ca.uvic.chisel.diver.logging.feature" version="0.3.0.qualifier">
+      <category name="ca.uvic.chisel.diver.enablement"/>
+   </feature>
+   <feature url="features/ca.uvic.chisel.widgets.feature_0.3.0.qualifier.jar" id="ca.uvic.chisel.widgets.feature" version="0.3.0.qualifier">
+      <category name="ca.uvic.chisel.diver.enablement"/>
+   </feature>
+   <feature url="features/ca.uvic.chisel.diver.feature.container_0.3.0.qualifier.jar" id="ca.uvic.chisel.diver.feature.container" version="0.3.0.qualifier">
+      <category name="ca.uvic.chisel.diver.all"/>
+   </feature>
+   <feature url="features/ca.uvic.chisel.diver.feature_0.3.1.qualifier.jar" id="ca.uvic.chisel.diver.feature" version="0.3.1.qualifier" os="linux,win32" arch="x86,x86_64">
+      <category name="ca.uvic.chisel.diver.core.category"/>
+   </feature>
+   <feature url="features/ca.uvic.chisel.diver.feature.container_0.3.1.qualifier.jar" id="ca.uvic.chisel.diver.feature.container" version="0.3.1.qualifier">
+      <category name="ca.uvic.chisel.diver.all"/>
+   </feature>
+   <feature url="features/ca.uvic.chisel.widgets.feature_0.3.1.qualifier.jar" id="ca.uvic.chisel.widgets.feature" version="0.3.1.qualifier">
+      <category name="ca.uvic.chisel.diver.enablement"/>
+   </feature>
+   <feature url="features/ca.uvic.chisel.diver.junit.feature_0.4.0.qualifier.jar" id="ca.uvic.chisel.diver.junit.feature" version="0.4.0.qualifier">
+      <category name="ca.uvic.chisel.diver.beta"/>
+   </feature>
+   <feature url="features/ca.uvic.chisel.diver.feature.container_0.4.0.qualifier.jar" id="ca.uvic.chisel.diver.feature.container" version="0.4.0.qualifier">
+      <category name="ca.uvic.chisel.diver.all"/>
+   </feature>
+   <feature url="features/ca.uvic.chisel.diver.feature_0.4.0.qualifier.jar" id="ca.uvic.chisel.diver.feature" version="0.4.0.qualifier" os="linux,win32" arch="x86,x86_64">
+      <category name="ca.uvic.chisel.diver.core.category"/>
+   </feature>
+   <feature url="features/ca.uvic.chisel.diver.static.feature_0.4.0.qualifier.jar" id="ca.uvic.chisel.diver.static.feature" version="0.4.0.qualifier">
+      <category name="ca.uvic.chisel.diver.beta"/>
+   </feature>
+   <category-def name="ca.uvic.chisel.diver.core.category" label="Diver Core">
+      <description>
+         The core diver feature, including the UI and the tracing functionality.
+      </description>
+   </category-def>
+   <category-def name="ca.uvic.chisel.diver.enablement" label="Diver Enabling features">
+      <description>
+         The requirements for diver including the databases and the custom widgets used by Diver.
+      </description>
+   </category-def>
+   <category-def name="ca.uvic.chisel.diver.all" label="Diver - All Features">
+      <description>
+         Containing feature for all of diver. Just select this one to get everything.
+      </description>
+   </category-def>
+   <category-def name="ca.uvic.chisel.diver.beta" label="Diver Extras (Beta)"/>
+</site>

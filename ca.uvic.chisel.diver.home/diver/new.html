@@ -1,0 +1,76 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<link rel="StyleSheet" href="styles/diver.css" type="text/css" media="screen"/>
+<script type="text/javascript" src="js/load.js"></script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-17962512-2']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<title>Diver: Dynamic Interactive Views for Reverse Engineering</title>
+</head>
+<body onload="loadMenu('New To Diver')">
+<div class="frame">
+<div id="menu"></div>
+<h2>What's New in Diver 0.4.0</h2>
+
+<p><a href="new_0_3_0.html">Previous Version</a></p>
+
+<table cellpadding="10">
+	<tr valign=top>
+		<td><b>Return Messages</b></td>
+		<td>
+		Previous versions of Diver did not show any return messages if they came from the root of the chart. Now, you can see what the return message is if you focus in on a specific method call.<p><img src="images/new/0.4.0/return-value.png">
+		<br></p>
+		</td>
+	</tr>
+	<tr valign=top>
+		<td><b>JUnit Traces</b>(Beta)</td>
+		<td><p>You can now run your JUnit tests in trace mode. JUnit traces can be found in the Diver &quot;Extras&quot; feature, and will be downloaded if you install from the Marketplace. This feature is relatively untested, so hopefully it will work for you. JUnit is only supported for Java applications. There is no support for Eclipse JUnit launches at this time.<br><br>
+		<img src="images/new/0.4.0/junit-launch.png"/ width=600px></p>
+		<p>
+		
+		</p></td>
+		
+	</tr>
+	<tr valign=top>
+		<td><b>Static Sequence Diagrams</b><br>(Beta)</td>
+		<td><p>Diver has always offered sequence diagrams that display execution
+		 traces of threads. Now it is possible to also view a <i>static</i> 
+		 sequence diagram that is generated directly from source code. You can 
+		 then compare the execution of the software with the source code 
+		 definition.</p>
+		 <p>The image below shows the source-code representation of a method
+		 to an interface (top). The bottom image shows the execution trace
+		 representation, so you can see what implementation class was used at
+		 runtime.</p>
+		<p><img src="images/new/0.4.0/static-sd-screenshot.png" width="600px"/></p>
+		<p>The static sequence diagram can be accessed by right-clicking on 
+		a method name, and selecting <i>Reveal In &gt; Static Sequence Diagram</i>:</p>
+		<p><img src="images/new/0.4.0/static-sd-reveal.png" width="600px"/></p>
+		</td>
+	</tr>
+	<tr valign=top>
+		<td><b>Diver Research</b></td>
+		<td><p>The data collection period for research about Diver has ended. You will no longer
+		be asked to upload any data.
+		</p>
+		</td>
+	</tr>
+
+</table>
+
+<div id="footer"></div> 
+</div>
+</body>
+</html>

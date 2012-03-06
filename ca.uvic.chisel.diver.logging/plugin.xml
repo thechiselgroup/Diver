@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+<!--
+   <extension
+         point="ca.uvic.chisel.logging.eclipse.category">
+      <category
+            html="false"
+            id="ca.uvic.chisel.diver.logging.category"
+            name="Diver Workbench Logging"
+            provider="University of Victoria"
+            url="http://keg.cs.uvic.ca/eclipselog/upload.php">
+         <disclaimer>
+            During your usage of Eclipse, Diver has been logging some interactions that relate to how you have been using Diver. This includes selection events and mouse interactions in the Diver specific views. Diver specific command executions have been logged as well. We have taken efforts to ensure that all data is anonymous and cannot be traced back to you or your company.
+
+By uploading the data to our server, you agree that we may use your data in academic publications including conferences, journal papers, and gratuate theses. Once again, all data is anonymous.
+
+You may disable Diver&apos;s logging capabilities at any time by using the &quot;Workbench Logging&quot; preference page.
+         </disclaimer>
+      </category>
+   </extension>
+   <extension
+         point="ca.uvic.chisel.logging.eclipse.loggers">
+      <logger
+            categoryID="ca.uvic.chisel.diver.logging.category">
+         <part
+               partID="ca.uvic.chisel.javasketch.threadView">
+            <viewer
+                  searchHierarchy="false"
+                  viewerClass="org.eclipse.zest.custom.uml.viewers.UMLSequenceViewer"
+                  viewerGetMethod="getSequenceChartViewer">
+               <viewerListener
+                     addMethod="addSequenceListener"
+                     listener="ca.uvic.chisel.diver.logging.loggers.SequenceChartLogger"
+                     removeMethod="removeSequenceListener">
+               </viewerListener>
+            </viewer>
+            <partWidgetListener
+                  searchChildren="true"
+                  targetWidget="org.eclipse.zest.custom.sequence.widgets.UMLSequenceChart">
+               <mouseWheel
+                     on="true">
+               </mouseWheel>
+               <selected
+                     on="true">
+               </selected>
+               <keyDown
+                     on="true">
+               </keyDown>
+            </partWidgetListener>
+            <partWidgetListener
+                  searchChildren="false"
+                  targetWidget="ca.uvic.chisel.widgets.RangeSlider">
+               <selected
+                     on="true">
+               </selected>
+            </partWidgetListener>
+            <viewer
+                  searchHierarchy="false"
+                  viewerClass="org.eclipse.zest.custom.uml.viewers.BreadCrumbViewer">
+               <viewerListener
+                     addMethod="ca.uvic.chisel.diver.logging.viewerListener2"
+                     listener="ca.uvic.chisel.diver.logging.loggers.BreadCrumbSelectionListener"
+                     removeMethod="ca.uvic.chisel.diver.logging.viewerListener2">
+               </viewerListener>
+            </viewer>
+         </part>
+         <workbench>
+            <command
+                  commandFilter="ca.uvic.chisel.javasketch.*">
+            </command>
+            <lifecycle
+                  filter="ca.uvic.chisel.javasketch.*">
+            </lifecycle>
+            <selection
+                  partFilter="ca.uvic.chisel.javasketch.*">
+            </selection>
+         </workbench>
+      </logger>
+   </extension>
+   <extension
+         point="ca.uvic.chisel.logging.eclipse.interpreter">
+      <interpreter
+            categoryID="ca.uvic.chisel.diver.logging.category"
+            class="ca.uvic.chisel.diver.logging.loggers.SequenceEventInterpreter"
+            implements="false"
+            target="org.eclipse.zest.custom.uml.viewers.SequenceViewerEvent">
+      </interpreter>
+      <interpreter
+            categoryID="ca.uvic.chisel.diver.logging.category"
+            class="ca.uvic.chisel.diver.logging.loggers.SequenceEventInterpreter"
+            implements="false"
+            target="org.eclipse.zest.custom.uml.viewers.SequenceViewerGroupEvent">
+      </interpreter>
+      <interpreter
+            categoryID="ca.uvic.chisel.diver.logging.category"
+            class="ca.uvic.chisel.diver.logging.loggers.SequenceEventInterpreter"
+            implements="false"
+            target="org.eclipse.zest.custom.uml.viewers.SequenceViewerRootEvent">
+      </interpreter>
+   </extension>
+-->
+</plugin>

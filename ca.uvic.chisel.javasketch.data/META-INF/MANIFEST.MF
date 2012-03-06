@@ -1,0 +1,27 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Sketch Data
+Bundle-SymbolicName: ca.uvic.chisel.javasketch.data
+Bundle-Version: 0.4.0.qualifier
+Bundle-Activator: ca.uvic.chisel.javasketch.data.SketchDataPlugin
+Bundle-Vendor: The CHISEL Group
+Require-Bundle: org.eclipse.core.runtime,
+ ca.uvic.chisel.hsqldb.server;bundle-version="0.0.1"
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-ActivationPolicy: lazy
+Export-Package: ca.uvic.chisel.javasketch.data,
+ ca.uvic.chisel.javasketch.data.internal,
+ ca.uvic.chisel.javasketch.data.model,
+ ca.uvic.chisel.javasketch.data.model.imple.internal
+Import-Package: org.hsqldb;version="1.8.0",
+ org.hsqldb.index;version="1.8.0",
+ org.hsqldb.jdbc;version="1.8.0",
+ org.hsqldb.lib;version="1.8.0",
+ org.hsqldb.lib.java;version="1.8.0",
+ org.hsqldb.persist;version="1.8.0",
+ org.hsqldb.resources;version="1.8.0",
+ org.hsqldb.rowio;version="1.8.0",
+ org.hsqldb.scriptio;version="1.8.0",
+ org.hsqldb.store;version="1.8.0",
+ org.hsqldb.types;version="1.8.0",
+ org.hsqldb.util;version="1.8.0"

@@ -1,0 +1,6 @@
+RewriteEngine on
+
+# Redirect the root requests to the master site
+RewriteRule ^([^/]*)$ http://master.dl.sourceforge.net/project/diver/update-site/$1 [L]
+# The rest goes to the auto-mirror location
+RewriteRule (.*) http://downloads.sourceforge.net/project/diver/update-site/$1 [L]

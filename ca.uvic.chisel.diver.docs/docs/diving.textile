@@ -1,0 +1,184 @@
+
+h1. Diving Into Your Trace
+
+Diver offers interactive visualizations designed to help you navigate through your traced programs. They help you to see what occurred and in what context. This section will explain to you some of the key features of the visualizations.
+
+h2. Introducing the Program Traces View
+
+The Program Traces View is the central place to view and organize your traces. It is a simple tree viewer that offers a lot of functionality. First, and foremost, it offers you access to your traces. We will be discussing only its most basic features here. It will be discussed more in following sections. For now, we will get started with a simple picture.
+
+!../images/diving/program traces.png!
+
+The Program Traces View always displays your traces as a four-level hierarchy, organized in the following way:
+
+* <Trace Launch Name>
+** <Date of Trace>
+*** <Trace Launch Details> [Trace Time]
+**** <Traced Threads>...
+
+For example, the above picture shows us that the launch __Tetris__ was executed once on August 31st, 2009; that it was a Java Application trace executed at 3:29 PM and it contained 19 threads. You may notice, as well, a column of amber dots to the right of the view. They are important to the features of Diver, but we will not be discussing them just yet. What is important for now is that this view gives us access to the executed threads of our Java program. Through it, we can open an important visualization for our traces: the Thread Sequence View. Double clicking on any thread in the Program Traces View will open that thread as a sequence diagram in the Thread Sequence View. The next few sections describe the functionality of this view.
+
+h2. Sequence Diagrams: An Overview
+
+The major visualization provided by Diver is the interactive sequence diagram provided by the Thread Sequence View. It is based on UML2 sequence diagrams, but with some enhancements and changes. This section describes sequence diagrams and their function.
+
+Sequence diagrams are designed to display the sequential passing of messages between objects in a system. This makes them suitable for system in which the functionality can be expressed as an ordered set of operations performed on or by the elements of that system. Hence, they are good visualizations for the operations in an object-oriented program's threads, since all operations on an object occur at specific times. Below is an illustration of a sequence diagram in Diver.
+
+!../images/diving/sequencediagram.png!
+
+There are numerous elements to a sequence diagram. Each of them are numbered in the above image. A brief description of each is given below, followed by a more in-depth discussion
+
+# *Classifiers* These images at the top of the screen describe the objects within a system, and their kind.
+# *Life Lines* Represented by dashed vertical lines underneath the classifiers, these represent the time-span within the system that an object is "alive". Activation boxes appear on life lines.
+# *Activation Boxes* These are rectangular boxes that appear on a lifeline. They represent the time in the system that an object is active; i.e. the time that an object is performing an operation, or responding to a message. 
+# *Messages* These are shown as arrows passing between activation boxes, and represent "messages" being passed between objects. Messages can either cause an object to become active (solid arrows ending at the beginning of a new activation box), or they can relinquish activity back to a calling object (dashed arrows beginning at the end of an activation box).
+# *Groups* Also known as *combined fragments*. These are boxes that surround messages and activation boxes on lifelines. They group any related set of messages.
+
+The following sections describe in detail how each of the visual elements are utilized within Diver.
+
+h3. Classifiers
+
+Classifiers are used to describe the kinds of objects that are alive during a system's execution, and they are always tied to lifelines. In a typical UML2 sequence diagram, there would by one classifier for every object in the system. Objects can be of various kinds (human __actors__, software __objects__, disk __data-stores__). However, indicating a classifier for every object in a system quickly becomes overwhelming, as a system may include many, many __millions__ of objects. So, Diver only indicates a classifier for each __class__ in the system, as well as a special __user__ class which simply represents the "start" of the system, initiated by you, the user.
+
+Classes are indicated by simple rectangles at the top of a lifeline. The user is indicated by a simple "stick-man" figure at the top of the lifeline. Classes may also be decorated with a pictorial icon. This occurs when Diver is able to find the source-code associated with a particular class, and so can infer further information about the class (such as its visibility). The icons should be familiar to users of Eclipse's Java Development Tools.
+
+Diver also offers a third kind of classifier which is not typical to UML2: packages. These are used to indicate when you have chosen to hide certain aspects of the trace by grouping lifelines by the packages that the classes are defined in. This feature is covered more in the following section. 
+
+h3. Life Lines
+
+UML2 is a static modelling language. It is not designed for user interaction. Diver, on the other hand, is designed for user interaction. So Diver both extends and limits UML2 in order to facilitate interaction. One of the first places that this occurs is within the lifeline.
+
+The first thing that you may notice when you open a thread in the Thread Sequence View is that it doesn't look like much work is done in it. There will be only one classifier, one lifeline, and one activation box visible -- all of them belonging to you, the user. There is likely more going on.
+
+The reason that there is only one lifeline visible is because, in Diver, lifelines are only shown if there is a visible path of messages to at least one activation box on the lifeline. By default, only one activation box is visible: the start of the program, initiated by the user. The next section will discuss more about interacting with activation boxes. However, you can try to interact with the start of your program by selecting the little '+' symbol at the top of the first activation box. If anything more occurs in the visualized thread (there may not be -- it could have been idle during your program),  further messages, classifiers, lifelines, and activation boxes will appear.
+
+In standard UML2, lifelines are used to indicate the full life-span of an object. That is, they begin when an object is created, and end when an object is destroyed. In Diver, however, they all begin at the same time, and they last as long as there are visible activation boxes on the lifeline. This is done in order to facilitate some of the advanced features that have been built in to the viewer, which cannot be expressed in static UML2. One of those advanced features is  lifeline grouping.
+
+Java applications often make use of many utility and system classes that are required to perform low-level operations. For example, even before the classes that you define can be used, they must be first loaded from disk. This involves invoking methods on the class @java.lang.ClassLoader@, which will operate on the file system, involving calls on many classes in the @java.io@ package. This may result in a sequence diagram that displays many hundreds of uninteresting lifelines. An unfiltered trace of a simple HelloWorld application, for example, uses more than 45 classes. Diver offers the ability to decrease the number of lifelines that are displayed by giving you the ability to group them by their containing packages. That is done as follows.
+
+First, if you examine the view, you will see a grey bar with a symbol that looks like a small bold *w* on it. This is a selectable sash which when dragged down will reveal a "package pane" above your main diagram. There, you will see numerous folder-shaped icons organized as a tree. These are the packages utilized in your software:
+
+!../images/diving/sequence-package.png!
+
+If you mouse-over a package icon, it will grow larger so that you can see the full package name. Selecting it will "pin" it to this size, and display lines connecting to the classifiers for the classes that are contained in the package. Conversely, selecting a classifier on a lifeline will display a line connecting it to its containing package. When you mouse over a package, you will also see a small box with a '-' embedded in it. Selecting this box will "collapse" the package. The visual effect of this is that all of the lifelines for classes contained in that package will be "grouped" into a single lifeline with the package as its classifier. The image below shows the effect of collapsing the @java@ package.
+
+!../images/diving/sequence-package-collapse.png!
+
+Note that collapsing a package will also cause all of its sub-packages to be collapsed onto the same lifeline. You will see a small '+' sign to the top-left of the new package classifier. Selecting this symbol will return the diagram to its previous state.
+
+h3. Activation Boxes
+
+Activation boxes represent activity in an object. In Java, objects perform processing (i.e., are made active) when methods are called on them. So, you can understand activation boxes as work being performed within a Java method.
+
+As mentioned previously, you won't see much in your diagram unless you interact a little with the activation boxes. Activation boxes in the Diver sequence diagrams act similarly to the nodes in a standard tree viewer. You can think of a sequence diagram like a large tree structure where messages originating from an activation box cause that activation box to have "children" at the other end of the message. In fact, program traces produce what are often called "call trees" because they do have a strict tree structure.
+
+So, the basic interaction that you have with an activation box is to expand or collapse it much like a tree viewer. Expanding an activation box will reveal the messages that originate from that activation box. These messages will be of two kinds: calls or returns. Calls will result in further "child" activations, and "returns" simply indicate that an activation on a class is ending, and returning to the previous activation. More will be said about messages in the following section. Below is an image that has several activation boxes expanded.
+
+!../images/diving/sequence-activation-expand.png!
+
+Looking at these pictures, you may notice that different activation boxes appear in different colours. This is because Diver uses the source code associated with your program to infer information about the program and display it to you in the sequence diagram. Activation boxes are associated with Java methods. Their colour indicates the visibility of the methods. These colours are related to those that you may be used to from the Eclipse JDT. Public methods are indicated by green activation boxes; protected ones by orange; private by red; and package-level by blue. If no source code can be found for a method, its corresponding activation boxes will be presented in white.
+
+h3. Messages
+
+There are four basic ways that Java passes messages between objects: method calls; method returns; exception throws; and exception catches. Thrown exceptions behave essentially like cascading method returns, until the exception is caught. So, this is how they are treated in the Diver sequence diagrams.
+
+In Diver, method calls appear as messages from existing activations to new activations on another object (or the same object). They can be revealed by expanding the activation boxes on which they originate. The label on the message will be the name of the method that was called, followed by a parenthesised list of its parameter types. If source code for the method can be found, the label will also be decorated by a small icon indicating various attributes of that method (is it public? is it static?, etc.). These icons are the familiar method icons provided by the JDT. Returns and thrown exceptions are indicated as messages returning from the end of an activation box back to the originating activation box. They are labelled with the return type for the method.
+
+You can interact with method calls using your mouse. When you hover over a method call, the entire call-tree originating at that call is made bold in the view. If you select a method call, then message is made bold, and the sub-calls are highlighted in the view.
+
+h3. Groups  
+
+Java can be a well-structured programming language in which method calls are grouped into coherent groups using blocks. Blocks are typically part of conditional decision making structures such as @if@ statements, loops, or error handling. If Diver can find source code for your trace, it does some sophisticated analysis to link the messages in the trace with the blocks of code in which they occur. This helps to give you the context in which a message occurs, and it also helps to simplify the diagram.
+
+Diver is able to distinguish three different kinds of groups: conditional groups (@if/else/case@ statements); error handling (@try/catch@); and loops (@for/while/do..while/foreach@). Each has its own colour. Conditional groups are displayed in green, error handling groups are in red, and loop groups are in blue. The label of the group is set to the condition or the source code that defines the group.
+
+Like lifelines and activations, they can be expanded and collapsed as well. By default, groups are expanded so that you can see all of the messages that they contain. Collapsing a group hides all of the messages and activations inside of it, making your diagram smaller. The image below shows the effects of collapsing several groups.
+
+!../images/diving/sequence-block-collapse.png! 
+
+Loop groups are a special kind of group. They are used not only to organize messages that occur within the loop's block, but they also help to decrease the size of the displayed diagram. Many java programs will contain loops that iterate hundreds, or thousands of times. Diver hides the repeated messages within loop groups, potentially decreasing the size of the diagram by many thousands of times.
+
+There is one problem, though. It is likely the case that different iterations of the same loop will, in fact, have very different effects. So, Diver does make it possible for you to look at all of the effects of a loop by "swapping" iterations. You can swap an iteration by right-clicking on the label for the loop. A drop-down list will appear that will allow you to select the iteration that you would like to inspect. If there are more than 10 iterations, you are given the option to select a specific iteration using a dialog. 
+
+!../images/diving/sequence-loop-iteration.png!
+
+h4. Controlling Groups
+
+The groups in the Diver sequence diagram help to gain an understanding about control flow and program
+state without having to look at the source code itself. Sometimes, though, you might find that they clutter your view. There are two ways that you can control the way that groups are displayed in the Diver sequence diagram. They can be found in the drop-down menu of the view's toolbar.
+
+!../images/diving/sequence-menu.png!
+
+- *Use Combined Fragments* If this menu item is unselected, then the message groups will not be displayed in the Diver sequence diagram. You will not be able to see program state or control flow, but the diagram
+will be a little smaller (assuming you have not collapsed any of the combined fragments).
+
+- *Compact Loops* Diver normally shows only one iteration of a loop at a time. You can see other iterations by using the sequence diagram's context menu. If you would like to see all iterations at once,
+you can deselect this option.
+
+h2. Advanced Sequence Diagram Interactions
+
+You now have a basic understanding about how to work with sequence diagrams. The following sections will help you through some of the more advanced features that are offered for working with sequence diagrams in Diver.
+
+h3. Saving the View State
+
+This section is here just for your information. You, in fact, don't have to do anything to save your view state in Diver. The view state is automatically saved for you. So, don't worry about it. The next time you open your sequence diagram, it will be in the same form that you left it.
+
+h3. Seeing the (little) Big Picture
+
+Sequence diagrams can get very large, very quickly. So, it can be difficult to keep track of what you are looking at, especially with limited screen real estate. So, diver offers an overview of your sequence diagram. It is called the Sequence Outline View, and It is basically a compressed version of the sequence diagram that is in the Thread Sequence View.  You can move the viewport of the Thread Sequence View by selecting or dragging on the Sequence Outline View.
+
+!../images/diving/sequence-outline.png!
+
+
+h3. Re-focussing the Diagram
+
+If you are extra observant, you may have noticed that every sequence diagram in Diver begins with a single "start" activation on the "User" class. This is the root of the sequence diagram. But, what if you aren't interested in seeing everything from the start of the program? You've found the one activation of a method that you are looking for, and you want to get rid of all the "extra" stuff from your view. Well, lucky for you, Diver is designed to help you do just that.
+
+You can select any activation box and make it the "root" of your sequence diagram. This is called __focussing__, and it is easy to do. Simply right-click on any activation box, and select *Focus On ...* from the drop-down menu:
+
+!../images/diving/sequence-focus1.png!
+
+
+ The diagram will automatically lay-out with the new activation box as the root:
+ 
+ !../images/diving/sequence-focus2.png!
+ 
+But your last context isn't lost. Diver gives you an easy way to get back to the original root of the diagram. If you look at the top of the view, you will see a grey bar, that always starts with the text "User.start()". This is the __message breadcrumb__. It lists all of the call messages from the root of the thread to the activation box of current focus. You can move anywhere up the call-chain simply by selecting one of the messages listed in the breadcrumb. Sometimes, though, the call chain will be too long to list all of the messages in one line. In this case, you can view the entire call chain as a drop-down menu by selecting the button on the far-right of the breadcrumb (it looks like @>>@). Choose the new root activation from the menu:
+ 
+ 
+ !../images/diving/sequence-breadcrumb.png!
+ 
+
+h3. Using the Timeline
+
+There are other ways of filtering your view to make sure you see only what you are interested in. Perhaps you know that the functionality that you are interested in was executed at a particular time (perhaps by using the trace duration dialog, described in <a href="#ControllingYourTrace">Controlling Your Trace</a>). You can filter the sequence diagram to specific times by using the timeline.
+
+The timeline looks like a long green bar at the bottom of the Thread Sequence View. It looks something like this:
+
+!../images/diving/sequence-timeline.png!
+
+On either end of the timeline are several text boxes. They indicate the time range that the timeline is set to. The format is @hh:mm:ss:ppp@. For example, the above image indicates that the user started the trace 1.825 seconds into the execution of the program, and ended it at 2 minutes, 57.903 seconds. You may also notice a couple of coloured ranges in the timeline. These ranges indicate different events that occur during the trace. In this instance, the yellow range indicates a period in which the trace was paused -- no messages will have been logged during this time. The lighter, smaller, pink range indicates the time of the currently selected element in the sequence viewer. In this case, the user has selected a message that occurred near the end of the trace. 
+
+The range is also indicated graphically. There are two vertical I-beam like bars at each end of the timeline. These can be dragged to change the range of the timeline. when you do this, the sequence diagram will refresh so that only messages and activations that occur within the selected range are displayed. The following images show the before, and after effects of changing the range in the timeline. Notice how the filtered diagram fits within one screen, without the need to scroll.
+
+!../images/diving/sequence-time-filter2.png!
+
+!../images/diving/sequence-time-filter1.png!
+ 
+
+h3. Seeing Where Messages Come and Go
+
+Large sequence diagrams may have hundreds, or even thousands, of lifelines. This can make it impossible to layout the diagram in such a way as to make sure that the source and the target of a message is always visible. Take the following image for example:
+
+!../images/diving/sequence-sash1.png!
+
+You can see that there is a method call on the @TetrisBoard@ class, but you can't tell what it is called, or where it came from because the originating lifeline is far to the left of the visible area. Diver offers another feature that can help with this: the __clone pane__. The clone pane is a second view of your sequence diagram, which exactly mirrors, and is synchronized with the main view that you will look at most of the time. However, you are able to scroll it horizontally so that you can view two different portions of the same sequence at the same time. Reveal the pane by dragging the sash on the left of the view (indicated by what looks like a rotated *w*). The result will be something like this:
+
+!../images/diving/sequence-sash2.png!
+
+As you can see, the method that was called is @TetrisBoard.clear()@, from the @Game@ class. You can also see that it is only called within the context of an @if@ statement, so that you can tell that the current player must be in the "preview" state (seen by the message block with the label @if (getPlayer().isPreview())@). 
+
+h3. Getting Back to the Source
+
+If an element in the sequence diagram has an icon attached to it, or is any colour other than white, it is likely that Diver has been able to locate some source code for that element. Looking at source code can be of immeasurable value when trying to understand software. So, Diver makes it easy to get back to the source. Simply double-click on an element to reveal it in a source-code viewer. Classifiers will reveal classes, activation boxes will reveal method definitions, and messages will reveal the line of code at which the message originated.
+

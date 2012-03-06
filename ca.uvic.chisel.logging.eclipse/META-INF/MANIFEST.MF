@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Eclipse
+Bundle-SymbolicName: ca.uvic.chisel.logging.eclipse;singleton:=true
+Bundle-Version: 0.1.0.qualifier
+Bundle-Activator: ca.uvic.chisel.logging.eclipse.WorkbenchLoggingPlugin
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Export-Package: ca.uvic.chisel.logging.eclipse
+Import-Package: org.apache.commons.httpclient;version="3.1.0",
+ org.apache.commons.httpclient.methods;version="3.1.0",
+ org.apache.commons.httpclient.methods.multipart;version="3.1.0"

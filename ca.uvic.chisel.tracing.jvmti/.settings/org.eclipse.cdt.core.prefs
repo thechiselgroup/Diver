@@ -1,0 +1,12 @@
+#Thu Oct 28 18:12:03 PDT 2010
+eclipse.preferences.version=1
+environment/project/cdt.managedbuild.config.gnu.mingw.so.release.983624535.143428093.1836265758/PATH/delimiter=;
+environment/project/cdt.managedbuild.config.gnu.mingw.so.release.983624535.143428093.1836265758/PATH/operation=replace
+environment/project/cdt.managedbuild.config.gnu.mingw.so.release.983624535.143428093.1836265758/PATH/value=C\:\\TDMGCC\\bin;C\:/Program Files (x86)/Java/jre6/bin/client;C\:/Program Files (x86)/Java/jre6/bin;C\:/Program Files (x86)/Java/jre6/lib/i386;C\:\\Program Files\\Common Files\\Microsoft Shared\\Windows Live;C\:\\Program Files (x86)\\MiKTeX 2.8\\miktex\\bin;C\:\\Windows\\system32;C\:\\Windows;C\:\\Windows\\System32\\Wbem;C\:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C\:\\Program Files (x86)\\ATI Technologies\\ATI.ACE\\Core-Static;C\:\\Program Files (x86)\\MySQL\\MySQL Server 5.1\\bin;C\:\\Program Files (x86)\\Common Files\\Microsoft Shared\\Windows Live;C\:\\Program Files (x86)\\Java\\jre6\\bin;C\:\\Users\\Del\\AppData\\Roaming\\MiKTeX\\2.8\\miktex\\bin\\;C\:\\Program Files (x86)\\Java\\jdk\\bin
+environment/project/cdt.managedbuild.config.gnu.mingw.so.release.983624535.143428093.1836265758/append=true
+environment/project/cdt.managedbuild.config.gnu.mingw.so.release.983624535.143428093.1836265758/appendContributed=true
+environment/project/cdt.managedbuild.config.gnu.mingw.so.release.983624535.143428093/PATH/delimiter=;
+environment/project/cdt.managedbuild.config.gnu.mingw.so.release.983624535.143428093/PATH/operation=replace
+environment/project/cdt.managedbuild.config.gnu.mingw.so.release.983624535.143428093/PATH/value=C\:\\MinGW\\bin;C\:/Program Files (x86)/Java/jre6/bin/client;C\:/Program Files (x86)/Java/jre6/bin;C\:/Program Files (x86)/Java/jre6/lib/i386;C\:\\Program Files\\Common Files\\Microsoft Shared\\Windows Live;C\:\\Program Files (x86)\\MiKTeX 2.8\\miktex\\bin;C\:\\Windows\\system32;C\:\\Windows;C\:\\Windows\\System32\\Wbem;C\:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C\:\\Program Files (x86)\\ATI Technologies\\ATI.ACE\\Core-Static;C\:\\Program Files (x86)\\MySQL\\MySQL Server 5.1\\bin;C\:\\Program Files (x86)\\Common Files\\Microsoft Shared\\Windows Live;C\:\\Program Files (x86)\\Java\\jre6\\bin;C\:\\Users\\Del\\AppData\\Roaming\\MiKTeX\\2.8\\miktex\\bin\\;C\:\\Program Files (x86)\\Java\\jdk\\bin
+environment/project/cdt.managedbuild.config.gnu.mingw.so.release.983624535.143428093/append=true
+environment/project/cdt.managedbuild.config.gnu.mingw.so.release.983624535.143428093/appendContributed=true

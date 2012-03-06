@@ -1,0 +1,13 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Logging
+Bundle-SymbolicName: ca.uvic.chisel.diver.logging;singleton:=true
+Bundle-Version: 0.2.0.qualifier
+Bundle-Activator: ca.uvic.chisel.diver.logging.DiverLoggingPlugin
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ ca.uvic.chisel.logging.eclipse;bundle-version="0.0.1",
+ org.eclipse.zest.custom.sequence;bundle-version="0.8.2",
+ ca.uvic.chisel.widgets;bundle-version="0.1.0"
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6

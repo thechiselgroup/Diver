@@ -1,0 +1,4 @@
+requires.0.namespace=ca.uvic.chisel.javasketch.iu
+requires.0.name=jvmti.implementation
+requires.0.greedy=false
+requires.0.range=0.1.0 

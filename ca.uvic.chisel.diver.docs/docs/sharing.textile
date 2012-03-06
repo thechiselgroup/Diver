@@ -1,0 +1,62 @@
+
+h1. Sharing Your Traces
+
+Diver now offers ways for you to keep a record of your traces, and share them with other people. This can be done
+in two main ways: by exporting screenshots of your sequence diagrams; and by exporting and importing entire
+traces.
+
+h2. Exporting Screenshots
+
+Diver makes it easy to export screenshots of your sequence diagrams. Just look for the little camera 
+(!../images/sharing/screenshoticon.png!) icon. You can find it on the sequence diagram's toolbar, drop-down menu,
+or pop-up menu:
+
+!../images/sharing/screenshot1.png!
+ 
+Selecting it will give you a standard file/save dialog. You can export the image as a bmp, png, or jpeg file. When you
+export the diagram, you will have a full-sized picture of the diagram exactly as it appears in the main pain of the
+viewer:
+
+!../images/sharing/screenshot2.png!
+
+h2. Exporting Traces
+
+Diver also makes it possible to export and import entire traces. You can do so by using the standard import/export
+wizards under the category  _Diver_, or by using the shortcut in the _Program Traces_ view:
+
+!../images/sharing/export1.png!
+
+The Diver export wizard will present you with a page that allows you to select the trace to export, and the threads
+to export within that trace. By default, the exported traces will exclude any threads that do not contain activations
+("empty threads"). You can change this by unselecting the check box at the bottom of the page. You will also need 
+to select a file to save the trace into. The file extension is _dvt_, which stands for "<u>D</u>i<u>v</u>er <u>t</u>race file".*
+
+
+!../images/sharing/export2.png!
+
+That is all you need to know to export traces. Now, all you need is a way to import them.
+
+h2. Importing Traces
+
+Importing traces in Diver is very similar to running or analyzing traces. Just open the _Import Trace_ wizard:
+
+!../images/sharing/import1.png!
+
+Then, use the file browser to select a Diver trace file:
+  
+ !../images/sharing/import2.png!
+ 
+Once a file has been set, the import wizard will automatically scan that file to make sure that it is a valid Diver trace
+file. Then, import the trace just as if you were using the _Reanalyze Trace_ wizard (see <a href="#GainingADifferentPerspective">Gaining
+A Different Perspective</a> for more information).
+ 
+ !../images/sharing/import3.png!
+ 
+Once you select _Finish_, the trace will be copied into Diver's trace storage, and the files will be analyzed. You will
+see the newly imported trace in your _Program Traces_ view.  
+
+
+
+*Diver trace files, much like Java jar files, are simply files compressed in the ZIP format. If you are really interested
+in seeing what is in the trace file, you can reset the extension to _zip_, and explore the file.
+  

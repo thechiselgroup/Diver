@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<component id="ca.uvic.chisel.javasketch" version="2">
+    <resource path="src/ca/uvic/chisel/javasketch/ui/internal/editors/ThumbnailOutlinePage.java" type="ca.uvic.chisel.javasketch.ui.internal.presentation.ThumbnailOutlinePage">
+        <filter id="574660632">
+            <message_arguments>
+                <message_argument value="IContentOutlinePage"/>
+                <message_argument value="IPage"/>
+                <message_argument value="ThumbnailOutlinePage"/>
+            </message_arguments>
+        </filter>
+    </resource>
+</component>

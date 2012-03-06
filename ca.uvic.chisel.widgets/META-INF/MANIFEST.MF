@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Rangeslider
+Bundle-SymbolicName: ca.uvic.chisel.widgets
+Bundle-Version: 0.4.0
+Bundle-Activator: ca.uvic.chisel.widgets.RangeSliderPlugin
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Export-Package: ca.uvic.chisel.widgets

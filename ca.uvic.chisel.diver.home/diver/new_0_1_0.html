@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<link rel="StyleSheet" href="styles/diver.css" type="text/css" media="screen"/>
+<script type="text/javascript" src="js/load.js"></script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-17962512-2']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<title>Diver: Dynamic Interactive Views for Reverse Engineering</title>
+</head>
+<body onload="loadMenu('New To Diver')">
+<div class="frame">
+<div id="menu"></div>
+<h2>What's New in Diver 0.1.0</h2>
+
+<table cellpadding="10">
+	<tr valign=top>
+		<td><b>Property Support for Trace Elements</b></td>
+		<td><p>Nearly every element that is selectable in either the <b>Program Traces</b>
+		view or in the <b>Thread Sequence View</b> can have properties associated with it.
+		Just open the <b>Properties View</b> to see. You can add your own custom notes
+		in the property, which will be automatically saved with your trace.</p>
+		<img src="images/new/0.1.0/properties.jpg"/></td>
+	</tr>
+	<tr valign=top>
+		<td><b>Trace Search</b></td>
+		<td><p>You can now search your traces to find classes, methods, activations, and notes
+		that you've created. Just find it under the <b>Search</b> menu.</p>
+		<img src="images/new/0.1.0/searchpage.jpg"/><br/><br/>
+		<img src="images/new/0.1.0/searchmethod.jpg"/><br/><br/>
+		<img src="images/new/0.1.0/searchnotes.jpg"/></td>
+	</tr>
+	<tr valign=top>
+		<td><b>Improved Memory Footprint</b></td>
+		<td>These improvements could potentially save you hundreds of megabytes of RAM when browsing your
+		traces.</td>
+	</tr>
+	<tr valign=top>
+		<td><b>Faster Connection To Trace Data</b></td>
+		<td>Diver now takes better care in how its trace data is saved. This allows it
+		to connect more quickly with your traces, and update your user interface faster.
+		After the next time that you view a trace, you should notice a significant 
+		speed improvement.</td>
+	</tr>
+	<tr valign=top>
+		<td><b>Smaller Download</b></td>
+		<td>Platform-dependent code is now seperated into various plug-in fragments
+		so that you only download the binaries for your platform.</td>
+	</tr>
+
+</table>
+
+<div id="footer"></div> 
+</div>
+</body>
+</html>

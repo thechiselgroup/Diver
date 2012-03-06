@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<toc topic="docs/Diver.html" label="Diver">
+	<topic href="docs/Diver.html" label="Welcome To Diver"></topic>
+	<topic href="docs/Diver.html#TableofContents" label="Table of Contents"></topic>
+	<topic href="docs/Diver.html#LaunchingATrace" label="Launching A Trace">
+		<topic href="docs/Diver.html#CreatingANewLaunch" label="Creating A New Launch"></topic>
+		<topic href="docs/Diver.html#SettingUptheTrace" label="Setting Up the Trace">
+			<topic href="docs/Diver.html#ANoteAboutIndexing" label="A Note About Indexing"></topic>
+		</topic>
+		<topic href="docs/Diver.html#TheDiverPerspective" label="The Diver Perspective"></topic>
+		<topic href="docs/Diver.html#ControllingTheTrace" label="Controlling The Trace"></topic>
+		<topic href="docs/Diver.html#LaunchingAnEclipseApplication" label="Launching An Eclipse Application"></topic>
+		<topic href="docs/Diver.html#DebuggingWithDiver" label="Debugging With Diver"></topic>
+	</topic>
+	<topic href="docs/Diver.html#DivingIntoYourTrace" label="Diving Into Your Trace">
+		<topic href="docs/Diver.html#IntroducingtheProgramTracesView" label="Introducing the Program Traces View"></topic>
+		<topic href="docs/Diver.html#SequenceDiagramsAnOverview" label="Sequence Diagrams: An Overview">
+			<topic href="docs/Diver.html#Classifiers" label="Classifiers"></topic>
+			<topic href="docs/Diver.html#LifeLines" label="Life Lines"></topic>
+			<topic href="docs/Diver.html#ActivationBoxes" label="Activation Boxes"></topic>
+			<topic href="docs/Diver.html#Messages" label="Messages"></topic>
+			<topic href="docs/Diver.html#Groups" label="Groups  ">
+				<topic href="docs/Diver.html#ControllingGroups" label="Controlling Groups"></topic>
+			</topic>
+		</topic>
+		<topic href="docs/Diver.html#AdvancedSequenceDiagramInteractions" label="Advanced Sequence Diagram Interactions">
+			<topic href="docs/Diver.html#SavingtheViewState" label="Saving the View State"></topic>
+			<topic href="docs/Diver.html#SeeingthelittleBigPicture" label="Seeing the (little) Big Picture"></topic>
+			<topic href="docs/Diver.html#RefocussingtheDiagram" label="Re-focussing the Diagram"></topic>
+			<topic href="docs/Diver.html#UsingtheTimeline" label="Using the Timeline"></topic>
+			<topic href="docs/Diver.html#SeeingWhereMessagesComeandGo" label="Seeing Where Messages Come and Go"></topic>
+			<topic href="docs/Diver.html#GettingBacktotheSource" label="Getting Back to the Source"></topic>
+		</topic>
+	</topic>
+	<topic href="docs/Diver.html#ExploringYourCode" label="Exploring Your Code">
+		<topic href="docs/Diver.html#ActivatingATrace" label="Activating A Trace"></topic>
+		<topic href="docs/Diver.html#FilteringThePackageExplorer" label="Filtering The Package Explorer">
+			<topic href="docs/Diver.html#GainingaDifferentPerspective" label="Gaining a Different Perspective"></topic>
+		</topic>
+		<topic href="docs/Diver.html#ComparingTraces" label="Comparing Traces"></topic>
+		<topic href="docs/Diver.html#FindingTheContext" label="Finding The Context">
+			<topic href="docs/Diver.html#AMethodInSequence" label="A Method In Sequence"></topic>
+			<topic href="docs/Diver.html#FindingAllTheCalls" label="Finding All The Calls"></topic>
+			<topic href="docs/Diver.html#RemovingDetails" label="Removing Details"></topic>
+		</topic>
+		<topic href="docs/Diver.html#ReadingYourCode" label="Reading Your Code"></topic>
+	</topic>
+	<topic href="docs/Diver.html#SharingYourTraces" label="Sharing Your Traces">
+		<topic href="docs/Diver.html#ExportingScreenshots" label="Exporting Screenshots"></topic>
+		<topic href="docs/Diver.html#ExportingTraces" label="Exporting Traces"></topic>
+		<topic href="docs/Diver.html#ImportingTraces" label="Importing Traces"></topic>
+	</topic>
+	<topic href="docs/Diver.html#Acknowledgements" label="Acknowledgements"></topic>
+</toc>

@@ -1,0 +1,34 @@
+<!-- important build file -->
+
+<project name="ca.uvic.chisel.diver.docs" default="generate-help" basedir=".">
+	<property name="wikidir" value="docs"/>
+	<property name="wikitext.standalone" value="lib"/><!-- path to wikitext standalone package -->
+	<path id="wikitext.classpath">
+		<fileset dir="${wikitext.standalone}">
+			<include name="*.jar"/>
+		</fileset>
+	</path>
+	<taskdef classpathref="wikitext.classpath" resource="org/eclipse/mylyn/wikitext/core/util/anttask/tasks.properties" />
+	<target name="assemble">
+		<loadfile srcfile="${wikidir}/index.txt" property="inputfiles">
+			<filterchain>
+				<striplinebreaks/>
+			</filterchain>
+		</loadfile>
+		<concat destfile="${wikidir}/Diver.textile" append="false" fixlastline="yes">
+			<filelist dir="${wikidir}" files="${inputfiles}"/>
+		</concat>
+	</target>
+	<target name="generate-help" depends="assemble" description="Generate Eclipse help from textile source">
+		<wikitext-to-eclipse-help markupLanguage="Textile" 
+			multipleOutputFiles="false"
+			navigationImages="true"
+			helpPrefix="docs"
+			formatOutput="true">
+			<fileset dir="${wikidir}">
+    				<include name="Diver.textile"/>
+			</fileset>
+			<stylesheet url="../styles/book.css"/>
+		</wikitext-to-eclipse-help>
+	</target>
+</project>

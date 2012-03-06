@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.intro.configExtension">
+      <configExtension
+            configId="org.eclipse.ui.intro.universalConfig"
+            content="intro/overview.xml">
+      </configExtension>
+   </extension>
+   <extension
+         point="org.eclipse.ui.preferencePages">
+         <page
+            class="ca.uvic.chisel.feature.ui.internal.DefaultDiverPreferencePage"
+            id="ca.uvic.chisel.diver.feature.preferences"
+            name="Diver">
+      </page>
+      
+   </extension>
+</plugin>

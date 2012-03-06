@@ -1,0 +1,89 @@
+
+h1. Launching A Trace
+
+A lot of attention has been put into making sure that launching a trace is as easy as possible. Launching or debugging as a trace is as easy as launching a typical application. This document will step you through the basic process.
+
+h2. Creating A New Launch
+
+The trace launches won't be available in the favourites menu of your perspective by default, so you will have to configure them manually. It is not a difficult process, however. Just follow these simple steps.
+
+*1. Open The Launch Configuration Dialog*
+
+The launch configuration will not be in your favourite launches by default. So, in the Java Perspective, or in the Plug-in Development Perspective, use the drop-down menu from either the __Run...__ or __Debug__ shortcut. Then, select __Configurations...__.
+
+!../images/launching/launch1.png!
+
+*2. Create A New Java Application Trace*
+
+Locate the __Java Application Trace__ launch configuration type on the tree view to the left of the Configurations Dialog, and select the __New Configuration__ button at the top of the dialog.
+
+!../images/launching/launch2.png!
+
+*3. Set Up The Java Application*
+
+Finally, you must set the application to be run. This involves selecting the project for the launch, and the associated @Main@ class. In this example, we will be running a simple Tetris game. The Project has been set to @Tetris@ and the main class has been set to @org.oversoul.tetris.ui.TetrisFrame@.
+
+!../images/launching/launch3.png!
+
+*4. You May Now Trace Your Program*
+
+Once you have followed these three steps, you may trace your Java application. Default trace-specific settings have been made that should be suitable for most users. If you would like to tweek your trace, however, you may. Read the next section for more information.
+
+h2. Setting Up the Trace
+
+The Java trace launches are designed to help you find within your program the information that is most interesting to you. Iit is able to apply a filtering mechanism so that only the most important details are indexed for your access. These filters allow you to adjust your "perspective" of the running application, and they are set up with default values that should be suitable for most traces. But, for those who need finer tuning, they are configurable. In fact, they can be configured at any time -- even __after__ the trace has completed. So, if you don't set up the filters right at this point, don't worry; you can change them later. The different portions of the Java Trace tab are described below.
+
+!../images/launching/traceconfig.png!
+
+# *Pause On Start* Most Java applications begin by running a lot of boiler-plate code that is probably not interesting. Select this check-box to prevent the tracer from logging information at start-up. You will be able to manually control tracing interactively during the run of your application. This is covered in detail in the section titled <a href="#ControllingTheTrace">Controlling The Trace</a>.
+# *Apply At Runtime* Diver can handle trace filters in two ways. It can either apply them at runtime,
+or it can apply them at the indexing step as described in <a href="#ANoteAboutIndexing">A Note About Indexing</a>. If you apply the filters at runtime, you should notice a marked improvement in speed while
+running the trace, and also a much faster indexing time. However, you will not be able to change the information displayed in sequence diagrams later on if you reanalyze the trace as described in <a href="#GainingADifferentPerspective">Gaining A Different Perspective</a>
+# *Filter Shortcuts* There are two ways to affect the way that Diver filters your trace. You can either include only classes and methods that are defined in the project that is being traced, or you can set up the filtering manually.
+# *Inclusion Filters* Names of packages, classes, or methods that should be __included__ in the trace. You may wild-card the names by the use of an asterisk ( * ) character at the beginning or the end of the string. Type the fully-qualified name of the package, class or method that you want to be included. The text field offers content-assist to aid you in your typing.
+# *Exclusion Filters*  Names of packages, classes, or methods that should be __excluded__ in the trace. You may wild-card the names by the use of an asterisk ( * ) character at the beginning or the end of the string. Type the fully-qualified name of the package, class or method that you want to be excluded. The text field offers content-assist to aid you in your typing.
+
+h3. A Note About Indexing
+
+At this point, it may be a good idea to discuss a little bit about what it means when Diver "indexes" or "filters" a trace. There are a few details that you may like to know in order to fully understand what it is that you are looking at once your trace is completed.
+
+First of all, the basic operation of Diver involves logging millions of *events* which occur while your program is running. Most importantly, it logs when your Java program executes methods/constructors and when your program exits those methods/constructors. Regardless of how you set up your filters, Diver logs __all__ such events so long as your current trace is not in the "paused" state (see <a href="ControllingTheTrace">Controlling The Trace</a> for more information). However, while your program is running, and for some time after it has completed, Diver indexes these logs so that you can work with them more easily and efficiently. This is where your filters come in.
+
+Diver will only index information that you say is interesting. This includes method entries that you have chosen to __include__ in the filter, but not to __exclude__. If you have set your filters manually, and chosen to not exclude or include anything, then all events will be indexed. For example, suppose that you had chosen to set your filters manually so that only the methods on the @com.net.Org@ class will be indexed (that is, you have added @com.net.Org.*@ to the *Inclusion Filters*). This means that every method in the @com.net.Org@ class will become a "trigger" for the indexer. When the indexer sees such a trigger, it will store that trigger, all of the calls on the call-stack that lead to the trigger, and all of the side-effects (i.e., the entire call-tree from the trigger). In other words, the indexer will store all method calls that are connected to the trigger, but no others.
+
+If you choose *Only index classes defined in this project* on the __Java Trace__ tab, then only the methods defined in the source code of the containing project will be triggers for the indexer.
+
+Since Diver stores events regardless of whether or not they will be triggers for the indexer, you may re-index the trace at any time. This is called __Reanalyzing__ the trace. This is discussed in the <a href="#ExploringYourCode">Exploring Your Code</a> section under <a href="#GainingADifferentPerspective">Gaining a Different Perspective</a>.
+
+h2. The Diver Perspective
+
+The trace launches have been associated with a new perspective called the __Diver Perspective__. It has been designed to contain the different elements you need to be productive in your program understanding/reverse engineering tasks. When you launch your application, you may be prompted to switch to the Diver Perspective. Select "yes" to open it.
+
+!../images/launching/switchperspective.png!
+
+
+The Diver Perspective contains six regions by default. What is contained in those regions will be discussed further in other portions of this documentation. What follows is a brief overview.
+
+!../images/launching/perspective.png!
+
+# *Java Area* This area contains structured views pertaining to the Java language and your source code. Specifically, the standard Package Explorer is held here. In Diver, the Package Explorer has been enhanced in several ways to aid your reverse engineering tasks. These are  been covered in the section titled <a href="#ExploringYourCode">Exploring Your Code</a>.
+# *Source Code Area* Diver has been tightly integrated with the JDT to help you better understand your software. The views in Diver link to your source to help you find key elements of your traced program. Diver also extends the source code view to give you more clues about how your software ran. These are discussed in the sections <a href="#DivingIntoYourTrace">Diving Into Your Trace</a> and <a href="#ExploringYourCode">Exploring Your Code</a>.
+# *Outline Area* Here you will find the standard outline view for your editors, as well as a special Trace Outline which links to the Thread Sequence View (seen in area number five). This area is discussed further in <a href="#DivingIntoYourTrace">Diving Into Your Trace</a>.
+# *Trace Area* Diver keeps several databases of all of the traces that you have run in your workbench. They can be accessed in this area of the perspective. It is discussed in <a href="#DivingIntoYourTrace">Diving Into Your Trace</a> and <a href="#ExploringYourCode">Exploring Your Code</a>.
+# *Visualization Area* Diver currently offers one visualization (with more planned) of your trace to help you to understand how your program runs. This area also contains the standard  console. <a href="#DivingIntoYourTrace">Diving Into Your Trace</a> details the features of the visualization. <a href="#ExploringYourCode">Exploring Your Code</a> discusses its integration with the rest of the Diver tools.
+# *Debug Area*  This area contains standard views for running and debugging applications, including the Debug, Variables, and Breakpoint views. The Debug View is integral to the operation of diver, and is discussed further in the section <a href="#ControllingTheTrace">Controlling The Trace</a>.
+
+h2. Controlling The Trace
+
+Performing real-time logging of programs can have an adverse effect on the performance of those programs. So, Diver offers the ability for users to control, and log, exactly when the application is being traced and when it is not. This functionality is exposed through the Debug view via two new buttons in the toolbar:
+
+# *Pause/Resume Trace* This is probably the most important action that you will use during the execution of your program. It is executed through a toggle button with two states. The first state is the __Resume__ (i.e. __currently paused__) state. It is indicated by an !../images/launching/play_icon.png! icon. While in this state, Diver will not log any information about the current application, helping to improve its speed. Pressing the button in this state will cause Diver to begin or resume tracing of your program, at which point it will switch to the __Pause__ (i.e. __currently tracing__) state, indicated by !../images/launching/pause_icon.png!. Pressing the button in this state will cause it to return to the __Resume__ state. Note that by default, Diver will start your application in the __Resume__ state, and will not log any events until you press this button. You can change this behaviour as indicated in the section <a href="#SettingUptheTrace">Setting Up the Trace</a>.
+# *View Trace Duration* Indicated by a  !../images/launching/clock_icon.png!, this action allows you to open a window which indicates the amount of time elapsed since the start of your application. This may be useful for when you are trying to isolate particular events in your trace.
+
+h2. Launching An Eclipse Application
+
+Diver also offers the ability to launch an Eclipse Application trace. Everything that has been discussed in this document also applies to Eclipse traces, but with one notable exception. <a href="#SettingUptheTrace">Setting Up the Trace</a> indicated that it is possible to filter the analysis of your trace to methods that appear only within the project that encapsulates your program. Such a filter does not make sense in terms of Eclipse applications, which are normally dependent on numerous projects which represent plug-ins/bundles for the application. So, instead of offering a filter for the associated project, Eclipse traces will, by default, filter to plug-ins defined in your workspace. Everything else runs in the same manner as indicated in the rest of this document.
+
+h2. Debugging With Diver
+
+You can also launch your traces in Debug mode. This may help you to target your traces more effectively. For example, you may know that a feature that you are trying to investigate always occurs within the context of a specific method call, but you don't know when it occurs after that method is called. You can set a breakpoint on that method, and keep your trace paused until that breakpoint is hit. Once the breakpoint is hit, resume the trace, and step out of the method. Once again, pause the trace. Now, you will have traced everything that occurred within the method of interest, but nothing else.

@@ -1,0 +1,101 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<link rel="StyleSheet" href="styles/diver.css" type="text/css" media="screen"/>
+<script type="text/javascript" src="js/load.js"></script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-17962512-2']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<title>Diver: Dynamic Interactive Views for Reverse Engineering</title>
+</head>
+<body onload="loadMenu('New To Diver')">
+<div class="frame">
+<div id="menu"></div>
+<h2>What's New in Diver 0.3.0</h2>
+
+<p><a href="new_0_2_0.html">Previous Version</a></p>
+
+<table cellpadding="10">
+	<tr valign=top>
+		<td><b>Runtime Filtering</b></td>
+		<td><p><img src="images/new/0.3.0/traceatruntime.png">
+		<br>
+		<br>
+		Previous versions of Diver traced all interactions during the
+		execution of your program. With Diver 0.3, it is now possible to
+		apply class and package filters at runtime. This will decrease
+		the size of your traces and increase the responsiveness of your
+		running software, and significantly decrease the amount of time
+		that it takes Diver to analyze the trace after you have finished
+		the trace. However, it will also increase the memory consumption
+		of the the program that you are tracing. Also, Diver's 
+		&quot;Reanalyze Trace&quot; feature will not be as effective.</p>
+		</td>
+	</tr>
+	<tr valign=top>
+		<td><b>Sequence Diagram Filtering</b></td>
+		<td><p>You can now apply the filters from the Program Traces View to the Thread Sequence View. 
+		There is now an &quot;eye&quot; <img src="images/new/0.3.0/openeye.png"> icon visible in the
+		sequence diagram view. Close the eye to apply they filter. The default application of this
+		action is to &quot;grey out&quot; method calls that are &quot;unnecessary&quot; according to
+		the filters that you have defined in the Program Traces View:<br><br>
+		<img src="images/new/0.3.0/sequence-filter1.png"/></p>
+		<p>Use the <i>Hide Unnecessary Calls</i> action from the Thread Sequence View's menu to hide
+		the method calls altogether:<br><br>
+		<img src="images/new/0.3.0/sequence-menu.png"><br>
+		<img src="images/new/0.3.0/sequence-filter2.png"><br><br>A video about this new 
+		feature is featured on <a href="http://www.youtube.com/watch?v=FzMl4Zu2tps">Youtube</a>.
+		Note that this feature will not work on your current traces until after you reanalyze
+		them. See the <a href='docs/Diver.html#GainingaDifferentPerspective'>documentation</a>
+		for more information.</p></td>
+		
+	</tr>
+	<tr valign=top>
+		<td><b>Package Explorer Coloring</b></td>
+		<td><p>The package explorer filters in Diver work not only for an entire
+		 trace, but for the selected thread as well. That is, if you select a 
+		 thread in the active trace, then only the methods invoked
+		 by that thread are visible within the package explorer. In previous
+		 versions, this could cause some confusion with respect to methods 
+		 called from anonymous inner classes. For example, the method
+		 <code>A.parent()</code> might declare an anonymous inner class called 
+		 <code>A$1</code> with the method <code>child()</code>. Now, in the
+		 package explorer, <code>A$1.child()</code> is shown as a child of
+		 <code>A.parent()</code>, but it may be the case that 
+		 <code>A$1.child()</code> is never called in the same thread as 
+		 <code>A.parent()</code>. Diver handled this problem in previous versions
+		 by displaying <code>A.parent()</code> even if it is not called
+		 in the currently selected thread. Diver 0.3.0 attempts to alleviate
+		 the confusion caused by this scenario by using colors in the package
+		 explorer. If an element (package, java file, class, method) is not
+		 executed in the selected thread, but one of its descendents (method,
+		 inner class, etc.) is, then that element is colored in grey:
+		</p>
+		<p><img src="images/new/0.3.0/package-color.png"/></p>
+		</td>
+	</tr>
+	<tr valign=top>
+		<td><b>Diver Research</b></td>
+		<td><p>The data collection period for research about Diver has ended. You will no longer
+		be asked to upload any data.
+		</p>
+		</td>
+	</tr>
+
+</table>
+
+<div id="footer"></div> 
+</div>
+</body>
+</html>

@@ -1,0 +1,375 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- Schema file written by PDE -->
+<schema targetNamespace="ca.uvic.chisel.logging.eclipse" xmlns="http://www.w3.org/2001/XMLSchema">
+<annotation>
+      <appinfo>
+         <meta.schema plugin="ca.uvic.chisel.logging.eclipse" id="ca.uvic.chisel.logging.part" name="Workbench Part Logger"/>
+      </appinfo>
+      <documentation>
+         Creates a logger for events that occur on an eclipse workbench part.
+      </documentation>
+   </annotation>
+
+   <element name="extension">
+      <annotation>
+         <appinfo>
+            <meta.element />
+         </appinfo>
+      </annotation>
+      <complexType>
+         <sequence minOccurs="1" maxOccurs="unbounded">
+            <element ref="logger" minOccurs="1" maxOccurs="unbounded"/>
+         </sequence>
+         <attribute name="point" type="string" use="required">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="id" type="string">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="name" type="string">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+               <appinfo>
+                  <meta.attribute translatable="true"/>
+               </appinfo>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="logger">
+      <complexType>
+         <sequence minOccurs="0" maxOccurs="unbounded">
+            <element ref="part"/>
+            <element ref="workbench"/>
+         </sequence>
+         <attribute name="categoryID" type="string" use="required">
+            <annotation>
+               <documentation>
+                  The fully qualified id of the category that is used this extension belogns to. See the extension point ca.uvic.chisel.logging.category
+               </documentation>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="part">
+      <annotation>
+         <documentation>
+            Defines a workbench part that will be listened to.
+         </documentation>
+      </annotation>
+      <complexType>
+         <sequence minOccurs="0" maxOccurs="unbounded">
+            <element ref="viewer"/>
+            <element ref="partWidgetListener" minOccurs="0" maxOccurs="unbounded"/>
+         </sequence>
+         <attribute name="partID" type="string" use="required">
+            <annotation>
+               <documentation>
+                  The id of the part to listen to.
+               </documentation>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="viewer">
+      <complexType>
+         <sequence minOccurs="0" maxOccurs="unbounded">
+            <element ref="viewerListener"/>
+         </sequence>
+         <attribute name="viewerClass" type="string">
+            <annotation>
+               <documentation>
+                  The fully-qualified class name of the viewer that will be listened to in this view part. The first occurrence of a viewer of this class type will be used.
+               </documentation>
+               <appinfo>
+                  <meta.attribute kind="java"/>
+               </appinfo>
+            </annotation>
+         </attribute>
+         <attribute name="searchHierarchy" type="boolean" use="default" value="false">
+            <annotation>
+               <documentation>
+                  Set to true to search the class hierarchy of the view part for viewers that match the viewerClass name.
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="viewerGetMethod" type="string">
+            <annotation>
+               <documentation>
+                  The name of the method that is used to get the viewer instance. The method need not be public, but it may not have any parameters. If no such method exists, then the viewerClass attribute may be used instead in order to locate a field in the part that holds the viewer to be listened to. At least one of viewerClass or viewerGetMethod must be supplied.
+               </documentation>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="viewerListener">
+      <annotation>
+         <documentation>
+            Defines a listener for a viewer.
+         </documentation>
+      </annotation>
+      <complexType>
+         <attribute name="listener" type="string" use="required">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+               <appinfo>
+                  <meta.attribute kind="java" basedOn=":ca.uvic.chisel.logging.eclipse.IPartLogger"/>
+               </appinfo>
+            </annotation>
+         </attribute>
+         <attribute name="addMethod" type="string" use="required">
+            <annotation>
+               <documentation>
+                  The name of the method used to add the listener that you are interested in. The method must have only one parameter, which is able to take the listener class created by this extension.
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="removeMethod" type="string" use="required">
+            <annotation>
+               <documentation>
+                  Analogous to the given add method.
+               </documentation>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="partWidgetListener">
+      <annotation>
+         <documentation>
+            Listens for widget events that occur within the part that defines a control.
+         </documentation>
+      </annotation>
+      <complexType>
+         <sequence>
+            <element ref="selected" minOccurs="0" maxOccurs="1"/>
+            <element ref="mouseDown" minOccurs="0" maxOccurs="1"/>
+            <element ref="mouseUp" minOccurs="0" maxOccurs="1"/>
+            <element ref="mouseWheel" minOccurs="0" maxOccurs="1"/>
+            <element ref="keyDown" minOccurs="0" maxOccurs="1"/>
+         </sequence>
+         <attribute name="searchChildren" type="boolean" use="default" value="false">
+            <annotation>
+               <documentation>
+                  Tells the logger whether or not it should record events that occur in children of the listener&apos;s control.
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="targetWidget" type="string" use="default" value="org.eclipse.swt.widgets.Widget">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+               <appinfo>
+                  <meta.attribute kind="java" basedOn="org.eclipse.swt.widgets.Widget:"/>
+               </appinfo>
+            </annotation>
+         </attribute>
+         <attribute name="widgetAdapter" type="string">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+               <appinfo>
+                  <meta.attribute kind="java" basedOn=":ca.uvic.chisel.logging.eclipse.IPartWidgetAdapter"/>
+               </appinfo>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="selected">
+      <complexType>
+         <attribute name="on" use="required">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+            <simpleType>
+               <restriction base="string">
+                  <enumeration value="true">
+                  </enumeration>
+               </restriction>
+            </simpleType>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="mouseUp">
+      <complexType>
+         <attribute name="on" use="required">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+            <simpleType>
+               <restriction base="string">
+                  <enumeration value="true">
+                  </enumeration>
+               </restriction>
+            </simpleType>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="keyDown">
+      <complexType>
+         <attribute name="on" use="required">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+            <simpleType>
+               <restriction base="string">
+                  <enumeration value="true">
+                  </enumeration>
+               </restriction>
+            </simpleType>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="mouseDown">
+      <complexType>
+         <attribute name="on" use="required">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+            <simpleType>
+               <restriction base="string">
+                  <enumeration value="true">
+                  </enumeration>
+               </restriction>
+            </simpleType>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="mouseWheel">
+      <complexType>
+         <attribute name="on" use="required">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+            <simpleType>
+               <restriction base="string">
+                  <enumeration value="true">
+                  </enumeration>
+               </restriction>
+            </simpleType>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="workbench">
+      <complexType>
+         <sequence minOccurs="1" maxOccurs="unbounded">
+            <element ref="selection" minOccurs="0" maxOccurs="unbounded"/>
+            <element ref="command" minOccurs="0" maxOccurs="unbounded"/>
+            <element ref="lifecycle" minOccurs="0" maxOccurs="unbounded"/>
+         </sequence>
+      </complexType>
+   </element>
+
+   <element name="selection">
+      <complexType>
+         <attribute name="partFilter" type="string">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="command">
+      <complexType>
+         <attribute name="commandFilter" type="string" use="default" value="*">
+            <annotation>
+               <documentation>
+                  A filter for listening for the execution of commands. Commands have wild-card interpreters. Using a &apos;*&apos; anywhere in the string will match any string.
+               </documentation>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="lifecycle">
+      <annotation>
+         <documentation>
+            Records lifecycle events of various workbench UI elements including activations, opening, and closing events.
+         </documentation>
+      </annotation>
+      <complexType>
+         <attribute name="filter" type="string" use="required">
+            <annotation>
+               <documentation>
+                  A wildcard filter for workbench parts that will match this logger. Perspectives, views, and editors will be included in the matching.
+               </documentation>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <annotation>
+      <appinfo>
+         <meta.section type="since"/>
+      </appinfo>
+      <documentation>
+         [Enter the first release in which this extension point appears.]
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appinfo>
+         <meta.section type="examples"/>
+      </appinfo>
+      <documentation>
+         [Enter extension point usage example here.]
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appinfo>
+         <meta.section type="apiinfo"/>
+      </appinfo>
+      <documentation>
+         [Enter API information here.]
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appinfo>
+         <meta.section type="implementation"/>
+      </appinfo>
+      <documentation>
+         [Enter information about supplied implementation of this extension point.]
+      </documentation>
+   </annotation>
+
+
+</schema>

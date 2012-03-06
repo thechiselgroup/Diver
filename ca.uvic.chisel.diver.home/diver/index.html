@@ -1,0 +1,115 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<link rel="StyleSheet" href="styles/diver.css" type="text/css" media="screen"/>
+<script type="text/javascript" src="js/load.js"></script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-17962512-2']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<title>Diver: Dynamic Interactive Views for Reverse Engineering</title>
+</head>
+<body onload="loadMenu('Welcome To Diver')">
+<div class="frame">
+<div id="menu"></div>
+<h2>Diver: Dynamic Interactive Views For Reverse Engineering</h2>
+<p>Diver is a set of advanced tools for debugging and reverse engineering. If you ever wondered, 
+"What did my program just do?", Diver will help you find the answer.</p>
+<br>
+<div class="mainpoints">
+<strong>Diver Allows You To</strong>
+<ul>
+	<li>Easily trace your Java programs</li>
+	<li>Visualize your program's runtime functionality</li>
+	<li>Filter your IDE based on what occurs at runtime</li>
+	<li>See what code ran in your source code editors</li>
+	<li>And generally understand your software better</li>
+</ul>
+</div>
+<div style="display: inline; position:relative; left: 20px;">
+	<img style="width: 420px; height: 321px;" src="images/perspective.png">
+</div>
+
+<h3>News!</h3>
+<p><b><br>October 27, 2011</b> <i>New Update Sites</i></p>
+<p>Today, we released new update sites. Both of these are available through the
+<a href='download.html'>Download</a> page. They should be faster and more reliable
+than the previous update sites, but if you find they aren't, let us know!</p>
+
+<p><b><br>August 5, 2011</b> <i>New Version of Diver</i></p>
+<p>Today, we released version 0.4.0 of Diver. There are a few new features, and
+a number of bug fixes. Several of the features are considered <i>Beta</i>.
+Diver, really, is a beta project, but the beta features are
+a little "more" beta than the rest :-). See the <a href='new.html'>New To Diver</a>
+page for more information.</p>
+
+<p><b><br>March 21, 2011</b> <i>Diver is a runner-up for Best Developer Tool at EclipseCon!</i></p>
+<p>It was announced at EclipseCon that Diver was the runner-up for best 
+developer tool of 2011. This honour was bestowed upon us by a panel of judges
+belonging to the Eclipse Foundation. We here at the CHISEL group strive to
+create tools that work well and help people. We are humbled by the numerous other
+tools that were also nominated, and we would like to congratulate the winner.</p>
+
+<p><b>November 24, 2010</b> <i>New Version of Diver</i></p>
+<p>Version 0.3.0 is out today. See the <a href='new_0_3_0.html'>New To Diver</a> page 
+for a list of new features. The data collection period of our studies are over,
+so Diver will no longer collect usage information. Go to the 
+<a href='download.html'>Download</a> page for information about how to get Diver.</p>
+<p><b>May 17, 2010</b> <i>New Version of Diver</i></p>
+<p>Version 0.2.0 of Diver was released today. See <a href='new_0_2_0.html'>New To Diver</a>.
+Note that with version 0.2.0, Diver will log usage information by default. You
+can opt out, and turn it off if you wish.</p>
+<p><b>Jan 27, 2010</b> <i>New Version of Diver</i></p>
+<p>Version 0.1.0 of Diver is now out. See the <a href='new_0_1_0.html'>New To Diver</a> page
+to see what you can get.</p>
+<p><b>Dec 2, 2009</b> <i>Diver Now Available on Linux!</i>*</p>
+<p>The Diver native code has been compiled to work on Linux. It isn't currently
+in the main Release stream, but you can test it out using the Developer 
+releases:
+<strong>https://diver.svn.sourceforge.net/svnroot/diver/Development</strong></p>
+
+<h3>Diver Is Research</h3>
+<p>Diver is a part of ongoing research at the 
+<a href='http://www.thechiselgroup.org'>Computer Human Interaction Software Engineering Lab</a> (CHISEL)
+at the <a href='http://www.uvic.ca/'>University of Victoria</a>. Please see the 
+<a href='research.html'>research</a> page for more info.</p>
+<p>As of Diver version 0.2.0, we are logging usage information about how Diver is
+used. If you would like to use Diver, but not have any of the information about
+how you are using Diver logged, you can shut off the logging facilities using
+the Eclipse preferences.</p>
+
+<h3>Requirements</h3>
+<ul>
+<li><strong>Environment:</strong> Eclipse SDK, version 3.5 with the Java Development Tools (JDT) installed.</li>
+<li><strong>Java:</strong> Java SDK version 6 or higher</li>
+<li><strong>Operating System:</strong> Linux, Windows XP SP2 or later*</li>
+</ul>
+
+<h4>Recommendations</h4>
+<ul>
+<li><strong>Processor:</strong> Multi-core system</li>
+<li><strong>Memory:</strong> 2GB of RAM or higher</li>
+<li><strong>Permanent Storage:</strong> 20GB or higher available to store trace data</li>
+</ul>
+
+<p><strong>*NOTE</strong>: Diver uses native C++ code. Currently, it has only been tested on systems running
+Windows XP and Windows 7. Preliminary testing has been done on the Linux
+operating system as well, but it is not part of the regular release.
+The code is portable, and there is no theoretical reason that it can't run on any
+Java 6-enabled environment. If you would like to help us to expand the number of platforms that Diver can run on,
+please visit the Diver <a href='http://sourceforge.net/projects/diver'>project</a> page and contribute.</p>
+
+<div id="footer"></div> 
+</div>
+</body>
+</html>

@@ -1,0 +1,92 @@
+
+h1. Exploring Your Code
+
+One of the great things about Diver is its tight integration with your Eclipse workspace. Diver attempts to make it easier to understand your software. One of the most important representations of your software is simply its source code. So, Diver has many features that enrich the source browsing experience.
+
+h2. Activating A Trace
+
+Diver helps to organize your perspective on your source code. This is done by selecting a trace to be __active__. An active trace is basically a "lens" through which Diver can focus your workbench. When a trace is active, Diver can filter your Package Explorer, and annotate your source code according to what occurred during that trace.
+
+Activating a trace is simple. In your __Program Traces__ view, you will notice that beside each trace is a small, amber !../images/code/trace-inactive.gif! icon. Selecting this icon will activate your trace. The icon will now be a green !../images/code/trace-active.gif!. Selecting it again will deactivate your trace. That is all there is to it.
+
+h2. Filtering The Package Explorer
+
+Once you have activated a trace, you can take advantage of Diver's filtering features. First, look for the !../images/code/filter_java.png! icon in the toolbar of the Package Explorer. This icon will filter the package explorer according to the active trace. Select it to see the results. They can be very significant. What you will see in your package explorer are only those elements which contain at least one method that was called during the active trace. This includes projects,  packages, files, classes, and methods. The reference libraries (for example the JRE System Library) will be filtered as well. The following is an example of the impact of filtering.
+
+!../images/code/filtercompare.png!
+
+To the left is an unfiltered package explorer. On the right is the filtered one.
+
+Diver will even do finer-grained filtering for you. When you select a thread in the active trace, Diver will adjust the filter to show only those elements that contain methods that were called within the selected thread. The image below shows the filters when just the active trace is selected, and when the thread called __Thread-4__ is selected. Compare it to the filtered Package Explorer above. This feature can help you isolate the calls that occurred within each thread.
+
+!../images/code/filterthread.png!
+
+h3. Gaining a Different Perspective
+
+You may recall a discussion about indexing that was covered in the section <a href="#LaunchingATrace">Launching A Trace</a>. Basically, during, and for some time after, the time that you are tracing a program, Diver has to do some analysis to extract the information from the trace that you have determined is important. By default, Diver will assume that "interesting code" is the code that is in your workspace. But what if you are interested in more fine-grained detail. For example, you might want to know when files are accessed on disk. It's like having a different perspective on your running code. You can change this perspective at any time in Diver by reanalyzing a trace. Doing so is simple. Just right-click on the trace and select "Reanalyze...". You will be presented with a dialog much like the __Java Trace__ tab in the launch dialog that was discussed before:
+
+!../images/code/reanalyze.png!
+
+You can enter the custom filters that you would like to use during the indexing. You can check the progress of the analysis via the progress dialog: 
+
+!../images/code/reanalyze-progress.png!
+
+The Program Traces view will also let you know when a trace is being analyzed. The icon for the trace will be decorated with a small golden "gear" that looks  like this: !../images/code/analyzing.png!. *Note* it is usually a good idea to make sure that a trace is not active while it is being analyzed. If the trace is large, many changes (hundreds of thousands!) to the underlying data may cause the various views in the workbench to frequently refresh. This may make the user interface unresponsive, and it may appear to hang for a long period. So, unless your trace is quite small (spanning only a few seconds), it is best to deactivate it before trying to reanalyze it. Also remember that reanalysis is only effective if filters are not applied at runtime, as described in <a href="#SettingUpTheTrace">Setting Up The Trace</a>.
+
+h2. Comparing Traces
+
+Even if you are careful to pinpoint exact time periods for your trace, it can be difficult to find what you are looking for because dynamic program traces can be fairly "noisy". The Java Virtual Machine can, in fact, perform all kinds of operations that you are unaware of, but that do result in method calls. A classic example is that of classloading. Before a class is first used, its code must be loaded from disk. So, though your code may simply state @new MyObject()@, the JVM may, in fact, make numerous calls to the system using classes like @java.io.File@ and @java.io.DataInputStream@.  These calls, though they might not be interesting to you, will get logged and indexed. Or, perhaps, you are trying to find out what happens when you push a button in a graphical user interface. Behind the scenes, there may be many objects listening to every mouse movement you make, when you are only interested in the one click.
+
+To help you find the methods that you are interested in, Diver offers the ability to compare the differences between traces. Doing so will affect the filters in your Package Explorer to limit the number of methods that are exposed. You can hide method calls in a way that is analogous to hiding layers in many popular graphics programs. When you activate a trace, you will notice a small !../images/code/openeye.png! icon beside it. This icon means that the methods of the trace are not filtered out in the current filter. You will see the same icon beside any trace that was launched using the same launch configuration. You are able to hide the methods in these traces by selecting the !../images/code/openeye.png!. The icon will then toggle to a !../images/code/closedeye.png!. The filters are set up to display all of the methods that appear in the active trace, but not any that appear in the traces with a !../images/code/closedeye.png! beside them. So, for example, you might run your GUI program first just to log a number of random mouse movements, and second to log the mouse click. If you hide the first trace, you should now only see the methods in and around the time of your mouse click. Below is an example of the difference that can be made by using such comparison.
+
+!../images/code/layer0.png! !../images/code/layer1.png!
+
+h2. Finding The Context
+
+So far this section has been dedicated to filtering your explorer view so that you can pinpoint parts of code that were called during your application. <a href="#DivingIntoYourTrace">Diving Into Your Trace</a> was about visualizing the trace. What if you want to switch between the two. Diver offers ways of doing that.
+
+h3. A Method In Sequence
+
+So, you have set up your filters, and you have found a method that looks interesting, but you want to see the context in which it was called. You can get started by right-clicking on the method. You should see near the bottom of the pop-up menu an item called "Reveal In". Selecting it will reveal another menu listing all of the threads in which the method was called. Selecting one will automatically open the Thread Sequence View, and show to you the first time that the method was called in the given thread. It is as easy as that.
+
+!../images/code/reveal.png!
+
+
+h3. Finding All The Calls
+
+There is one catch to the above description. A method may be called many, many times during a program, even within the same thread. How can you see the different contexts in which it was called. The timeline of the Thread Sequence View is there to help.
+
+When you select a method in the Package Explorer, and you have the Thread Sequence View opened on a thread that calls that method, you will see a number of blue markers in the timeline, much like the following. 
+
+!../images/code/timeline0.png!
+
+Each blue marker represents a call to the selected method in the thread. Right-clicking on one of those blue markers will reveal a menu like this one:
+
+!../images/code/timeline1.png!
+
+Selecting "Reveal..." will simply expand the current sequence diagram, and scroll so that the activation corresponding to the method call can be seen in the view. "Focus..." will reset the root of the sequence diagram to the activation, and "Open..." will open the method in a source code editor.
+
+h3. Removing Details
+
+In <a href="#ComparingTraces">Comparing Traces</a> we saw that it is possible to filter the Eclipse Package explorer by activating on trace, and hiding others. By default, the filter is applied to only the package explorer and the Diver sequence diagram will show you every method call that is part of the thread that it is displaying. You can apply the same filter used on the Package explorer to the sequence diagram by selecting the "eye" !../images/code/openeye.png! icon on the sequence diagram toolbar. When you "close" this eye, Diver will calculate which method calls may be hidden from the sequence diagram view according to the filters set in the Program Traces view. It may take some time to perform this calculation. During the calculation, the eye icon will appear to "blink". When complete, the diagram will refresh.
+
+There are two different ways that this filter can be applied. You can either choose to keep all method calls visible in the diagram, greying out the filtered ones, or you can choose to remove them from the view completely. Greying out the method calls may be helpful for when you would like to understand the entire behaviour of the system, but you would like the diagram to indicate which method calls are "important" for further exploration. An example of such a view is as follows.
+
+!../images/diving/sequence-filter1.png!
+
+If you would like to remove the method calls from the view completely, you can use the sequence diagram's drop-down menu and select *Hide Unnecessary Calls*:
+
+!../images/diving/sequence-menu.png!
+
+ The picture below shows the same sequence as above, but with unnecessary calls hidden.
+ 
+ 
+ 
+ !../images/diving/sequence-filter2.png!
+
+
+h2. Reading Your Code
+
+Diver is designed, in part, to help you understand source code. So, there are features that help you to read it. <a href="#DivingIntoYourTrace">Diving Into Your Trace</a> already discussed how it is possible to jump to your source code using the visualizations. But Diver also does more. It offers a __code coverage__ indicator. When you activate a trace, and open a source code editor, if any methods were called in the program represented by that source code (and they were indexed during analysis), they will be marked in the source code and in the overview ruler by blue markers. So, you can be sure of what lines were executed during the trace. See the image below for an example.
+
+!../images/code/sourcecode.png!

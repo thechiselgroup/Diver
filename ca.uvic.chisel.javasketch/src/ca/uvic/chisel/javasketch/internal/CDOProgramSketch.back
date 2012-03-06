@@ -1,0 +1,287 @@
+/*******************************************************************************
+ * Copyright (c) 2008 the CHISEL group and contributors.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *     the CHISEL group - initial API and implementation
+ *******************************************************************************/
+package ca.uvic.chisel.javasketch.internal;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.util.Date;
+import java.util.Properties;
+
+import org.eclipse.core.resources.IProject;
+import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.IPath;
+import org.eclipse.core.runtime.Path;
+import org.eclipse.core.runtime.jobs.ISchedulingRule;
+import org.eclipse.core.runtime.jobs.Job;
+import org.eclipse.debug.core.DebugPlugin;
+import org.eclipse.debug.core.ILaunch;
+import org.eclipse.debug.core.model.IProcess;
+import org.eclipse.emf.cdo.eresource.CDOResource;
+import org.eclipse.emf.cdo.session.CDOSession;
+import org.eclipse.emf.cdo.view.CDOView;
+import org.eclipse.emf.ecore.EObject;
+
+import ca.uvic.chisel.hsqldb.CDO.ICDODataPortal;
+import ca.uvic.chisel.hsqldb.server.DBPlugin;
+import ca.uvic.chisel.javasketch.IProgramSketch;
+import ca.uvic.chisel.javasketch.SketchPlugin;
+import ca.uvic.chisel.javasketch.launching.internal.ITraceClient;
+import ca.uvic.chisel.javasketch.launching.internal.JavaAgentTraceClient;
+import ca.uvic.chisel.programsketch.model.trace.Trace;
+import ca.uvic.chisel.programsketch.model.trace.TracePackage;
+
+/**
+ * Represents a trace from a java launch.
+ * @author Del Myers
+ *
+ */
+public class CDOProgramSketch implements IProgramSketch, ISchedulingRule {
+	
+	private Properties props;
+	private Date date;
+	private IPath path;
+	private IProject project;
+	private String id;
+	private ICDODataPortal dataPortal;
+
+	/**
+	 * Creates a trace from the path in trace store
+	 * @param traceStore the path on the files system at which the data is stored
+	 * for this trace.
+	 * @throws IOException if there was a problem loading the properties for this file.
+	 */
+	public CDOProgramSketch(File traceStore, IProject project) throws IOException {
+		this.path = new Path(traceStore.getAbsolutePath());
+		this.project = project;
+		//find the properties file.
+		File properties = new File(traceStore, JavaAgentTraceClient.PROCESS_PROPERTIES_FILE);
+		Properties props = new Properties();
+		FileInputStream fis = new FileInputStream(properties);
+		props.load(fis);
+		this.props = props;
+		fis.close();
+		
+	}
+
+	/* (non-Javadoc)
+	 * @see ca.uvic.chisel.javasketch.IProgramSketch#getProcessName()
+	 */
+	@Override
+	public String getProcessName() {
+		return props.getProperty(JavaAgentTraceClient.HOST_PROPERTY);
+	}
+
+	/* (non-Javadoc)
+	 * @see ca.uvic.chisel.javasketch.IProgramSketch#getProcessTime()
+	 */
+	@Override
+	public Date getProcessTime() {
+		if (date == null) {
+			String timeString = props.getProperty(JavaAgentTraceClient.ATTACH_TIME_PROPERTY);
+			long time = System.currentTimeMillis();
+			if (timeString == null) {
+				timeString = "" + System.currentTimeMillis();
+			}
+			try {
+				time = Long.parseLong(timeString);
+			} catch (NumberFormatException e) {}
+			date = new Date(time);
+			
+		}
+		return date;
+	}
+
+	/* (non-Javadoc)
+	 * @see ca.uvic.chisel.javasketch.IProgramSketch#getTraceData()
+	 */
+	@Override
+	public Trace getTraceData() {
+		try {
+			CDOView view = getPortal().getDefaultView();
+			CDOResource resource = view.getResource("/trace");
+			if (resource != null && resource.getContents().size() > 0) {
+				EObject obj = resource.getContents().get(0);
+				if (obj instanceof Trace) {
+					return (Trace)obj;
+				}
+			}
+			
+		} catch (Exception e) {
+			SketchPlugin.getDefault().log(e);
+		}
+		return null;
+	}
+	
+	public boolean delete() {
+		//make sure the view is closed
+		try {
+			getPortal().close();
+		} catch (CoreException e) {
+			return false;
+		}
+		File dataLocation = getTracePath().toFile();
+		recursiveDelete(dataLocation);
+		return (!dataLocation.exists());
+	}
+	
+	/**
+	 * @param dataLocation
+	 */
+	private void recursiveDelete(File dataLocation) {
+		if (dataLocation.isDirectory()) {
+			for (File child : dataLocation.listFiles()) {
+				recursiveDelete(child);
+			}
+		}
+		if (!dataLocation.delete()) {
+			System.out.println("could not delete " + dataLocation.toString());
+		}
+	}
+	
+	public ICDODataPortal getPortal() throws CoreException {
+		if (dataPortal == null) {
+			dataPortal = DBPlugin.getDefault().getDataPortal(path); 
+			dataPortal.getSession().getPackageRegistry().putEPackage(TracePackage.eINSTANCE);
+		}
+		return dataPortal;
+	}
+	
+	/**
+	 * 
+	 * @return A session that can be used to get views or transactions onto the trace data.
+	 * @throws CoreException if there was difficulty accessing the database.
+	 */
+	public CDOSession getTraceSession() throws CoreException {
+		return getPortal().getSession();
+	}
+	
+	/**
+	 * 
+	 * @return the path at which (temporary) trace files are stored.
+	 */
+	public IPath getTracePath() {
+		return path;
+	}
+	
+	/* (non-Javadoc)
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		if (obj == null || !(obj.getClass().equals(this.getClass()))) {
+			return false;
+		}
+		CDOProgramSketch that = (CDOProgramSketch) obj;
+		return this.getID().equals(that.getID());
+	}
+	
+	/* (non-Javadoc)
+	 * @see java.lang.Object#hashCode()
+	 */
+	@Override
+	public int hashCode() {
+		return getID().hashCode();
+	}
+	
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return getProcessName();
+	}
+
+	/* (non-Javadoc)
+	 * @see ca.uvic.chisel.javasketch.IProgramSketch#getTracedProject()
+	 */
+	@Override
+	public IProject getTracedProject() {
+		return project;
+	}
+
+	/* (non-Javadoc)
+	 * @see ca.uvic.chisel.javasketch.IProgramSketch#getRule()
+	 */
+	@Override
+	public ISchedulingRule getRule() {
+		return this;
+	}
+
+	/* (non-Javadoc)
+	 * @see ca.uvic.chisel.javasketch.IProgramSketch#getTracer()
+	 */
+	@Override
+	public ITraceClient getTracer() {
+		ILaunch[] launches = DebugPlugin.getDefault().getLaunchManager().getLaunches();
+		for (ILaunch launch : launches) {
+			for (IProcess process : launch.getProcesses()) {
+				if (process instanceof ITraceClient) {
+					if (((ITraceClient)process).getID().equals(getID())) {
+						return ((ITraceClient)process);
+					}
+				}
+			}
+		}
+		return null;
+	}
+	/* (non-Javadoc)
+	 * @see ca.uvic.chisel.javasketch.IProgramSketch#isAnalysing()
+	 */
+	@Override
+	public boolean isAnalysing() {
+		Job[] jobs = Job.getJobManager().find(IProgramSketch.class);
+		for (Job job : jobs) {
+			if (job.getRule().isConflicting(this)) {
+				return (job.getState() != Job.NONE);
+			}
+		}
+		return false;
+	}
+
+	/* (non-Javadoc)
+	 * @see ca.uvic.chisel.javasketch.IProgramSketch#isRunning()
+	 */
+	@Override
+	public boolean isRunning() {
+		ITraceClient client = getTracer();
+		return (client != null && !client.isTerminated());
+	}
+	
+	/* (non-Javadoc)
+	 * @see ca.uvic.chisel.javasketch.IProgramSketch#getID()
+	 */
+	@Override
+	public String getID() {
+		if (id == null) {
+			id = project.getName() + "." + getProcessTime().getTime();
+		}
+		return id;
+	}
+
+	/* (non-Javadoc)
+	 * @see org.eclipse.core.runtime.jobs.ISchedulingRule#contains(org.eclipse.core.runtime.jobs.ISchedulingRule)
+	 */
+	@Override
+	public boolean contains(ISchedulingRule rule) {
+		//only contains this rule
+		return (rule != null && rule.equals(this));
+	}
+
+	/* (non-Javadoc)
+	 * @see org.eclipse.core.runtime.jobs.ISchedulingRule#isConflicting(org.eclipse.core.runtime.jobs.ISchedulingRule)
+	 */
+	@Override
+	public boolean isConflicting(ISchedulingRule rule) {
+		return (rule != null && rule.equals(this));
+	}
+
+}

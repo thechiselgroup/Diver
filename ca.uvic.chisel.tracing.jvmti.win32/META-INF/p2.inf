@@ -1,0 +1,6 @@
+units.0.id=ca.uvic.chisel.javasketch
+units.0.version=$version$
+
+provides.0.namespace=ca.uvic.chisel.javasketch.iu
+provides.0.name=jvmti.implementation
+provides.0.version=$version$
