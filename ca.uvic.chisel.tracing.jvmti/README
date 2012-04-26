@@ -1,0 +1,89 @@
+/*******************************************************************************
+ * Copyright (c) 2009 the CHISEL group and contributors.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ * 	David Oulette - initial C implementation
+ *     Del Myers - C++ implementation
+ *     Jamie Starke - Documentation of the build process
+ *******************************************************************************/
+
+This is the single most important documentation if you're trying to modify
+diver.
+
+This project is build entirely in C++. Before you start complaining that this
+is a java tool, and as such, it should be written entirely in Java, I suggest
+you read the Wikipedia page on JVMTI 
+(http://en.wikipedia.org/wiki/Java_Virtual_Machine_Tools_Interface).
+
+Now that you understand why this library is written in C++, we will talk about
+what to do about it. 
+
+For building the C++ required libraries for JVMTI in Diver, we recommend the CDT
+perspective of Eclipse (http://eclipse.org/cdt/). Getting the CDT system should
+be easy enough. On Linux, you should be able to point this to the GCC libraries,
+and just go. On Windows, you will need to get ahold of GCC. We recommend using 
+the Minimalist GNU for Windows (http://www.mingw.org/). You'll want to set this
+all up ahead of time. You will likely need it for building Boost (which we'll 
+talk about later). Once you have MinGW installed, you can finish configuring
+your CDT environment by opening the Properties for ca.uvic.chisel.tracing.jvmti,
+C++ General -> Paths and Symbols, then under the Includes tab. 
+
+First make sure GNU C has the following included directories:
+
+* C:/[your mingw path]/include
+* C:/[your mingw path]/lib/gss/mingw32/[version]/include
+* C:/[your mingw path]/lib/gss/mingw32/[version]/include-fixed.
+
+Next make sure that GNU C++ has the following included directories:
+
+* C:/[your mingw path]/include
+* C:/[your mingw path]/lib/gcc/mingw32/[version]/include
+* C:/[your mingw path]/lib/gcc/mingw32/[version]/include-fixed
+* C:/[your mingw path]/lib/gcc/mingw32/[version]/include/c++
+* C:/[your mingw path]/lib/gcc/mingw32/[version]/include/c++/mingw32
+* C:/[your mingw path]/lib/gcc/mingw32/[version]/include/c++/backward
+
+Your CDT environment should now be good to go.
+
+When the original author of much of Diver decided that they wanted
+cross-platform support, they decided to use Boost (http://www.boost.org/) to 
+allow them to deal with higher level concept, instead of the specific 
+implementations in a number of different systems.  
+
+Before you can build diver, you will need to set up your boost environment. 
+Most Linux distributions will already have a package for boost that is build
+into the development environment. This will make your life easier. On Windows
+however, you will have to get the system yourself. We recommend that you follow 
+the Boost Getting Started guide to do this 
+(http://www.boost.org/doc/libs/release/more/getting_started/index.html). When
+you get to building your boost library, you will want to use the following 
+flags: "--toolset=gcc address-model=32 link=static". Note that Diver currently
+only supports 32 bit installs (but these can run on 64 bit machines, if they are
+using a 32-bit JVM). Once you have built your boost library, come back, and we
+will tell you how to configure the rest of the build.
+
+Now that your boost environment is set up, you will need to update the build 
+environment for ca.uvic.chisel.tracing.jvmti to match the locations of your
+boost libraries, and your MinGW environment.
+
+You will need to do this for every build configuration you intend on using.
+Open the properties for ca.uvic.chisel.tracing.jvmti again.  open C/C++ Build ->
+Build Variables. Make sure you have a boost variable who's type is String and
+value is the location of your boost environment that you just built. Next make
+you have a java variable who's type is string and value is the location of your 
+java JDK location. Next, under Settings -> Tool Settings -> MinGW C++ Linker, 
+ensure that the following libraries are included using the appropriate 
+toolset string (mgw45 for MinGW 4.5):
+
+* ws2_32
+* boost_regex-[toolset string]-mt-d
+* boost_system-[toolset string]-mt-d
+* boost_date-[toolset string]-mt-d
+* boost_filesystem-[toolset string]-mt-d
+* boost_iostreams-[toolset string]-mt-d
+* boost_thread-[toolset string]-mt-d
+
