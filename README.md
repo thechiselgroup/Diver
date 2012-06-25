@@ -17,9 +17,9 @@ Diver allows you to:
 
 In order to run, Diver needs:
 
-* Eclipse 3.7
+* Eclipse 3.7, 32-bit
 * A 32-bit Java install
-* Windows 7, Linux, or OS X ()
+* Windows 7, Linux, or OS X
 
 
 
