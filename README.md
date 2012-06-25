@@ -1,15 +1,18 @@
-(This README will be expanded over the next few hours / days.  )
+##Diver:  Dynamic Interactive Views For Reverse Engineering
 
-Diver is a set of advanced tools for debugging and reverse engineering. If you ever wondered, "What did my program just do?", Diver will help you find the answer.
+(This README will be expanded over the next few hours / days.)
 
-Diver Allows You To:
--Easily trace your Java programs
--Visualize your program's runtime functionality
--Filter your IDE based on what occurs at runtime
--See what code ran in your source code editors
--And generally understand your software better
+Diver is a set of advanced tools for debugging and reverse engineering. If you ever wondered, "What did my program just do?", Diver will help you find the answer.  Diver is a set of Eclipse plugins that aid developers in understanding software. It uses dynamic analysis and reverse engineering to offer views and filters that aid comprehension and discovery.
+
+Diver allows you to:
+
+* Easily trace your Java programs
+* Visualize your program's runtime functionality
+* Filter your IDE based on what occurs at runtime
+* See what code ran in your source code editors
+* And generally understand your software better
 
 
-Dynamic Interactive Tools for Reverse Engineering (Diver) is a research project of The University of Victoria's Computer Human Interaction & Software Engineering Lab (CHISEL).
-It is used for partial fulfilment of the M.Sc. work for Master's student Del Myers.
-Funded by Defence Research and Development Canada under contract W7701-82702/001/QCA and a DND/NSERC grant with IBM and DRDC Valcartier(DNDPJ 380607-09).
+Dynamic Interactive Tools for Reverse Engineering (Diver) is a ongoing research project of the [Computer Human Interaction & Software Engineering Lab](http://thechiselgroup.com/ "CHISEL") at the [The University of Victoria](http://www.uvic.ca "UVic").  It was used for partial fulfilment of the M.Sc. work for [Del Myers](http://delaltctrl.blogspot.ca/ "Del Myers").
+
+Funded by [Defence Research and Development Canada](http://drdc-rddc.gc.ca/ "DRDC Canada") under contract W7701-82702/001/QCA and a DND/NSERC grant with IBM and DRDC Valcartier(DNDPJ 380607-09).
