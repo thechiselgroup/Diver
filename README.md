@@ -13,6 +13,16 @@ Diver allows you to:
 * And generally understand your software better
 
 
-Dynamic Interactive Tools for Reverse Engineering (Diver) is a ongoing research project of the [Computer Human Interaction & Software Engineering Lab](http://thechiselgroup.com/ "CHISEL") at the [The University of Victoria](http://www.uvic.ca "UVic").  It was used for partial fulfilment of the M.Sc. work for [Del Myers](http://delaltctrl.blogspot.ca/ "Del Myers").
+###Requirements:
+
+In order to run, Diver needs:
+
+* Eclipse 3.7
+* A 32-bit Java install
+* Windows 7, Linux, or OS X ()
+
+
+
+Dynamic Interactive Tools for Reverse Engineering (Diver) is a ongoing research project of the [Computer Human Interaction & Software Engineering Lab](http://thechiselgroup.com/ "CHISEL") at the [The University of Victoria](http://www.uvic.ca "UVic").  It was initiated by [Del Myers](http://delaltctrl.blogspot.ca/ "Del Myers"). for partial fulfilment of his M.Sc.
 
 Funded by [Defence Research and Development Canada](http://drdc-rddc.gc.ca/ "DRDC Canada") under contract W7701-82702/001/QCA and a DND/NSERC grant with IBM and DRDC Valcartier(DNDPJ 380607-09).
