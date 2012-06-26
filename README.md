@@ -12,7 +12,7 @@ Diver allows you to:
 * See what code ran in your source code editors
 * And generally understand your software better
 
-For more about Diver, visit [the website](http://eclipsediver.wordpress.com "Diver on Wordpress"), view the [documents](http://eclipsediver.wordpress.com/docs "Diver Docs), or follow us at [@eclipsediver](https://twitter.com/eclipsediver "Diver on Twitter").  T
+For more about Diver, visit [the website](http://eclipsediver.wordpress.com "Diver on Wordpress"), view the [documents](http://eclipsediver.wordpress.com/docs "Diver Docs"), or follow us at [@eclipsediver](https://twitter.com/eclipsediver "Diver on Twitter").
 
 ###Requirements:
 
@@ -23,7 +23,8 @@ In order to run, Diver needs:
 * Windows 7, Linux, or OS X
 
 
+<sub>
+Dynamic Interactive Tools for Reverse Engineering (Diver) is a ongoing research project of the [Computer Human Interaction & Software Engineering Lab](http://thechiselgroup.com/ "CHISEL") at the [The University of Victoria](http://www.uvic.ca "UVic").  It was initiated by [Del Myers](http://delaltctrl.blogspot.ca/ "Del Myers"), as partial fulfilment of his M.Sc.
 
-Dynamic Interactive Tools for Reverse Engineering (Diver) is a ongoing research project of the [Computer Human Interaction & Software Engineering Lab](http://thechiselgroup.com/ "CHISEL") at the [The University of Victoria](http://www.uvic.ca "UVic").  It was initiated by [Del Myers](http://delaltctrl.blogspot.ca/ "Del Myers"). for partial fulfilment of his M.Sc.
-
+<sub>
 Funded by [Defence Research and Development Canada](http://drdc-rddc.gc.ca/ "DRDC Canada") under contract W7701-82702/001/QCA and a DND/NSERC grant with IBM and DRDC Valcartier(DNDPJ 380607-09).
