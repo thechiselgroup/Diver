@@ -12,6 +12,7 @@ Diver allows you to:
 * See what code ran in your source code editors
 * And generally understand your software better
 
+For more about Diver, visit [eclipsediver.wordpress.com](http://eclipsediver.wordpress.com "Diver on Wordpress"), or follow us at [@eclipsediver](https://twitter.com/eclipsediver "Diver on Twitter").  
 
 ###Requirements:
 
