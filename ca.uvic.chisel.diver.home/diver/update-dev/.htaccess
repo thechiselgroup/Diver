@@ -1,6 +1,0 @@
-RewriteEngine on
-
-# Redirect the root requests to the master site
-RewriteRule ^([^/]*)$ http://diver.svn.sourceforge.net/svnroot/diver/Development/$1 [L]
-# The rest goes to the auto-mirror location
-RewriteRule (.*) http://diver.svn.sourceforge.net/svnroot/diver/Development/$1 [L]
