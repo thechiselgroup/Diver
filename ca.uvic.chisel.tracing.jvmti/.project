@@ -27,7 +27,7 @@
 				</dictionary>
 				<dictionary>
 					<key>org.eclipse.cdt.make.core.buildLocation</key>
-					<value>${workspace_loc:/ca.uvic.chisel.tracing.jvmti/Debug}</value>
+					<value>${workspace_loc:/ca.uvic.chisel.diver.tracing/Release}</value>
 				</dictionary>
 				<dictionary>
 					<key>org.eclipse.cdt.make.core.contents</key>
