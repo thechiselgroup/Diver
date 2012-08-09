@@ -1,0 +1,67 @@
+<class-diagram version="1.0.9" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
+  associations="true" dependencies="true" nesting-relationships="true">  
+  <package id="1" corner="BOTTOM_RIGHT" language="java" name="ca.uvic.chisel.feature.internal.commands" 
+    project="ca.uvic.chisel.diver.feature-plugin" 
+    file="/ca.uvic.chisel.diver.feature-plugin/src/ca/uvic/chisel/feature/internal/commands" binary="false">    
+    <position height="49" width="258" x="157" y="363"/>    
+    <display autosize="true" stereotype="true"/>  
+  </package>  
+  <package id="2" corner="BOTTOM_RIGHT" language="java" name="ca.uvic.chisel.feature.research.ui.internal" 
+    project="ca.uvic.chisel.diver.feature-plugin" 
+    file="/ca.uvic.chisel.diver.feature-plugin/src/ca/uvic/chisel/feature/research/ui/internal" binary="false">    
+    <position height="56" width="259" x="436" y="274"/>    
+    <display autosize="false" stereotype="true"/>  
+  </package>  
+  <package id="3" corner="BOTTOM_RIGHT" language="java" name="ca.uvic.chisel.feature.internal" 
+    project="ca.uvic.chisel.diver.feature-plugin" 
+    file="/ca.uvic.chisel.diver.feature-plugin/src/ca/uvic/chisel/feature/internal" binary="false">    
+    <position height="49" width="191" x="245" y="452"/>    
+    <display autosize="true" stereotype="true"/>  
+  </package>  
+  <package id="4" corner="BOTTOM_RIGHT" language="java" name="ca.uvic.chisel.feature" 
+    project="ca.uvic.chisel.diver.feature-plugin" file="/ca.uvic.chisel.diver.feature-plugin/src/ca/uvic/chisel/feature" 
+    binary="false">    
+    <position height="49" width="145" x="245" y="541"/>    
+    <display autosize="true" stereotype="true"/>  
+  </package>  
+  <package id="5" corner="BOTTOM_RIGHT" language="java" name="ca.uvic.chisel.feature.ui.internal" 
+    project="ca.uvic.chisel.diver.feature-plugin" 
+    file="/ca.uvic.chisel.diver.feature-plugin/src/ca/uvic/chisel/feature/ui/internal" binary="false">    
+    <position height="49" width="204" x="175" y="274"/>    
+    <display autosize="true" stereotype="true"/>  
+  </package>  
+  <dependency id="6">    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="4"/>  
+  </dependency>  
+  <dependency id="7">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="1"/>  
+  </dependency>  
+  <dependency id="8">    
+    <bendpoint x="445" y="363"/>    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="3"/>  
+  </dependency>  
+  <dependency id="9">    
+    <bendpoint x="466" y="363"/>    
+    <bendpoint x="466" y="452"/>    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="4"/>  
+  </dependency>  
+  <dependency id="10">    
+    <bendpoint x="210" y="452"/>    
+    <end type="SOURCE" refId="1"/>    
+    <end type="TARGET" refId="4"/>  
+  </dependency>  
+  <dependency id="11">    
+    <end type="SOURCE" refId="1"/>    
+    <end type="TARGET" refId="3"/>  
+  </dependency>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true"/>    
+    <operations public="true" package="true" protected="true" private="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>
