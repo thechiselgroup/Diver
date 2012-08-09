@@ -25,9 +25,9 @@
 #include <string>
 
 #ifdef WIN32
+#define WIN32_LEAN_AND_MEAN             // Exclude rarely-used stuff from Windows headers
+// Windows Header Files:
 #include <windows.h>
-#else
-#include <boost/date_time/posix_time/posix_time.hpp>
 #endif
 #include "utils/MethodSignature.hpp"
 #include "utils/JVMTIErrors.hpp"
