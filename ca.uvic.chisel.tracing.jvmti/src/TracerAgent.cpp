@@ -54,7 +54,6 @@ extern "C" {
 
 static void JNICALL cbVMStart(jvmtiEnv *jvmti, JNIEnv *env) {
 	if (finished) return;
-	DEBUG_PRINT("Using Boost 1.42.0");
 	DEBUG_PRINT("Starting VM");
 	_jvmti_agent->VMStart(jvmti, env);
 	if (_jvmti_agent->IsVMStarted()) {

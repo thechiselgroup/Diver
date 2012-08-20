@@ -4,8 +4,9 @@
 		<cconfiguration id="cdt.managedbuild.config.gnu.mingw.so.release.983624535">
 			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="cdt.managedbuild.config.gnu.mingw.so.release.983624535" moduleId="org.eclipse.cdt.core.settings" name="Release">
 				<macros>
-					<stringMacro name="java" type="VALUE_TEXT" value="C:\Program Files\Java\jdk1.7.0_03"/>
+					<stringMacro name="boostver" type="VALUE_TEXT" value="-1_42"/>
 					<stringMacro name="boost" type="VALUE_TEXT" value="C:\boost\boost_1_42_0"/>
+					<stringMacro name="java" type="VALUE_TEXT" value="C:\Program Files\Java\jdk1.7.0_03"/>
 				</macros>
 				<externalSettings>
 					<externalSetting>
@@ -68,12 +69,12 @@
 								</option>
 								<option id="gnu.cpp.link.option.libs.1648299415" name="Libraries (-l)" superClass="gnu.cpp.link.option.libs" valueType="libs">
 									<listOptionValue builtIn="false" value="ws2_32"/>
-									<listOptionValue builtIn="false" value="boost_system-mgw46-mt-d"/>
-									<listOptionValue builtIn="false" value="boost_date_time-mgw46-mt-d"/>
-									<listOptionValue builtIn="false" value="boost_filesystem-mgw46-mt-d"/>
-									<listOptionValue builtIn="false" value="boost_iostreams-mgw46-mt-d"/>
-									<listOptionValue builtIn="false" value="boost_thread-mgw46-mt-d"/>
-									<listOptionValue builtIn="false" value="boost_regex-mgw46-mt-d"/>
+									<listOptionValue builtIn="false" value="boost_system-mgw46-mt-d${boostver}"/>
+									<listOptionValue builtIn="false" value="boost_date_time-mgw46-mt-d${boostver}"/>
+									<listOptionValue builtIn="false" value="boost_filesystem-mgw46-mt-d${boostver}"/>
+									<listOptionValue builtIn="false" value="boost_iostreams-mgw46-mt-d${boostver}"/>
+									<listOptionValue builtIn="false" value="boost_thread-mgw46-mt-d${boostver}"/>
+									<listOptionValue builtIn="false" value="boost_regex-mgw46-mt-d${boostver}"/>
 								</option>
 								<option id="gnu.cpp.link.option.soname.1162537580" name="Shared object name (-Wl,-soname=)" superClass="gnu.cpp.link.option.soname" value="Sketch,--kill-at" valueType="string"/>
 								<option id="gnu.cpp.link.option.flags.1005208665" name="Linker flags" superClass="gnu.cpp.link.option.flags" value="-D_JNI_IMPLEMENTATION_  -DBOOST_THREAD_USE_LIB -m32 -mthreads" valueType="string"/>
@@ -116,8 +117,8 @@
 		<cconfiguration id="cdt.managedbuild.config.gnu.mingw.so.release.983624535.1284899735.1398221050.1481058478">
 			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="cdt.managedbuild.config.gnu.mingw.so.release.983624535.1284899735.1398221050.1481058478" moduleId="org.eclipse.cdt.core.settings" name="EventTests">
 				<macros>
-					<stringMacro name="java" type="VALUE_TEXT" value="C:\Program Files\Java\jdk1.6.0_12"/>
 					<stringMacro name="boost" type="VALUE_TEXT" value="E:\boost\boost_1_38_0"/>
+					<stringMacro name="java" type="VALUE_TEXT" value="C:\Program Files\Java\jdk1.6.0_12"/>
 				</macros>
 				<externalSettings>
 					<externalSetting>
@@ -221,8 +222,8 @@
 		<cconfiguration id="cdt.managedbuild.config.gnu.mingw.so.release.983624535.1284899735.1398221050.387420028.771632654">
 			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="cdt.managedbuild.config.gnu.mingw.so.release.983624535.1284899735.1398221050.387420028.771632654" moduleId="org.eclipse.cdt.core.settings" name="Release_Linux">
 				<macros>
-					<stringMacro name="boost" type="VALUE_PATH_DIR" value="~/boost"/>
 					<stringMacro name="java" type="VALUE_TEXT" value="/usr/lib/jvm/java-6-sun"/>
+					<stringMacro name="boost" type="VALUE_PATH_DIR" value="~/boost"/>
 				</macros>
 				<externalSettings>
 					<externalSetting>
@@ -330,8 +331,8 @@
 		<cconfiguration id="cdt.managedbuild.config.gnu.mingw.so.release.983624535.1284899735.1398221050.387420028.771632654.1001420645">
 			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="cdt.managedbuild.config.gnu.mingw.so.release.983624535.1284899735.1398221050.387420028.771632654.1001420645" moduleId="org.eclipse.cdt.core.settings" name="Debug_Linux">
 				<macros>
-					<stringMacro name="java" type="VALUE_TEXT" value="/usr/java/latest"/>
 					<stringMacro name="boost" type="VALUE_PATH_DIR" value="~/boost"/>
+					<stringMacro name="java" type="VALUE_TEXT" value="/usr/java/latest"/>
 				</macros>
 				<externalSettings>
 					<externalSetting>
@@ -442,8 +443,9 @@
 		<cconfiguration id="cdt.managedbuild.config.gnu.mingw.so.release.983624535.143428093">
 			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="cdt.managedbuild.config.gnu.mingw.so.release.983624535.143428093" moduleId="org.eclipse.cdt.core.settings" name="Debug">
 				<macros>
-					<stringMacro name="boost" type="VALUE_TEXT" value="C:\boost\boost_1_42_0"/>
+					<stringMacro name="boostver" type="VALUE_TEXT" value="-1_43"/>
 					<stringMacro name="java" type="VALUE_TEXT" value="C:\Program Files\Java\jdk1.7.0_03"/>
+					<stringMacro name="boost" type="VALUE_TEXT" value="C:\boost\boost_1_43_0"/>
 				</macros>
 				<externalSettings>
 					<externalSetting>
@@ -510,12 +512,12 @@
 								</option>
 								<option id="gnu.cpp.link.option.libs.2061252717" name="Libraries (-l)" superClass="gnu.cpp.link.option.libs" valueType="libs">
 									<listOptionValue builtIn="false" value="ws2_32"/>
-									<listOptionValue builtIn="false" value="boost_regex-mgw46-mt-d"/>
-									<listOptionValue builtIn="false" value="boost_system-mgw46-mt-d"/>
-									<listOptionValue builtIn="false" value="boost_date_time-mgw46-mt-d"/>
-									<listOptionValue builtIn="false" value="boost_filesystem-mgw46-mt-d"/>
-									<listOptionValue builtIn="false" value="boost_iostreams-mgw46-mt-d"/>
-									<listOptionValue builtIn="false" value="boost_thread-mgw46-mt-d"/>
+									<listOptionValue builtIn="false" value="boost_regex-mgw46-mt-d${boostver}"/>
+									<listOptionValue builtIn="false" value="boost_system-mgw46-mt-d${boostver}"/>
+									<listOptionValue builtIn="false" value="boost_date_time-mgw46-mt-d${boostver}"/>
+									<listOptionValue builtIn="false" value="boost_filesystem-mgw46-mt-d${boostver}"/>
+									<listOptionValue builtIn="false" value="boost_iostreams-mgw46-mt-d${boostver}"/>
+									<listOptionValue builtIn="false" value="boost_thread-mgw46-mt-d${boostver}"/>
 								</option>
 								<option id="gnu.cpp.link.option.soname.1158889193" name="Shared object name (-Wl,-soname=)" superClass="gnu.cpp.link.option.soname" value="TracerAgent,--kill-at" valueType="string"/>
 								<option id="gnu.cpp.link.option.flags.1323326580" name="Linker flags" superClass="gnu.cpp.link.option.flags" value="-D_JNI_IMPLEMENTATION_ -m32 -mthreads" valueType="string"/>
@@ -558,8 +560,8 @@
 		<cconfiguration id="cdt.managedbuild.config.gnu.mingw.so.release.983624535.143428093.1836265758">
 			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="cdt.managedbuild.config.gnu.mingw.so.release.983624535.143428093.1836265758" moduleId="org.eclipse.cdt.core.settings" name="Thread Test">
 				<macros>
-					<stringMacro name="java" type="VALUE_TEXT" value="C:\Program Files\Java\jdk"/>
 					<stringMacro name="boost" type="VALUE_TEXT" value="C:\boost\current_version"/>
+					<stringMacro name="java" type="VALUE_TEXT" value="C:\Program Files\Java\jdk"/>
 				</macros>
 				<externalSettings>
 					<externalSetting>
@@ -1672,7 +1674,7 @@
 				</scannerInfoProvider>
 			</profile>
 		</scannerConfigBuildInfo>
-		<scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.mingw.so.debug.1473179130;cdt.managedbuild.config.gnu.mingw.so.debug.1473179130.;cdt.managedbuild.tool.gnu.c.compiler.mingw.so.debug.77165094;cdt.managedbuild.tool.gnu.c.compiler.input.1456838271">
+		<scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.mingw.so.release.983624535;cdt.managedbuild.config.gnu.mingw.so.release.983624535.;cdt.managedbuild.tool.gnu.c.compiler.mingw.so.release.1343693599;cdt.managedbuild.tool.gnu.c.compiler.input.269499065">
 			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="org.eclipse.cdt.managedbuilder.core.GCCManagedMakePerProjectProfileC"/>
 			<profile id="org.eclipse.cdt.make.core.GCCStandardMakePerProjectProfile">
 				<buildOutputProvider>
@@ -1838,7 +1840,7 @@
 				</scannerInfoProvider>
 			</profile>
 		</scannerConfigBuildInfo>
-		<scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.mingw.so.release.983624535;cdt.managedbuild.config.gnu.mingw.so.release.983624535.;cdt.managedbuild.tool.gnu.c.compiler.mingw.so.release.1343693599;cdt.managedbuild.tool.gnu.c.compiler.input.269499065">
+		<scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.mingw.so.debug.1473179130;cdt.managedbuild.config.gnu.mingw.so.debug.1473179130.;cdt.managedbuild.tool.gnu.c.compiler.mingw.so.debug.77165094;cdt.managedbuild.tool.gnu.c.compiler.input.1456838271">
 			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="org.eclipse.cdt.managedbuilder.core.GCCManagedMakePerProjectProfileC"/>
 			<profile id="org.eclipse.cdt.make.core.GCCStandardMakePerProjectProfile">
 				<buildOutputProvider>
@@ -2004,8 +2006,8 @@
 				</scannerInfoProvider>
 			</profile>
 		</scannerConfigBuildInfo>
-		<scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.mingw.so.release.983624535.143428093.1836265758;cdt.managedbuild.config.gnu.mingw.so.release.983624535.143428093.1836265758.;cdt.managedbuild.tool.gnu.cpp.compiler.mingw.so.release.408790603;cdt.managedbuild.tool.gnu.cpp.compiler.input.1817243489">
-			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="org.eclipse.cdt.managedbuilder.core.GCCManagedMakePerProjectProfileCPP"/>
+		<scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.mingw.so.release.983624535.1284899735.1398221050.387420028.771632654;cdt.managedbuild.config.gnu.mingw.so.release.983624535.1284899735.1398221050.387420028.771632654.;cdt.managedbuild.tool.gnu.c.compiler.base.34893272;cdt.managedbuild.tool.gnu.c.compiler.input.2131350384">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="org.eclipse.cdt.managedbuilder.core.GCCManagedMakePerProjectProfileC"/>
 			<profile id="org.eclipse.cdt.make.core.GCCStandardMakePerProjectProfile">
 				<buildOutputProvider>
 					<openAction enabled="true" filePath=""/>
@@ -2087,8 +2089,8 @@
 				</scannerInfoProvider>
 			</profile>
 		</scannerConfigBuildInfo>
-		<scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.mingw.so.release.983624535.1284899735.1398221050.387420028.771632654;cdt.managedbuild.config.gnu.mingw.so.release.983624535.1284899735.1398221050.387420028.771632654.;cdt.managedbuild.tool.gnu.c.compiler.base.34893272;cdt.managedbuild.tool.gnu.c.compiler.input.2131350384">
-			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="org.eclipse.cdt.managedbuilder.core.GCCManagedMakePerProjectProfileC"/>
+		<scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.mingw.so.release.983624535.143428093.1836265758;cdt.managedbuild.config.gnu.mingw.so.release.983624535.143428093.1836265758.;cdt.managedbuild.tool.gnu.cpp.compiler.mingw.so.release.408790603;cdt.managedbuild.tool.gnu.cpp.compiler.input.1817243489">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="org.eclipse.cdt.managedbuilder.core.GCCManagedMakePerProjectProfileCPP"/>
 			<profile id="org.eclipse.cdt.make.core.GCCStandardMakePerProjectProfile">
 				<buildOutputProvider>
 					<openAction enabled="true" filePath=""/>
