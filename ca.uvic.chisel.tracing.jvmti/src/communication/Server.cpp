@@ -16,6 +16,8 @@
  *      Author: Del Myers
  */
 
+#define BOOST_THREAD_USE_LIB
+
 #include "communication/Server.hpp"
 
 
