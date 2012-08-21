@@ -4,9 +4,9 @@
 		<cconfiguration id="cdt.managedbuild.config.gnu.mingw.so.release.983624535">
 			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="cdt.managedbuild.config.gnu.mingw.so.release.983624535" moduleId="org.eclipse.cdt.core.settings" name="Release">
 				<macros>
-					<stringMacro name="boostver" type="VALUE_TEXT" value="-1_48"/>
+					<stringMacro name="boostver" type="VALUE_TEXT" value="-1_49"/>
+					<stringMacro name="boost" type="VALUE_TEXT" value="C:\boost\boost_1_49_0"/>
 					<stringMacro name="java" type="VALUE_TEXT" value="C:\Program Files (x86)\Java\jdk1.7.0_04"/>
-					<stringMacro name="boost" type="VALUE_TEXT" value="C:\boost\boost_1_48_0"/>
 				</macros>
 				<externalSettings>
 					<externalSetting>
@@ -99,8 +99,8 @@
 		<cconfiguration id="cdt.managedbuild.config.gnu.mingw.so.release.983624535.1284899735.1398221050.1481058478">
 			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="cdt.managedbuild.config.gnu.mingw.so.release.983624535.1284899735.1398221050.1481058478" moduleId="org.eclipse.cdt.core.settings" name="EventTests">
 				<macros>
-					<stringMacro name="java" type="VALUE_TEXT" value="C:\Program Files\Java\jdk1.6.0_12"/>
 					<stringMacro name="boost" type="VALUE_TEXT" value="E:\boost\boost_1_38_0"/>
+					<stringMacro name="java" type="VALUE_TEXT" value="C:\Program Files\Java\jdk1.6.0_12"/>
 				</macros>
 				<externalSettings>
 					<externalSetting>
@@ -186,8 +186,8 @@
 		<cconfiguration id="cdt.managedbuild.config.gnu.mingw.so.release.983624535.1284899735.1398221050.387420028.771632654">
 			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="cdt.managedbuild.config.gnu.mingw.so.release.983624535.1284899735.1398221050.387420028.771632654" moduleId="org.eclipse.cdt.core.settings" name="Release_Linux">
 				<macros>
-					<stringMacro name="boost" type="VALUE_PATH_DIR" value="~/boost"/>
 					<stringMacro name="java" type="VALUE_TEXT" value="/usr/lib/jvm/java-6-sun"/>
+					<stringMacro name="boost" type="VALUE_PATH_DIR" value="~/boost"/>
 				</macros>
 				<externalSettings>
 					<externalSetting>
@@ -277,8 +277,8 @@
 		<cconfiguration id="cdt.managedbuild.config.gnu.mingw.so.release.983624535.1284899735.1398221050.387420028.771632654.1001420645">
 			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="cdt.managedbuild.config.gnu.mingw.so.release.983624535.1284899735.1398221050.387420028.771632654.1001420645" moduleId="org.eclipse.cdt.core.settings" name="Debug_Linux">
 				<macros>
-					<stringMacro name="java" type="VALUE_TEXT" value="/usr/java/latest"/>
 					<stringMacro name="boost" type="VALUE_PATH_DIR" value="~/boost"/>
+					<stringMacro name="java" type="VALUE_TEXT" value="/usr/java/latest"/>
 				</macros>
 				<externalSettings>
 					<externalSetting>
@@ -371,9 +371,9 @@
 		<cconfiguration id="cdt.managedbuild.config.gnu.mingw.so.release.983624535.143428093">
 			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="cdt.managedbuild.config.gnu.mingw.so.release.983624535.143428093" moduleId="org.eclipse.cdt.core.settings" name="Debug">
 				<macros>
-					<stringMacro name="boostver" type="VALUE_TEXT" value="-1_48"/>
-					<stringMacro name="boost" type="VALUE_TEXT" value="C:\boost\boost_1_48_0"/>
+					<stringMacro name="boostver" type="VALUE_TEXT" value="-1_49"/>
 					<stringMacro name="java" type="VALUE_TEXT" value="C:\Program Files (x86)\Java\jdk1.7.0_04"/>
+					<stringMacro name="boost" type="VALUE_TEXT" value="C:\boost\boost_1_49_0"/>
 				</macros>
 				<externalSettings>
 					<externalSetting>
@@ -413,17 +413,17 @@
 									<listOptionValue builtIn="false" value="&quot;${java}/include&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${java}/include/win32&quot;"/>
 								</option>
-								<option id="gnu.cpp.compiler.option.other.other.1424672249" name="Other flags" superClass="gnu.cpp.compiler.option.other.other" value="-c -fmessage-length=0 -D_JNI_IMPLEMENTATION_ -fno-omit-frame-pointer -m32 -mthreads" valueType="string"/>
+								<option id="gnu.cpp.compiler.option.other.other.1424672249" name="Other flags" superClass="gnu.cpp.compiler.option.other.other" value="-c -fmessage-length=0 -D_JNI_IMPLEMENTATION_ -fno-omit-frame-pointer -m32 -mthreads  -D_WIN32_WINNT=0x0501 -DWINVER=0x0501" valueType="string"/>
 								<option id="gnu.cpp.compiler.option.preprocessor.def.280182024" name="Defined symbols (-D)" superClass="gnu.cpp.compiler.option.preprocessor.def" valueType="definedSymbols">
 									<listOptionValue builtIn="false" value="DEBUG"/>
 								</option>
 								<inputType id="cdt.managedbuild.tool.gnu.cpp.compiler.input.1120857677" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.input"/>
 							</tool>
-							<tool errorParsers="org.eclipse.cdt.core.GCCErrorParser" id="cdt.managedbuild.tool.gnu.c.compiler.mingw.so.release.348990013" name="GCC C Compiler" superClass="cdt.managedbuild.tool.gnu.c.compiler.mingw.so.release">
+							<tool command="gcc" errorParsers="org.eclipse.cdt.core.GCCErrorParser" id="cdt.managedbuild.tool.gnu.c.compiler.mingw.so.release.348990013" name="GCC C Compiler" superClass="cdt.managedbuild.tool.gnu.c.compiler.mingw.so.release">
 								<option defaultValue="gnu.c.optimization.level.most" id="gnu.c.compiler.mingw.so.release.option.optimization.level.2040453852" name="Optimization Level" superClass="gnu.c.compiler.mingw.so.release.option.optimization.level" value="gnu.c.optimization.level.none" valueType="enumerated"/>
 								<option id="gnu.c.compiler.mingw.so.release.option.debugging.level.1677636648" name="Debug Level" superClass="gnu.c.compiler.mingw.so.release.option.debugging.level" value="gnu.c.debugging.level.default" valueType="enumerated"/>
 								<option id="gnu.c.compiler.option.include.paths.930678118" name="Include paths (-I)" superClass="gnu.c.compiler.option.include.paths"/>
-								<option id="gnu.c.compiler.option.misc.other.1320301689" name="Other flags" superClass="gnu.c.compiler.option.misc.other" value="-c -fmessage-length=0 -D_JNI_IMPLEMENATION_ -fno-omit-frame-pointer -m32 -mthreads" valueType="string"/>
+								<option id="gnu.c.compiler.option.misc.other.1320301689" name="Other flags" superClass="gnu.c.compiler.option.misc.other" value="-c -fmessage-length=0 -D_JNI_IMPLEMENATION_ -fno-omit-frame-pointer -m32 -mthreads  " valueType="string"/>
 								<inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.1893527637" superClass="cdt.managedbuild.tool.gnu.c.compiler.input"/>
 							</tool>
 							<tool id="cdt.managedbuild.tool.gnu.c.linker.mingw.so.release.198242154" name="MinGW C Linker" superClass="cdt.managedbuild.tool.gnu.c.linker.mingw.so.release">
@@ -470,8 +470,8 @@
 		<cconfiguration id="cdt.managedbuild.config.gnu.mingw.so.release.983624535.143428093.1836265758">
 			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="cdt.managedbuild.config.gnu.mingw.so.release.983624535.143428093.1836265758" moduleId="org.eclipse.cdt.core.settings" name="Thread Test">
 				<macros>
-					<stringMacro name="java" type="VALUE_TEXT" value="C:\Program Files\Java\jdk"/>
 					<stringMacro name="boost" type="VALUE_TEXT" value="C:\boost\current_version"/>
+					<stringMacro name="java" type="VALUE_TEXT" value="C:\Program Files\Java\jdk"/>
 				</macros>
 				<externalSettings>
 					<externalSetting>
