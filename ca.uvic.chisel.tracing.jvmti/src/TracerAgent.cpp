@@ -54,7 +54,7 @@ extern "C" {
 
 static void JNICALL cbVMStart(jvmtiEnv *jvmti, JNIEnv *env) {
 	if (finished) return;
-	DEBUG_PRINT("Using Boost 1.46.0");
+	DEBUG_PRINT("Using Boost 1.47.0");
 	DEBUG_PRINT("Starting VM");
 	_jvmti_agent->VMStart(jvmti, env);
 	if (_jvmti_agent->IsVMStarted()) {
@@ -229,7 +229,7 @@ extern "C" void tss_cleanup_implemented() {}
 
 JNIEXPORT jint JNICALL Agent_OnLoad(JavaVM *vm, char *options, void *reserved) {
 	try {
-		std::cout << "Using Boost 1.46.0" << std::endl;
+		std::cout << "Using Boost 1.47.0" << std::endl;
 		std::cout << "Loading Agent" << std::endl;
 		DEBUG_PRINT("Loading Agent");
 		/* Set default options */
