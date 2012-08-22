@@ -5,8 +5,8 @@
 			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="cdt.managedbuild.config.gnu.mingw.so.release.983624535" moduleId="org.eclipse.cdt.core.settings" name="Release">
 				<macros>
 					<stringMacro name="boostver" type="VALUE_TEXT" value="-1_50"/>
-					<stringMacro name="java" type="VALUE_TEXT" value="C:\Program Files\Java\jdk1.7.0_03"/>
 					<stringMacro name="boost" type="VALUE_TEXT" value="C:\boost\boost_1_50_0"/>
+					<stringMacro name="java" type="VALUE_TEXT" value="C:\Program Files\Java\jdk1.7.0_03"/>
 				</macros>
 				<externalSettings>
 					<externalSetting>
@@ -78,7 +78,7 @@
 									<listOptionValue builtIn="false" value="boost_chrono-mgw46-mt-d${boostver}"/>
 								</option>
 								<option id="gnu.cpp.link.option.soname.1162537580" name="Shared object name (-Wl,-soname=)" superClass="gnu.cpp.link.option.soname" value="Sketch,--kill-at" valueType="string"/>
-								<option id="gnu.cpp.link.option.flags.1005208665" name="Linker flags" superClass="gnu.cpp.link.option.flags" value="-D_JNI_IMPLEMENTATION_  -DBOOST_THREAD_USE_LIB -m32 -mthreads" valueType="string"/>
+								<option id="gnu.cpp.link.option.flags.1005208665" name="Linker flags" superClass="gnu.cpp.link.option.flags" value="-D_JNI_IMPLEMENTATION_  -DBOOST_THREAD_USE_LIB -m32 -mthreads -static-libgcc -static-libstdc++" valueType="string"/>
 								<inputType id="cdt.managedbuild.tool.gnu.cpp.linker.input.126943283" superClass="cdt.managedbuild.tool.gnu.cpp.linker.input">
 									<additionalInput kind="additionalinputdependency" paths="$(USER_OBJS)"/>
 									<additionalInput kind="additionalinput" paths="$(LIBS)"/>
@@ -100,8 +100,8 @@
 		<cconfiguration id="cdt.managedbuild.config.gnu.mingw.so.release.983624535.1284899735.1398221050.1481058478">
 			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="cdt.managedbuild.config.gnu.mingw.so.release.983624535.1284899735.1398221050.1481058478" moduleId="org.eclipse.cdt.core.settings" name="EventTests">
 				<macros>
-					<stringMacro name="java" type="VALUE_TEXT" value="C:\Program Files\Java\jdk1.6.0_12"/>
 					<stringMacro name="boost" type="VALUE_TEXT" value="E:\boost\boost_1_38_0"/>
+					<stringMacro name="java" type="VALUE_TEXT" value="C:\Program Files\Java\jdk1.6.0_12"/>
 				</macros>
 				<externalSettings>
 					<externalSetting>
@@ -187,8 +187,8 @@
 		<cconfiguration id="cdt.managedbuild.config.gnu.mingw.so.release.983624535.1284899735.1398221050.387420028.771632654">
 			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="cdt.managedbuild.config.gnu.mingw.so.release.983624535.1284899735.1398221050.387420028.771632654" moduleId="org.eclipse.cdt.core.settings" name="Release_Linux">
 				<macros>
-					<stringMacro name="boost" type="VALUE_PATH_DIR" value="~/boost"/>
 					<stringMacro name="java" type="VALUE_TEXT" value="/usr/lib/jvm/java-6-sun"/>
+					<stringMacro name="boost" type="VALUE_PATH_DIR" value="~/boost"/>
 				</macros>
 				<externalSettings>
 					<externalSetting>
@@ -278,8 +278,8 @@
 		<cconfiguration id="cdt.managedbuild.config.gnu.mingw.so.release.983624535.1284899735.1398221050.387420028.771632654.1001420645">
 			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="cdt.managedbuild.config.gnu.mingw.so.release.983624535.1284899735.1398221050.387420028.771632654.1001420645" moduleId="org.eclipse.cdt.core.settings" name="Debug_Linux">
 				<macros>
-					<stringMacro name="java" type="VALUE_TEXT" value="/usr/java/latest"/>
 					<stringMacro name="boost" type="VALUE_PATH_DIR" value="~/boost"/>
+					<stringMacro name="java" type="VALUE_TEXT" value="/usr/java/latest"/>
 				</macros>
 				<externalSettings>
 					<externalSetting>
@@ -373,8 +373,8 @@
 			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="cdt.managedbuild.config.gnu.mingw.so.release.983624535.143428093" moduleId="org.eclipse.cdt.core.settings" name="Debug">
 				<macros>
 					<stringMacro name="boostver" type="VALUE_TEXT" value="-1_50"/>
-					<stringMacro name="boost" type="VALUE_TEXT" value="C:\boost\boost_1_50_0"/>
 					<stringMacro name="java" type="VALUE_TEXT" value="C:\Program Files\Java\jdk1.7.0_03"/>
+					<stringMacro name="boost" type="VALUE_TEXT" value="C:\boost\boost_1_50_0"/>
 				</macros>
 				<externalSettings>
 					<externalSetting>
@@ -450,7 +450,7 @@
 									<listOptionValue builtIn="false" value="boost_chrono-mgw46-mt-d${boostver}"/>
 								</option>
 								<option id="gnu.cpp.link.option.soname.1158889193" name="Shared object name (-Wl,-soname=)" superClass="gnu.cpp.link.option.soname" value="TracerAgent,--kill-at" valueType="string"/>
-								<option id="gnu.cpp.link.option.flags.1323326580" name="Linker flags" superClass="gnu.cpp.link.option.flags" value="-D_JNI_IMPLEMENTATION_ -m32 -mthreads" valueType="string"/>
+								<option id="gnu.cpp.link.option.flags.1323326580" name="Linker flags" superClass="gnu.cpp.link.option.flags" value="-D_JNI_IMPLEMENTATION_ -m32 -mthreads -static-libgcc -static-libstdc++" valueType="string"/>
 								<inputType id="cdt.managedbuild.tool.gnu.cpp.linker.input.1151558547" superClass="cdt.managedbuild.tool.gnu.cpp.linker.input">
 									<additionalInput kind="additionalinputdependency" paths="$(USER_OBJS)"/>
 									<additionalInput kind="additionalinput" paths="$(LIBS)"/>
@@ -472,8 +472,8 @@
 		<cconfiguration id="cdt.managedbuild.config.gnu.mingw.so.release.983624535.143428093.1836265758">
 			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="cdt.managedbuild.config.gnu.mingw.so.release.983624535.143428093.1836265758" moduleId="org.eclipse.cdt.core.settings" name="Thread Test">
 				<macros>
-					<stringMacro name="java" type="VALUE_TEXT" value="C:\Program Files\Java\jdk"/>
 					<stringMacro name="boost" type="VALUE_TEXT" value="C:\boost\current_version"/>
+					<stringMacro name="java" type="VALUE_TEXT" value="C:\Program Files\Java\jdk"/>
 				</macros>
 				<externalSettings>
 					<externalSetting>
