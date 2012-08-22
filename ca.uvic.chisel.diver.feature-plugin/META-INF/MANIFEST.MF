@@ -2,9 +2,9 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Diver
 Bundle-SymbolicName: ca.uvic.chisel.diver.feature;singleton:=true
-Bundle-Version: 0.4.0.qualifier
+Bundle-Version: 0.4.1.qualifier
 Bundle-Activator: ca.uvic.chisel.feature.DiverPlugin
-Bundle-Vendor: University of Victoria
+Bundle-Vendor: The Chisel Group
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  org.eclipse.ui.browser;bundle-version="3.2.0",
