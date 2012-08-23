@@ -2,34 +2,34 @@
 <feature
       id="ca.uvic.chisel.diver.feature"
       label="Diver"
-      version="0.4.0.qualifier"
-      provider-name="Del Myers and the CHISEL Group"
+      version="0.4.1.qualifier"
+      provider-name="The CHISEL Group"
       plugin="ca.uvic.chisel.diver.feature"
       os="linux,win32"
       arch="x86,x86_64">
 
-   <description>
+   <description url="https://eclipsediver.wordpress.com/features/">
       Diver: Dynamic Interactive Views for Reverse Engineering
-
-This feature adds reverse engineering functionality to the Eclipse SDK. Features include:
-
--Easy-to-run trace launches for Java and Eclipse applications.
--Fast, background trace analysis
--Reverse Engineering Perspective
--Sequence diagram view for traces
--Code coverage markers for source code
--Program trace filters for Java views
+This feature adds reverse engineering functionality to the Eclipse
+SDK. Features include:
+- Easy-to-run trace launches for Java and Eclipse applications.
+- Fast, background trace analysis
+- Reverse Engineering Perspective
+- Sequence diagram view for traces
+- Code coverage markers for source code
+- Program trace filters for Java views
+- Static Sequence Diagrams
    </description>
 
    <copyright>
-      Copyright (c) 2009 the CHISEL group and contributors.
+      Copyright (c) 2012 the CHISEL group and contributors.
 All rights reserved. This program and the accompanying materials
 are made available under the terms of the Eclipse Public License
 v1.0
 which accompanies this distribution, and is available at
 http://www.eclipse.org/legal/epl-v10.html
-
 Contributors:
+Sean Stevenson - Java and C++ development
 Del Myers - Java and C++ JVMTI implementation
 David Oulette - Initial C JVMTI implementation
    </copyright>
@@ -107,6 +107,10 @@ Everyone is permitted to copy and distribute copies of this Agreement, but in or
 This Agreement is governed by the laws of the State of New York and the intellectual property laws of the United States of America. No party to this Agreement will bring a legal action under this Agreement more than one year after the cause of action arose. Each party waives its rights to a jury trial in any resulting litigation.
    </license>
 
+   <url>
+      <discovery label="Diver Website" url="https://eclipsediver.wordpress.com/"/>
+   </url>
+
    <requires>
       <import plugin="org.eclipse.ui"/>
       <import plugin="org.eclipse.core.runtime"/>
@@ -150,7 +154,7 @@ This Agreement is governed by the laws of the State of New York and the intellec
          id="ca.uvic.chisel.tracing.jvmti"
          download-size="0"
          install-size="0"
-         version="0.4.0.qualifier"
+         version="0.4.1.qualifier"
          fragment="true"/>
 
    <plugin
@@ -163,7 +167,7 @@ This Agreement is governed by the laws of the State of New York and the intellec
          id="ca.uvic.chisel.diver.feature"
          download-size="0"
          install-size="0"
-         version="0.4.0.qualifier"
+         version="0.4.1.qualifier"
          unpack="false"/>
 
    <plugin
@@ -181,7 +185,7 @@ This Agreement is governed by the laws of the State of New York and the intellec
          arch="x86,x86_64"
          download-size="0"
          install-size="0"
-         version="0.4.0.qualifier"
+         version="0.4.1.qualifier"
          fragment="true"/>
 
 </feature>

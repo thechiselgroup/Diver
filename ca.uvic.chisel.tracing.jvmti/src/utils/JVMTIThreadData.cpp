@@ -16,6 +16,7 @@
  *      Author: Del Myers
  */
 
+#define BOOST_THREAD_USE_LIB
 
 #include "utils/JVMTIUtilities.hpp"
 #include "stdafx.h"

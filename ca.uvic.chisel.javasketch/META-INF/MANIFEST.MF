@@ -29,7 +29,7 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.jdt.debug;bundle-version="3.4.0"
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
-Bundle-Vendor: University of Victoria
+Bundle-Vendor: The Chisel Group
 Export-Package: ca.uvic.chisel.javasketch,
  ca.uvic.chisel.javasketch.internal;x-friends:="ca.uvic.chisel.javasketch.statistics,ca.uvic.chisel.javasketch.junit",
  ca.uvic.chisel.javasketch.internal.ast.groups,
