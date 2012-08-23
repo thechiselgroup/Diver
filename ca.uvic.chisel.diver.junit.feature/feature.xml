@@ -3,14 +3,23 @@
       id="ca.uvic.chisel.diver.junit.feature"
       label="Diver JUnit Tracing"
       version="0.4.0.qualifier"
-      provider-name="University of Victoria - CHISEL Group">
+      provider-name="The CHISEL Group">
 
-   <description url="http://diver.sf.net">
+   <description url="https://eclipsediver.wordpress.com/">
       Adds the ability to trace JUnit tests using Diver
    </description>
 
    <copyright url="http://www.example.com/copyright">
-      [Enter Copyright Description here.]
+      Copyright (c) 2012 the CHISEL group and contributors.
+All rights reserved. This program and the accompanying materials
+are made available under the terms of the Eclipse Public License
+v1.0
+which accompanies this distribution, and is available at
+http://www.eclipse.org/legal/epl-v10.html
+Contributors:
+Sean Stevenson - Java and C++ development
+Del Myers - Java and C++ JVMTI implementation
+David Oulette - Initial C JVMTI implementation
    </copyright>
 
    <license url="http://www.eclipse.org/legal/epl-v10.html">
@@ -211,6 +220,10 @@ Agreement more than one year after the cause of action arose.
 Each party waives its rights to a jury trial in any resulting
 litigation.
    </license>
+
+   <url>
+      <discovery label="Diver Website" url="https://eclipsediver.wordpress.com/"/>
+   </url>
 
    <plugin
          id="ca.uvic.chisel.javasketch.junit"

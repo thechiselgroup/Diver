@@ -4,8 +4,9 @@
 		<cconfiguration id="cdt.managedbuild.config.gnu.mingw.so.release.983624535">
 			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="cdt.managedbuild.config.gnu.mingw.so.release.983624535" moduleId="org.eclipse.cdt.core.settings" name="Release">
 				<macros>
-					<stringMacro name="java" type="VALUE_TEXT" value="C:\Program Files\Java\jdk1.7.0_03"/>
-					<stringMacro name="boost" type="VALUE_TEXT" value="C:\boost\boost_1_42_0"/>
+					<stringMacro name="boostver" type="VALUE_TEXT" value="-1_50"/>
+					<stringMacro name="java" type="VALUE_TEXT" value="C:\Program Files (x86)\Java\jdk1.7.0_04"/>
+					<stringMacro name="boost" type="VALUE_TEXT" value="C:\boost\boost_1_50_0"/>
 				</macros>
 				<externalSettings>
 					<externalSetting>
@@ -44,7 +45,7 @@
 									<listOptionValue builtIn="false" value="&quot;${java}/include&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${java}/include/win32&quot;"/>
 								</option>
-								<option id="gnu.cpp.compiler.option.other.other.1567747215" name="Other flags" superClass="gnu.cpp.compiler.option.other.other" value="-c -fmessage-length=0 -D_JNI_IMPLEMENTATION_ -DBOOST_THREAD_USE_LIB -fno-omit-frame-pointer -m32 -mthreads" valueType="string"/>
+								<option id="gnu.cpp.compiler.option.other.other.1567747215" name="Other flags" superClass="gnu.cpp.compiler.option.other.other" value="-c -fmessage-length=0 -D_JNI_IMPLEMENTATION_ -DBOOST_THREAD_USE_LIB -fno-omit-frame-pointer -m32 -mthreads -D_WIN32_WINNT=0x0501 -DWINVER=0x0501" valueType="string"/>
 								<inputType id="cdt.managedbuild.tool.gnu.cpp.compiler.input.1191621274" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.input"/>
 							</tool>
 							<tool errorParsers="org.eclipse.cdt.core.GCCErrorParser" id="cdt.managedbuild.tool.gnu.c.compiler.mingw.so.release.1343693599" name="GCC C Compiler" superClass="cdt.managedbuild.tool.gnu.c.compiler.mingw.so.release">
@@ -68,15 +69,16 @@
 								</option>
 								<option id="gnu.cpp.link.option.libs.1648299415" name="Libraries (-l)" superClass="gnu.cpp.link.option.libs" valueType="libs">
 									<listOptionValue builtIn="false" value="ws2_32"/>
-									<listOptionValue builtIn="false" value="boost_system-mgw46-mt-d"/>
-									<listOptionValue builtIn="false" value="boost_date_time-mgw46-mt-d"/>
-									<listOptionValue builtIn="false" value="boost_filesystem-mgw46-mt-d"/>
-									<listOptionValue builtIn="false" value="boost_iostreams-mgw46-mt-d"/>
-									<listOptionValue builtIn="false" value="boost_thread-mgw46-mt-d"/>
-									<listOptionValue builtIn="false" value="boost_regex-mgw46-mt-d"/>
+									<listOptionValue builtIn="false" value="boost_system-mgw46-mt-d${boostver}"/>
+									<listOptionValue builtIn="false" value="boost_date_time-mgw46-mt-d${boostver}"/>
+									<listOptionValue builtIn="false" value="boost_filesystem-mgw46-mt-d${boostver}"/>
+									<listOptionValue builtIn="false" value="boost_iostreams-mgw46-mt-d${boostver}"/>
+									<listOptionValue builtIn="false" value="boost_thread-mgw46-mt-d${boostver}"/>
+									<listOptionValue builtIn="false" value="boost_regex-mgw46-mt-d${boostver}"/>
+									<listOptionValue builtIn="false" value="boost_chrono-mgw46-mt-d${boostver}"/>
 								</option>
 								<option id="gnu.cpp.link.option.soname.1162537580" name="Shared object name (-Wl,-soname=)" superClass="gnu.cpp.link.option.soname" value="Sketch,--kill-at" valueType="string"/>
-								<option id="gnu.cpp.link.option.flags.1005208665" name="Linker flags" superClass="gnu.cpp.link.option.flags" value="-D_JNI_IMPLEMENTATION_  -DBOOST_THREAD_USE_LIB -m32 -mthreads" valueType="string"/>
+								<option id="gnu.cpp.link.option.flags.1005208665" name="Linker flags" superClass="gnu.cpp.link.option.flags" value="-D_JNI_IMPLEMENTATION_  -DBOOST_THREAD_USE_LIB -m32 -mthreads -static-libgcc -static-libstdc++" valueType="string"/>
 								<inputType id="cdt.managedbuild.tool.gnu.cpp.linker.input.126943283" superClass="cdt.managedbuild.tool.gnu.cpp.linker.input">
 									<additionalInput kind="additionalinputdependency" paths="$(USER_OBJS)"/>
 									<additionalInput kind="additionalinput" paths="$(LIBS)"/>
@@ -94,24 +96,6 @@
 			<storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
 			<storageModule moduleId="org.eclipse.cdt.core.language.mapping"/>
 			<storageModule moduleId="org.eclipse.cdt.internal.ui.text.commentOwnerProjectMappings"/>
-			<storageModule moduleId="org.eclipse.cdt.make.core.buildtargets">
-				<buildTargets>
-					<target name="Test" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
-						<buildCommand>make</buildCommand>
-						<stopOnError>true</stopOnError>
-						<useDefaultCommand>true</useDefaultCommand>
-						<runAllBuilders>true</runAllBuilders>
-					</target>
-					<target name="all" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
-						<buildCommand>make</buildCommand>
-						<buildArguments/>
-						<buildTarget>all</buildTarget>
-						<stopOnError>true</stopOnError>
-						<useDefaultCommand>true</useDefaultCommand>
-						<runAllBuilders>true</runAllBuilders>
-					</target>
-				</buildTargets>
-			</storageModule>
 		</cconfiguration>
 		<cconfiguration id="cdt.managedbuild.config.gnu.mingw.so.release.983624535.1284899735.1398221050.1481058478">
 			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="cdt.managedbuild.config.gnu.mingw.so.release.983624535.1284899735.1398221050.1481058478" moduleId="org.eclipse.cdt.core.settings" name="EventTests">
@@ -199,24 +183,6 @@
 			<storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
 			<storageModule moduleId="org.eclipse.cdt.core.language.mapping"/>
 			<storageModule moduleId="org.eclipse.cdt.internal.ui.text.commentOwnerProjectMappings"/>
-			<storageModule moduleId="org.eclipse.cdt.make.core.buildtargets">
-				<buildTargets>
-					<target name="Test" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
-						<buildCommand>make</buildCommand>
-						<stopOnError>true</stopOnError>
-						<useDefaultCommand>true</useDefaultCommand>
-						<runAllBuilders>true</runAllBuilders>
-					</target>
-					<target name="all" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
-						<buildCommand>make</buildCommand>
-						<buildArguments/>
-						<buildTarget>all</buildTarget>
-						<stopOnError>true</stopOnError>
-						<useDefaultCommand>true</useDefaultCommand>
-						<runAllBuilders>true</runAllBuilders>
-					</target>
-				</buildTargets>
-			</storageModule>
 		</cconfiguration>
 		<cconfiguration id="cdt.managedbuild.config.gnu.mingw.so.release.983624535.1284899735.1398221050.387420028.771632654">
 			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="cdt.managedbuild.config.gnu.mingw.so.release.983624535.1284899735.1398221050.387420028.771632654" moduleId="org.eclipse.cdt.core.settings" name="Release_Linux">
@@ -308,24 +274,6 @@
 			<storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
 			<storageModule moduleId="org.eclipse.cdt.core.language.mapping"/>
 			<storageModule moduleId="org.eclipse.cdt.internal.ui.text.commentOwnerProjectMappings"/>
-			<storageModule moduleId="org.eclipse.cdt.make.core.buildtargets">
-				<buildTargets>
-					<target name="Test" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
-						<buildCommand>make</buildCommand>
-						<stopOnError>true</stopOnError>
-						<useDefaultCommand>true</useDefaultCommand>
-						<runAllBuilders>true</runAllBuilders>
-					</target>
-					<target name="all" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
-						<buildCommand>make</buildCommand>
-						<buildArguments/>
-						<buildTarget>all</buildTarget>
-						<stopOnError>true</stopOnError>
-						<useDefaultCommand>true</useDefaultCommand>
-						<runAllBuilders>true</runAllBuilders>
-					</target>
-				</buildTargets>
-			</storageModule>
 		</cconfiguration>
 		<cconfiguration id="cdt.managedbuild.config.gnu.mingw.so.release.983624535.1284899735.1398221050.387420028.771632654.1001420645">
 			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="cdt.managedbuild.config.gnu.mingw.so.release.983624535.1284899735.1398221050.387420028.771632654.1001420645" moduleId="org.eclipse.cdt.core.settings" name="Debug_Linux">
@@ -420,30 +368,13 @@
 			<storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
 			<storageModule moduleId="org.eclipse.cdt.core.language.mapping"/>
 			<storageModule moduleId="org.eclipse.cdt.internal.ui.text.commentOwnerProjectMappings"/>
-			<storageModule moduleId="org.eclipse.cdt.make.core.buildtargets">
-				<buildTargets>
-					<target name="Test" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
-						<buildCommand>make</buildCommand>
-						<stopOnError>true</stopOnError>
-						<useDefaultCommand>true</useDefaultCommand>
-						<runAllBuilders>true</runAllBuilders>
-					</target>
-					<target name="all" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
-						<buildCommand>make</buildCommand>
-						<buildArguments/>
-						<buildTarget>all</buildTarget>
-						<stopOnError>true</stopOnError>
-						<useDefaultCommand>true</useDefaultCommand>
-						<runAllBuilders>true</runAllBuilders>
-					</target>
-				</buildTargets>
-			</storageModule>
 		</cconfiguration>
 		<cconfiguration id="cdt.managedbuild.config.gnu.mingw.so.release.983624535.143428093">
 			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="cdt.managedbuild.config.gnu.mingw.so.release.983624535.143428093" moduleId="org.eclipse.cdt.core.settings" name="Debug">
 				<macros>
-					<stringMacro name="boost" type="VALUE_TEXT" value="C:\boost\boost_1_42_0"/>
-					<stringMacro name="java" type="VALUE_TEXT" value="C:\Program Files\Java\jdk1.7.0_03"/>
+					<stringMacro name="boostver" type="VALUE_TEXT" value="-1_50"/>
+					<stringMacro name="boost" type="VALUE_TEXT" value="C:\boost\boost_1_50_0"/>
+					<stringMacro name="java" type="VALUE_TEXT" value="C:\Program Files (x86)\Java\jdk1.7.0_04"/>
 				</macros>
 				<externalSettings>
 					<externalSetting>
@@ -483,17 +414,17 @@
 									<listOptionValue builtIn="false" value="&quot;${java}/include&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${java}/include/win32&quot;"/>
 								</option>
-								<option id="gnu.cpp.compiler.option.other.other.1424672249" name="Other flags" superClass="gnu.cpp.compiler.option.other.other" value="-c -fmessage-length=0 -D_JNI_IMPLEMENTATION_ -fno-omit-frame-pointer -m32 -mthreads" valueType="string"/>
+								<option id="gnu.cpp.compiler.option.other.other.1424672249" name="Other flags" superClass="gnu.cpp.compiler.option.other.other" value="-c -fmessage-length=0 -D_JNI_IMPLEMENTATION_ -fno-omit-frame-pointer -m32 -mthreads  -D_WIN32_WINNT=0x0501 -DWINVER=0x0501" valueType="string"/>
 								<option id="gnu.cpp.compiler.option.preprocessor.def.280182024" name="Defined symbols (-D)" superClass="gnu.cpp.compiler.option.preprocessor.def" valueType="definedSymbols">
 									<listOptionValue builtIn="false" value="DEBUG"/>
 								</option>
 								<inputType id="cdt.managedbuild.tool.gnu.cpp.compiler.input.1120857677" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.input"/>
 							</tool>
-							<tool errorParsers="org.eclipse.cdt.core.GCCErrorParser" id="cdt.managedbuild.tool.gnu.c.compiler.mingw.so.release.348990013" name="GCC C Compiler" superClass="cdt.managedbuild.tool.gnu.c.compiler.mingw.so.release">
+							<tool command="gcc" errorParsers="org.eclipse.cdt.core.GCCErrorParser" id="cdt.managedbuild.tool.gnu.c.compiler.mingw.so.release.348990013" name="GCC C Compiler" superClass="cdt.managedbuild.tool.gnu.c.compiler.mingw.so.release">
 								<option defaultValue="gnu.c.optimization.level.most" id="gnu.c.compiler.mingw.so.release.option.optimization.level.2040453852" name="Optimization Level" superClass="gnu.c.compiler.mingw.so.release.option.optimization.level" value="gnu.c.optimization.level.none" valueType="enumerated"/>
 								<option id="gnu.c.compiler.mingw.so.release.option.debugging.level.1677636648" name="Debug Level" superClass="gnu.c.compiler.mingw.so.release.option.debugging.level" value="gnu.c.debugging.level.default" valueType="enumerated"/>
 								<option id="gnu.c.compiler.option.include.paths.930678118" name="Include paths (-I)" superClass="gnu.c.compiler.option.include.paths"/>
-								<option id="gnu.c.compiler.option.misc.other.1320301689" name="Other flags" superClass="gnu.c.compiler.option.misc.other" value="-c -fmessage-length=0 -D_JNI_IMPLEMENATION_ -fno-omit-frame-pointer -m32 -mthreads" valueType="string"/>
+								<option id="gnu.c.compiler.option.misc.other.1320301689" name="Other flags" superClass="gnu.c.compiler.option.misc.other" value="-c -fmessage-length=0 -D_JNI_IMPLEMENATION_ -fno-omit-frame-pointer -m32 -mthreads  " valueType="string"/>
 								<inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.1893527637" superClass="cdt.managedbuild.tool.gnu.c.compiler.input"/>
 							</tool>
 							<tool id="cdt.managedbuild.tool.gnu.c.linker.mingw.so.release.198242154" name="MinGW C Linker" superClass="cdt.managedbuild.tool.gnu.c.linker.mingw.so.release">
@@ -510,15 +441,16 @@
 								</option>
 								<option id="gnu.cpp.link.option.libs.2061252717" name="Libraries (-l)" superClass="gnu.cpp.link.option.libs" valueType="libs">
 									<listOptionValue builtIn="false" value="ws2_32"/>
-									<listOptionValue builtIn="false" value="boost_regex-mgw46-mt-d"/>
-									<listOptionValue builtIn="false" value="boost_system-mgw46-mt-d"/>
-									<listOptionValue builtIn="false" value="boost_date_time-mgw46-mt-d"/>
-									<listOptionValue builtIn="false" value="boost_filesystem-mgw46-mt-d"/>
-									<listOptionValue builtIn="false" value="boost_iostreams-mgw46-mt-d"/>
-									<listOptionValue builtIn="false" value="boost_thread-mgw46-mt-d"/>
+									<listOptionValue builtIn="false" value="boost_regex-mgw46-mt-d${boostver}"/>
+									<listOptionValue builtIn="false" value="boost_system-mgw46-mt-d${boostver}"/>
+									<listOptionValue builtIn="false" value="boost_date_time-mgw46-mt-d${boostver}"/>
+									<listOptionValue builtIn="false" value="boost_filesystem-mgw46-mt-d${boostver}"/>
+									<listOptionValue builtIn="false" value="boost_iostreams-mgw46-mt-d${boostver}"/>
+									<listOptionValue builtIn="false" value="boost_thread-mgw46-mt-d${boostver}"/>
+									<listOptionValue builtIn="false" value="boost_chrono-mgw46-mt-d${boostver}"/>
 								</option>
 								<option id="gnu.cpp.link.option.soname.1158889193" name="Shared object name (-Wl,-soname=)" superClass="gnu.cpp.link.option.soname" value="TracerAgent,--kill-at" valueType="string"/>
-								<option id="gnu.cpp.link.option.flags.1323326580" name="Linker flags" superClass="gnu.cpp.link.option.flags" value="-D_JNI_IMPLEMENTATION_ -m32 -mthreads" valueType="string"/>
+								<option id="gnu.cpp.link.option.flags.1323326580" name="Linker flags" superClass="gnu.cpp.link.option.flags" value="-D_JNI_IMPLEMENTATION_ -m32 -mthreads -static-libgcc -static-libstdc++" valueType="string"/>
 								<inputType id="cdt.managedbuild.tool.gnu.cpp.linker.input.1151558547" superClass="cdt.managedbuild.tool.gnu.cpp.linker.input">
 									<additionalInput kind="additionalinputdependency" paths="$(USER_OBJS)"/>
 									<additionalInput kind="additionalinput" paths="$(LIBS)"/>
@@ -536,24 +468,6 @@
 			<storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
 			<storageModule moduleId="org.eclipse.cdt.core.language.mapping"/>
 			<storageModule moduleId="org.eclipse.cdt.internal.ui.text.commentOwnerProjectMappings"/>
-			<storageModule moduleId="org.eclipse.cdt.make.core.buildtargets">
-				<buildTargets>
-					<target name="Test" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
-						<buildCommand>make</buildCommand>
-						<stopOnError>true</stopOnError>
-						<useDefaultCommand>true</useDefaultCommand>
-						<runAllBuilders>true</runAllBuilders>
-					</target>
-					<target name="all" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
-						<buildCommand>make</buildCommand>
-						<buildArguments/>
-						<buildTarget>all</buildTarget>
-						<stopOnError>true</stopOnError>
-						<useDefaultCommand>true</useDefaultCommand>
-						<runAllBuilders>true</runAllBuilders>
-					</target>
-				</buildTargets>
-			</storageModule>
 		</cconfiguration>
 		<cconfiguration id="cdt.managedbuild.config.gnu.mingw.so.release.983624535.143428093.1836265758">
 			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="cdt.managedbuild.config.gnu.mingw.so.release.983624535.143428093.1836265758" moduleId="org.eclipse.cdt.core.settings" name="Thread Test">
@@ -651,24 +565,6 @@
 			<storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
 			<storageModule moduleId="org.eclipse.cdt.core.language.mapping"/>
 			<storageModule moduleId="org.eclipse.cdt.internal.ui.text.commentOwnerProjectMappings"/>
-			<storageModule moduleId="org.eclipse.cdt.make.core.buildtargets">
-				<buildTargets>
-					<target name="Test" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
-						<buildCommand>make</buildCommand>
-						<stopOnError>true</stopOnError>
-						<useDefaultCommand>true</useDefaultCommand>
-						<runAllBuilders>true</runAllBuilders>
-					</target>
-					<target name="all" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
-						<buildCommand>make</buildCommand>
-						<buildArguments/>
-						<buildTarget>all</buildTarget>
-						<stopOnError>true</stopOnError>
-						<useDefaultCommand>true</useDefaultCommand>
-						<runAllBuilders>true</runAllBuilders>
-					</target>
-				</buildTargets>
-			</storageModule>
 		</cconfiguration>
 	</storageModule>
 	<storageModule moduleId="cdtBuildSystem" version="4.0.0">
@@ -2170,5 +2066,23 @@
 				</scannerInfoProvider>
 			</profile>
 		</scannerConfigBuildInfo>
+	</storageModule>
+	<storageModule moduleId="org.eclipse.cdt.make.core.buildtargets">
+		<buildTargets>
+			<target name="Test" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
+				<buildCommand>make</buildCommand>
+				<stopOnError>true</stopOnError>
+				<useDefaultCommand>true</useDefaultCommand>
+				<runAllBuilders>true</runAllBuilders>
+			</target>
+			<target name="all" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
+				<buildCommand>make</buildCommand>
+				<buildArguments/>
+				<buildTarget>all</buildTarget>
+				<stopOnError>true</stopOnError>
+				<useDefaultCommand>true</useDefaultCommand>
+				<runAllBuilders>true</runAllBuilders>
+			</target>
+		</buildTargets>
 	</storageModule>
 </cproject>

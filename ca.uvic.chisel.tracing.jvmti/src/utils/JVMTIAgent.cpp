@@ -147,9 +147,9 @@ void JVMTIAgent::SetStateLocation(const char* location) {
 		//create a file for the new location.
 		filesystem::path p(location);
 		filesystem::path agentlog = p / "agent.log";
-		logfile.open(agentlog.file_string().c_str(), ios::out);
+		logfile.open(agentlog.string().c_str(), ios::out);
 		if (!logfile.is_open()) {
-			std::cerr << "Error opening " << agentlog.file_string() << " for writing. Switching to standard out." << endl;
+			std::cerr << "Error opening " << agentlog.string() << " for writing. Switching to standard out." << endl;
 			log = &std::cout;
 		} else {
 			log = &logfile;
@@ -166,7 +166,7 @@ void JVMTIAgent::SetStateLocation(const char* location) {
 				if (ptr != NULL) {
 					ptr->CloseLog();
 					filesystem::path threadpath = p / str(format("%d.trace") % ptr->GetID());
-					ptr->SetLog(threadpath.file_string().c_str());
+					ptr->SetLog(threadpath.string().c_str());
 				}
 			}
 			Deallocate(jvmti, (void *)threads);
@@ -282,7 +282,7 @@ JavaThreadData* JVMTIAgent::ThreadStarted(jthread thread, jvmtiEnv* jvmti, JNIEn
 				//create a file for the new location.
 				filesystem::path p(statelocation);
 				filesystem::path threadpath = p / str(format("%d.trace") % jthreadData->GetID());
-				jthreadData->SetLog(threadpath.file_string().c_str());
+				jthreadData->SetLog(threadpath.string().c_str());
 			}
 			if (paused) {
 				jthreadData->Pause(jvmti, GetJNI());
