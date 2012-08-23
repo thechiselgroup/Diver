@@ -5,8 +5,8 @@
 			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="cdt.managedbuild.config.gnu.mingw.so.release.983624535" moduleId="org.eclipse.cdt.core.settings" name="Release">
 				<macros>
 					<stringMacro name="boostver" type="VALUE_TEXT" value="-1_50"/>
+					<stringMacro name="java" type="VALUE_TEXT" value="C:\Program Files (x86)\Java\jdk1.7.0_04"/>
 					<stringMacro name="boost" type="VALUE_TEXT" value="C:\boost\boost_1_50_0"/>
-					<stringMacro name="java" type="VALUE_TEXT" value="C:\Program Files\Java\jdk1.7.0_03"/>
 				</macros>
 				<externalSettings>
 					<externalSetting>
@@ -100,8 +100,8 @@
 		<cconfiguration id="cdt.managedbuild.config.gnu.mingw.so.release.983624535.1284899735.1398221050.1481058478">
 			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="cdt.managedbuild.config.gnu.mingw.so.release.983624535.1284899735.1398221050.1481058478" moduleId="org.eclipse.cdt.core.settings" name="EventTests">
 				<macros>
-					<stringMacro name="boost" type="VALUE_TEXT" value="E:\boost\boost_1_38_0"/>
 					<stringMacro name="java" type="VALUE_TEXT" value="C:\Program Files\Java\jdk1.6.0_12"/>
+					<stringMacro name="boost" type="VALUE_TEXT" value="E:\boost\boost_1_38_0"/>
 				</macros>
 				<externalSettings>
 					<externalSetting>
@@ -187,8 +187,8 @@
 		<cconfiguration id="cdt.managedbuild.config.gnu.mingw.so.release.983624535.1284899735.1398221050.387420028.771632654">
 			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="cdt.managedbuild.config.gnu.mingw.so.release.983624535.1284899735.1398221050.387420028.771632654" moduleId="org.eclipse.cdt.core.settings" name="Release_Linux">
 				<macros>
-					<stringMacro name="java" type="VALUE_TEXT" value="/usr/lib/jvm/java-6-sun"/>
 					<stringMacro name="boost" type="VALUE_PATH_DIR" value="~/boost"/>
+					<stringMacro name="java" type="VALUE_TEXT" value="/usr/lib/jvm/java-6-sun"/>
 				</macros>
 				<externalSettings>
 					<externalSetting>
@@ -278,8 +278,8 @@
 		<cconfiguration id="cdt.managedbuild.config.gnu.mingw.so.release.983624535.1284899735.1398221050.387420028.771632654.1001420645">
 			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="cdt.managedbuild.config.gnu.mingw.so.release.983624535.1284899735.1398221050.387420028.771632654.1001420645" moduleId="org.eclipse.cdt.core.settings" name="Debug_Linux">
 				<macros>
-					<stringMacro name="boost" type="VALUE_PATH_DIR" value="~/boost"/>
 					<stringMacro name="java" type="VALUE_TEXT" value="/usr/java/latest"/>
+					<stringMacro name="boost" type="VALUE_PATH_DIR" value="~/boost"/>
 				</macros>
 				<externalSettings>
 					<externalSetting>
@@ -373,8 +373,8 @@
 			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="cdt.managedbuild.config.gnu.mingw.so.release.983624535.143428093" moduleId="org.eclipse.cdt.core.settings" name="Debug">
 				<macros>
 					<stringMacro name="boostver" type="VALUE_TEXT" value="-1_50"/>
-					<stringMacro name="java" type="VALUE_TEXT" value="C:\Program Files\Java\jdk1.7.0_03"/>
 					<stringMacro name="boost" type="VALUE_TEXT" value="C:\boost\boost_1_50_0"/>
+					<stringMacro name="java" type="VALUE_TEXT" value="C:\Program Files (x86)\Java\jdk1.7.0_04"/>
 				</macros>
 				<externalSettings>
 					<externalSetting>
@@ -472,8 +472,8 @@
 		<cconfiguration id="cdt.managedbuild.config.gnu.mingw.so.release.983624535.143428093.1836265758">
 			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="cdt.managedbuild.config.gnu.mingw.so.release.983624535.143428093.1836265758" moduleId="org.eclipse.cdt.core.settings" name="Thread Test">
 				<macros>
-					<stringMacro name="boost" type="VALUE_TEXT" value="C:\boost\current_version"/>
 					<stringMacro name="java" type="VALUE_TEXT" value="C:\Program Files\Java\jdk"/>
+					<stringMacro name="boost" type="VALUE_TEXT" value="C:\boost\current_version"/>
 				</macros>
 				<externalSettings>
 					<externalSetting>
