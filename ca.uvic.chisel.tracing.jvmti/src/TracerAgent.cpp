@@ -238,7 +238,7 @@ JNIEXPORT jint JNICALL Agent_OnLoad(JavaVM *vm, char *options, void *reserved) {
 		/* Parse any options supplied on java command line */
 		parse_agent_options(options);
 		_jvmti_agent = new oasis::ServerAgent(vm);
-		DEBUG_PRINT("Agent allocated at " << std::hex << (int)(_jvmti_agent));
+		DEBUG_PRINT("Agent allocated at " << std::hex << (intptr_t)(_jvmti_agent));
 		_jni_server = new oasis::Server(port, _jvmti_agent);
 		jvmtiCapabilities		capabilities;
 		jvmtiEventCallbacks		callbacks;

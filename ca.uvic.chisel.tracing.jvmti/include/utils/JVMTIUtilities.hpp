@@ -13,11 +13,7 @@
 #include <locale>
 #include <set>
 
-#include <boost/smart_ptr.hpp>
-#include <boost/thread/thread.hpp>
-#include <boost/thread/shared_mutex.hpp>
-#include <boost/thread/recursive_mutex.hpp>
-#include <boost/thread/locks.hpp>
+
 #include <boost/unordered_set.hpp>
 #include <boost/unordered_map.hpp>
 #include <boost/regex.hpp>
@@ -34,6 +30,13 @@
 #include "utils/data/TraceEvent.hpp"
 #include "jni.h"
 #include "jvmti.h"
+
+//Boost.Thread needs to be referenced last
+#include <boost/smart_ptr.hpp>
+#include <boost/thread/thread.hpp>
+#include <boost/thread/shared_mutex.hpp>
+#include <boost/thread/recursive_mutex.hpp>
+#include <boost/thread/locks.hpp>
 
 
 namespace oasis {
