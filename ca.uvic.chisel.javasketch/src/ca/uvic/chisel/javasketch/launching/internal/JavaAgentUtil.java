@@ -33,10 +33,13 @@ public final class JavaAgentUtil {
 	
 	public static IPath getJavaAgent(ILaunchConfiguration configuration) throws CoreException {
 		String os = Platform.getOS();
+		String arch = Platform.getOSArch();
 		URL fileUrl = null;
 		
-		if ("win32".equals(os)) {
+		if ("win32".equals(os) && "x86".equals(arch)) {
 			fileUrl = SketchPlugin.getDefault().getBundle().getResource("sketch_win32.dll");
+		} else if ("win32".equals(os)  && "x86_64".equals(arch) ) {
+				fileUrl = SketchPlugin.getDefault().getBundle().getResource("sketch_win64.dll");
 		} else if ("linux".equals(os)) {
 			fileUrl = SketchPlugin.getDefault().getBundle().getResource("libsketch_linux32.so");
 		} else {
