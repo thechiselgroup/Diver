@@ -2,13 +2,13 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Diver
 Bundle-SymbolicName: ca.uvic.chisel.diver.feature;singleton:=true
-Bundle-Version: 0.4.1.qualifier
+Bundle-Version: 0.5.0.qualifier
 Bundle-Activator: ca.uvic.chisel.feature.DiverPlugin
 Bundle-Vendor: The Chisel Group
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  org.eclipse.ui.browser;bundle-version="3.2.0",
- ca.uvic.chisel.javasketch;bundle-version="0.0.2",
+ ca.uvic.chisel.javasketch;bundle-version="0.5.0",
  org.eclipse.ui.forms;bundle-version="3.3.0",
  org.eclipse.ui.intro.universal;bundle-version="3.2.0",
  org.eclipse.ui.intro;bundle-version="3.2.0"

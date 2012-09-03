@@ -31,7 +31,7 @@
 #include "jni.h"
 #include "jvmti.h"
 
-//Boost.Thread needs to be referenced last
+//Boost.Thread needs to be referenced last. Problem from 64bit build.
 #include <boost/smart_ptr.hpp>
 #include <boost/thread/thread.hpp>
 #include <boost/thread/shared_mutex.hpp>

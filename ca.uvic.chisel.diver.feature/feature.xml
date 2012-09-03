@@ -2,7 +2,7 @@
 <feature
       id="ca.uvic.chisel.diver.feature"
       label="Diver"
-      version="0.4.1.qualifier"
+      version="0.5.0.qualifier"
       provider-name="The CHISEL Group"
       plugin="ca.uvic.chisel.diver.feature"
       os="linux,win32"
@@ -140,7 +140,7 @@ This Agreement is governed by the laws of the State of New York and the intellec
          id="ca.uvic.chisel.javasketch"
          download-size="0"
          install-size="0"
-         version="0.4.0.qualifier"
+         version="0.5.0.qualifier"
          unpack="false"/>
 
    <plugin
@@ -154,7 +154,7 @@ This Agreement is governed by the laws of the State of New York and the intellec
          id="ca.uvic.chisel.tracing.jvmti"
          download-size="0"
          install-size="0"
-         version="0.4.1.qualifier"
+         version="0.5.0.qualifier"
          fragment="true"/>
 
    <plugin
@@ -167,7 +167,7 @@ This Agreement is governed by the laws of the State of New York and the intellec
          id="ca.uvic.chisel.diver.feature"
          download-size="0"
          install-size="0"
-         version="0.4.1.qualifier"
+         version="0.5.0.qualifier"
          unpack="false"/>
 
    <plugin
@@ -185,7 +185,7 @@ This Agreement is governed by the laws of the State of New York and the intellec
          arch="x86,x86_64"
          download-size="0"
          install-size="0"
-         version="0.4.1.qualifier"
+         version="0.5.0.qualifier"
          fragment="true"/>
 
 </feature>

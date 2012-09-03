@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Cjvmtracer Fragment
 Bundle-SymbolicName: ca.uvic.chisel.tracing.jvmti;singleton:=true
-Bundle-Version: 0.4.1.qualifier
-Fragment-Host: ca.uvic.chisel.javasketch;bundle-version="0.4.0"
+Bundle-Version: 0.5.0.qualifier
+Fragment-Host: ca.uvic.chisel.javasketch;bundle-version="0.5.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-Vendor: University of Victoria--The CHISEL Group
