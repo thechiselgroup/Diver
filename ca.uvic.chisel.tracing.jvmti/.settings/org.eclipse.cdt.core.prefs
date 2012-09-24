@@ -11,5 +11,10 @@ environment/project/cdt.managedbuild.config.gnu.mingw.so.release.983624535.14342
 environment/project/cdt.managedbuild.config.gnu.mingw.so.release.983624535.143428093.365635056/appendContributed=true
 environment/project/cdt.managedbuild.config.gnu.mingw.so.release.983624535.143428093/append=true
 environment/project/cdt.managedbuild.config.gnu.mingw.so.release.983624535.143428093/appendContributed=true
+environment/project/cdt.managedbuild.config.gnu.mingw.so.release.983624535.879713234/PATH/delimiter=;
+environment/project/cdt.managedbuild.config.gnu.mingw.so.release.983624535.879713234/PATH/operation=replace
+environment/project/cdt.managedbuild.config.gnu.mingw.so.release.983624535.879713234/PATH/value=C\:\\Programs\\MinGW64\\bin;C\:/Program Files/Java/jre7/bin/server;C\:/Program Files/Java/jre7/bin;C\:/Program Files/Java/jre7/lib/amd64;C\:\\Program Files\\Java\\jre7\\bin;C\:\\Program Files\\Common Files\\Microsoft Shared\\Windows Live;C\:\\Program Files (x86)\\Common Files\\Microsoft Shared\\Windows Live;C\:\\Windows\\system32;C\:\\Windows;C\:\\Windows\\System32\\Wbem;C\:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C\:\\Program Files\\Intel\\WiFi\\bin\\;C\:\\Program Files\\Common Files\\Intel\\WirelessCommon\\;C\:\\Programs\\Git\\cmd;C\:\\Programs\\MiKTeX 2.9\\miktex\\bin\\;C\:\\Program Files (x86)\\Microsoft ASP.NET\\ASP.NET Web Pages\\v1.0\\;C\:\\Program Files\\Microsoft SQL Server\\110\\Tools\\Binn\\;C\:\\Program Files (x86)\\Windows Live\\Shared;C\:\\Programs\\VirtualBox;C\:\\Program Files\\Intel\\WiFi\\bin\\;C\:\\Program Files\\Common Files\\Intel\\WirelessCommon\\;C\:\\Programs\\Eclipse64
+environment/project/cdt.managedbuild.config.gnu.mingw.so.release.983624535.879713234/append=true
+environment/project/cdt.managedbuild.config.gnu.mingw.so.release.983624535.879713234/appendContributed=true
 environment/project/cdt.managedbuild.config.gnu.mingw.so.release.983624535/append=true
 environment/project/cdt.managedbuild.config.gnu.mingw.so.release.983624535/appendContributed=true
