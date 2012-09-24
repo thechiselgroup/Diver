@@ -69,6 +69,9 @@
    <feature url="features/ca.uvic.chisel.diver.feature_0.4.1.qualifier.jar" id="ca.uvic.chisel.diver.feature" version="0.4.1.qualifier" os="linux,win32" arch="x86,x86_64">
       <category name="ca.uvic.chisel.diver.core.category"/>
    </feature>
+   <feature url="features/ca.uvic.chisel.diver.feature_0.5.0.qualifier.jar" id="ca.uvic.chisel.diver.feature" version="0.5.0.qualifier" os="linux,win32" arch="x86,x86_64">
+      <category name="ca.uvic.chisel.diver.core.category"/>
+   </feature>
    <category-def name="ca.uvic.chisel.diver.core.category" label="Diver Core">
       <description>
          The core diver feature, including the UI and the tracing functionality.
