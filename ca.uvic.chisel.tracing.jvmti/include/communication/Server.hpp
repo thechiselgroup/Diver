@@ -8,14 +8,22 @@
 #ifndef SERVER_H_
 #define SERVER_H_
 #include "stdafx.h"
+
 #include <boost/asio.hpp>
 #include <boost/shared_ptr.hpp>
 #include <boost/bind.hpp>
 #include <boost/function.hpp>
-#include <boost/thread.hpp>
+
 #include <boost/date_time/posix_time/posix_time.hpp>
 #include <iostream>
+
+
 #include "communication/Command.hpp"
+
+#include <windows.h>
+
+#include <boost/thread.hpp>
+
 
 using namespace boost::asio::ip;
 

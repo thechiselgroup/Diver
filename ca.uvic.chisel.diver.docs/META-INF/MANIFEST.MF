@@ -1,5 +1,5 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: Div/er Docs
+Bundle-Name: Diver Docs
 Bundle-SymbolicName: ca.uvic.chisel.diver.docs; singleton:=true
 Bundle-Version: 0.4.0.qualifier

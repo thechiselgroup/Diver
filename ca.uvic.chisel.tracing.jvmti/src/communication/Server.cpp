@@ -130,7 +130,7 @@ void Server::Start() {
 	//start the receive thread
 	try {
 		//server = this;
-		DEBUG_PRINT("Thread runner at " << std::hex << (int)(&stupid_runner));
+		DEBUG_PRINT("Thread runner at " << std::hex << (intptr_t)(&stupid_runner));
 		//thread t(stupid_runner);
 		//receive_thread = shared_ptr<thread>(new thread(bind(&Server::ReceiveThread, this)));
 		thread t(bind(&Server::ReceiveThread, this));
