@@ -3,7 +3,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: Linux Tracing
 Bundle-SymbolicName: ca.uvic.chisel.tracing.jvmti.linux;singleton:=true
 Bundle-Version: 0.4.0.qualifier
-Fragment-Host: ca.uvic.chisel.javasketch;bundle-version="0.4.0"
+Fragment-Host: ca.uvic.chisel.javasketch;bundle-version="0.5.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-NativeCode: libsketch_linux32.so;selection-filter=
  "(&(osgi.os=linux)(|(osgi.arch=x86)(osgi.arch=x86_64)))"

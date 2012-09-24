@@ -262,7 +262,7 @@ void JVMTIAgent::ExceptionCaught(jvmtiEnv *jvmti, JNIEnv *env, jthread thread, j
 }
 
 JavaThreadData* JVMTIAgent::ThreadStarted(jthread thread, jvmtiEnv* jvmti, JNIEnv* jni) {
-	DEBUG_PRINT("Starting thread " << thread << "on agent at " << hex << (int)this);
+	DEBUG_PRINT("Starting thread " << thread << "on agent at " << hex << (intptr_t)this);
 	JavaThreadData* jthreadData = NULL;
 	//must add the thread to the list of threads in the vector.
 	//first, enter a scoped (unique lock) to make sure that
@@ -297,7 +297,7 @@ JavaThreadData* JVMTIAgent::ThreadStarted(jthread thread, jvmtiEnv* jvmti, JNIEn
 		std::cerr << "Error in starting thread: allocation error" << std::endl;
 		exit(-1);
 	}
-	DEBUG_PRINT("Started thread " << thread << "on agent at " << hex << (int)this);
+	DEBUG_PRINT("Started thread " << thread << "on agent at " << hex << (intptr_t)this);
 
 	return jthreadData;
 

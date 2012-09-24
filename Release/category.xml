@@ -6,7 +6,7 @@
    <feature url="features/ca.uvic.chisel.diver.feature.container_0.4.0.qualifier.jar" id="ca.uvic.chisel.diver.feature.container" version="0.4.0.qualifier">
       <category name="ca.uvic.chisel.diver.all"/>
    </feature>
-   <feature url="features/ca.uvic.chisel.diver.feature_0.4.1.qualifier.jar" id="ca.uvic.chisel.diver.feature" version="0.4.1.qualifier" os="linux,win32" arch="x86,x86_64">
+   <feature url="features/ca.uvic.chisel.diver.feature_0.5.0.qualifier.jar" id="ca.uvic.chisel.diver.feature" version="0.5.0.qualifier" os="linux,win32" arch="x86,x86_64">
       <category name="ca.uvic.chisel.diver.core.category"/>
    </feature>
    <feature url="features/ca.uvic.chisel.diver.static.feature_0.4.0.qualifier.jar" id="ca.uvic.chisel.diver.static.feature" version="0.4.0.qualifier">

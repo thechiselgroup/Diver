@@ -6,7 +6,7 @@ Bundle-Version: 0.4.0.qualifier
 Bundle-Activator: ca.uvic.chisel.javasketch.junit.JUnitSketchPlugin
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
- ca.uvic.chisel.javasketch;bundle-version="0.4.0",
+ ca.uvic.chisel.javasketch;bundle-version="0.5.0",
  ca.uvic.chisel.javasketch.data;bundle-version="0.3.1",
  org.eclipse.debug.ui,
  org.eclipse.jdt.junit,
