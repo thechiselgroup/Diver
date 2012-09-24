@@ -13,6 +13,7 @@ package ca.uvic.chisel.javasketch.launching.internal;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Enumeration;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.FileLocator;
@@ -38,15 +39,17 @@ public final class JavaAgentUtil {
 		
 		if ("win32".equals(os) && "x86".equals(arch)) {
 			fileUrl = SketchPlugin.getDefault().getBundle().getResource("sketch_win32.dll");
-		} else if ("win32".equals(os)  && "x86_64".equals(arch) ) {
+		} else if ("win32".equals(os)  && ("amd64".equals(arch) || "x86_64".equals(arch))) { //Was expecting amd64 but in testing x86_64 was returned. Value supposed to be Java arch not CPU arch 
 				fileUrl = SketchPlugin.getDefault().getBundle().getResource("sketch_win64.dll");
 		} else if ("linux".equals(os)) {
 			fileUrl = SketchPlugin.getDefault().getBundle().getResource("libsketch_linux32.so");
 		} else {
-			throw new CoreException(new Status(Status.ERROR, SketchPlugin.PLUGIN_ID, "Unrecognized operating system: " + os));
+			throw new CoreException(new Status(Status.ERROR, SketchPlugin.PLUGIN_ID, "Unrecognized operating system: " + os + " with architecture " + arch));
 		}
-		if (fileUrl == null) {
-			throw new CoreException(new Status(Status.ERROR, SketchPlugin.PLUGIN_ID, "Unable to locate tracing library"));
+		
+				
+		if (fileUrl == null) {			
+			throw new CoreException(new Status(Status.ERROR, SketchPlugin.PLUGIN_ID, "Unable to locate tracing library: OS = " + os + " with architecture " + arch));					
 		}
 		String fileName = null;
 		try {

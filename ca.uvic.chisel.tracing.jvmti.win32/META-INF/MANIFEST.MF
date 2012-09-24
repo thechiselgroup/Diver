@@ -8,7 +8,8 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-NativeCode: sketch_win32.dll; osname=winxp; processor=x86,
  sketch_win32.dll; osname=Windows Vista; processor=x86,
  sketch_win32.dll; osname=Windows 7; processor=x86,
- sketch_win64.dll; osname=winxp; processor=x86_64,
- sketch_win64.dll; osname=Windows Vista; processor=x86_64,
- sketch_win64.dll; osname=Windows 7; processor=x86_64
+ sketch_win32.dll; sketch_win64.dll; osname=winxp; processor=x86_64,
+ sketch_win32.dll; sketch_win64.dll; osname=Windows Vista; processor=x86_64,
+ sketch_win32.dll; sketch_win64.dll; osname=Windows 7; processor=x86_64,
+ sketch_win32.dll; sketch_win64.dll; osname=Windows 8; processor=x86_64
 Eclipse-PlatformFilter: (osgi.os=win32)
