@@ -18,9 +18,9 @@ For more about Diver, visit [the website](http://eclipsediver.wordpress.com "Div
 
 In order to run, Diver needs:
 
-* Eclipse 3.7, 32-bit
-* A 32-bit Java install
-* Windows 7 or Linux.
+* Windows XP or above, or Linux. 
+* 32-bit or 64-bit Java for Windows. Only 32-bit Java supported on Linux.
+* Eclipse 32-bit or 64-bit for Windows, or Eclipse 32-bit for Linux
 
 
 <sub>
