@@ -1,6 +1,6 @@
 ##Diver:  Dynamic Interactive Views For Reverse Engineering
 
-(This README will be expanded over the next few hours / days.)
+###Diver has been retired. Thanks for your support of our research project!
 
 Diver is a set of advanced tools for debugging and reverse engineering. If you ever wondered, "What did my program just do?", Diver will help you find the answer.  Diver is a set of Eclipse plugins that aid developers in understanding software. It uses dynamic analysis and reverse engineering to offer views and filters that aid comprehension and discovery.
 
